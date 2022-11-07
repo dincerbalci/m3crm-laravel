@@ -1,0 +1,53 @@
+</div>
+  <!-- BEGIN: Dark Mode Switcher-->
+
+  <div data-url="side-menu-light-dashboard-overview-1.html" class="dark-mode-switcher cursor-pointer shadow-md fixed bottom-0 right-0 box dark:bg-dark-2 border rounded-full w-40 h-12 flex items-center justify-center z-50 mb-10 mr-10">
+    <div class="mr-4 text-gray-700 dark:text-gray-300">Dark Mode</div>
+    <a href="{{route('dark_mode')}}"><div class="dark-mode-switcher__toggle dark-mode-switcher__toggle--{{Session::get('dark_mode') == 'dark' ? 'active' : 'inactive'}} border"></div></a>
+</div>
+<!-- END: Dark Mode Switcher-->
+
+<!-- BEGIN: JS Assets-->
+{{-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> --}}
+{{-- <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script> --}}
+<script  src="{{ asset('theme/dist/js/vanilla.js')}}"></script>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+
+<script src="{{ asset('theme/dist/js/jquery.inputmask.bundle.js')}}"></script>
+<script src="{{ asset('theme/dist/js/main.js')}}"></script>
+<script src="{{ asset('theme/dist/plugins/masked-input/masked-input.js')}}"></script>
+<script src="{{ asset('theme/dist/plugins/masked-input/masked-input.min.js')}}"></script>
+@stack('scripts')
+<script>
+    
+   
+
+   $(document).ready(function() {
+        $('#cnic').focus();
+    // App.init();
+        // FormPlugins.init();
+        masking();
+  
+        $('#cnic').on('keypress', function(e) {
+        var code = e.keyCode || e.which;
+        if(code==13){
+            cnic = $("#cnic").val();
+        }
+    });
+    });
+  
+    function masking(){
+  
+  $("#cnic").inputmask({"mask": "99999-9999999-9"});
+  
+  $.mask.definitions["9"] = null;
+  $.mask.definitions["^"] = "[0-9]";
+  $(".number").mask("92^^^^^^^^^^");
+  }
+</script>
+
+
+<!-- END: JS Assets-->
+</body>
+</html>
+
