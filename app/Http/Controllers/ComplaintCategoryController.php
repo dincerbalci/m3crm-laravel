@@ -115,7 +115,6 @@ class ComplaintCategoryController extends Controller
     }
     private function redirect()
     {   
-
         return redirect()->route('complaint_category_index');
     }
 }

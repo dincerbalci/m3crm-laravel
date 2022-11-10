@@ -11,21 +11,21 @@ class CreateComplaintTypesTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('complaint_types', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('complaint_types', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->timestamps();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('complaint_types');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('complaint_types');
+    // }
 }

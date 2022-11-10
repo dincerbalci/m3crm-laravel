@@ -197,7 +197,7 @@ class EFormTypeController extends Controller
     public  function productCategory(Request $request)
     {
         $productCategoryId=$request->product_category_id;
-        $eFormProduct=EFormProduct::where('product_category',$productCategoryId)->get();
+        $eFormProduct=EFormProduct::where('product_category',$productCategoryId)->where('isactive','1')->get();
         
         return $eFormProduct;
     }

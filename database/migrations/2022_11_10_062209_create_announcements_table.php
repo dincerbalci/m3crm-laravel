@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateComplaintCategoriesTable extends Migration
+class CreateAnnouncementsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateComplaintCategoriesTable extends Migration
      */
     // public function up()
     // {
-    //     Schema::create('complaint_categories', function (Blueprint $table) {
+    //     Schema::create('announcements', function (Blueprint $table) {
     //         $table->id();
     //         $table->timestamps();
     //     });
@@ -26,6 +26,6 @@ class CreateComplaintCategoriesTable extends Migration
     //  */
     // public function down()
     // {
-    //     Schema::dropIfExists('complaint_categories');
+    //     Schema::dropIfExists('announcements');
     // }
 }

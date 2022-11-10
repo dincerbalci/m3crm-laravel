@@ -167,6 +167,18 @@
                             <div class="side-menu__title">View Escalation Group</div>
                         </a>
                     </li>
+                    <li>
+                        <a href="{{route('announcement_create')}}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Add Announcement</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('announcement_index')}}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">View Announcement</div>
+                        </a>
+                    </li>
                 </ul>
             </li>
             <li>

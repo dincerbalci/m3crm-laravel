@@ -48,7 +48,7 @@
                         </div>
                         <div class="form-check form-switch sm:mt-0" style="margin-top: 17px;margin-bottom: 10px;">
                             <label for="regular-form-1" class="form-label">IsActive</label>
-                            <input id="show-example-3" data-target="#header" name="is_active" class="show-code form-check-input mr-0 ml-3" type="checkbox" required>
+                            <input id="show-example-3" data-target="#header" name="is_active" value="1" class="show-code form-check-input mr-0 ml-3" type="checkbox" required>
                         </div>
                         
                         </div>

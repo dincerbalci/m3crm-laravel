@@ -45,7 +45,7 @@
                             <div>
                                 <label for="regular-form-1" class="form-label">Assign To <span style="color: red">*</span></label>
                                 @if($complaint[0]->unit_id != "0")
-                                <select data-placeholder="Select your favorite actors" id="ddlUnit" name='unit_id' {{$disable_info}} name='' class="form-select"  required>
+                                <select data-placeholder="Select your favorite actors" id="ddlUnit" name='unit_id' {{$disable_info}}  class="form-select"  required>
                                     <option value="0" selected="true">Select Groups </option>
                                     @php $counter = 0; 
                                     $unitIds =  explode(",",$complaint[0]->unit_id);

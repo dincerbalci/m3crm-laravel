@@ -11,21 +11,21 @@ class CreateEFormProductsTable extends Migration
      *
      * @return void
      */
-    public function up()
-    {
-        Schema::create('e_form_products', function (Blueprint $table) {
-            $table->id();
-            $table->timestamps();
-        });
-    }
+    // public function up()
+    // {
+    //     Schema::create('e_form_products', function (Blueprint $table) {
+    //         $table->id();
+    //         $table->timestamps();
+    //     });
+    // }
 
-    /**
-     * Reverse the migrations.
-     *
-     * @return void
-     */
-    public function down()
-    {
-        Schema::dropIfExists('e_form_products');
-    }
+    // /**
+    //  * Reverse the migrations.
+    //  *
+    //  * @return void
+    //  */
+    // public function down()
+    // {
+    //     Schema::dropIfExists('e_form_products');
+    // }
 }

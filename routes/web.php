@@ -17,6 +17,9 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\GroupController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\EFormManagementController;
+use App\Http\Controllers\AnnouncementController;
+use App\Http\Controllers\DashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,11 +36,15 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/dashboard', function () {
-    return view('dashboard');
-})->middleware(['auth'])->name('dashboard');
+// Route::get('/dashboard', function () {
+//     return view('dashboard');
+// })->middleware(['auth'])->name('dashboard');
 
 Route::middleware(['auth'])->group(function () {
+
+Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
+
+
 #region complaint category
 Route::get('complaint_category_create', [ComplaintCategoryController::class, 'create'])->name('complaint_category_create');
 Route::post('complaint_category_create', [ComplaintCategoryController::class, 'store'])->name('complaint_category_create');
@@ -133,8 +140,25 @@ Route::get('get_unit_regions', [UserController::class, 'GetUnitRegion'])->name('
 Route::resource('role', RoleController::class);
 #endregion Role
 
+#region E From management
+Route::get('e_form_create', [EFormManagementController::class, 'create'])->name('e_form_create');
+Route::post('e_form_store', [EFormManagementController::class, 'store'])->name('e_form_store');
+Route::get('get_e_form_type', [EFormManagementController::class, 'eFormType'])->name('get_e_form_type');
+Route::get('e_form_index', [EFormManagementController::class, 'index'])->name('e_form_index');
+Route::get('e_form_show/{id}', [EFormManagementController::class, 'show'])->name('e_form_show');
+Route::post('e_form_edit/{id}', [EFormManagementController::class, 'update'])->name('e_form_edit');
+Route::post('e_form_update_progress/{id}', [EFormManagementController::class, 'updateProgress'])->name('e_form_update_progress');
+#endregion E From management
 
-
+#region Announcement management
+Route::get('announcement_create', [AnnouncementController::class, 'create'])->name('announcement_create');
+Route::post('announcement_submit', [AnnouncementController::class, 'store'])->name('announcement_submit');
+Route::get('delete_annoucement', [AnnouncementController::class, 'destroyShow'])->name('delete_annoucement');
+Route::post('announcement_delete/{id}', [AnnouncementController::class, 'destroy'])->name('announcement_delete');
+Route::get('announcement_index', [AnnouncementController::class, 'index'])->name('announcement_index');
+Route::get('announcement_edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement_edit');
+Route::post('announcement_update/{id}', [AnnouncementController::class, 'update'])->name('announcement_update');
+#endregion Announcement management
 
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
@@ -151,13 +175,13 @@ Route::get('get_product_category_eform', [EFormTypeController::class, 'productCa
 
 
 
-Route::get('e_form_create', function () {
-    return view('admin/e-form/e_form_create');
-})->name('e_form_create');
+// Route::get('e_form_create', function () {
+//     return view('admin/e-form/e_form_create');
+// })->name('e_form_create');
 
-Route::get('e_form_index', function () {
-    return view('admin/e-form/e_form_index');
-})->name('e_form_index');
+// Route::get('e_form_index', function () {
+//     return view('admin/e-form/e_form_index');
+// })->name('e_form_index');
 
 // Route::get('e_form_type_create', function () {
 //     return view('admin/e-form/e_form_type_create');

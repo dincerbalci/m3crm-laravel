@@ -801,7 +801,6 @@ License: You must have a valid license purchased only from themeforest(the above
             </div>
         </div>
 
-<div class="text-center" hidden> <a href="javascript:;" id='aa' data-tw-toggle="modal" data-tw-target="#header-footer-modal-preview" class="btn btn-primary" ></a> </div>
     <div id="header-footer-modal-preview" class="modal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-xl">
             <div class="modal-content">

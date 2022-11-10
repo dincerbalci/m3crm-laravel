@@ -6,11 +6,12 @@
     <a href="{{route('dark_mode')}}"><div class="dark-mode-switcher__toggle dark-mode-switcher__toggle--{{Session::get('dark_mode') == 'dark' ? 'active' : 'inactive'}} border"></div></a>
 </div>
 <!-- END: Dark Mode Switcher-->
+<script src="{{ asset('theme/dist/js/app.js')}}"></script>
 
 <!-- BEGIN: JS Assets-->
 {{-- <script src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script> --}}
 {{-- <script src="https://maps.googleapis.com/maps/api/js?key=["your-google-map-api"]&libraries=places"></script> --}}
-<script  src="{{ asset('theme/dist/js/vanilla.js')}}"></script>
+{{-- <script  src="{{ asset('theme/dist/js/vanilla.js')}}"></script> --}}
 <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
 
 <script src="{{ asset('theme/dist/js/jquery.inputmask.bundle.js')}}"></script>

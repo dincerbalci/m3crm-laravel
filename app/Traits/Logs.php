@@ -34,5 +34,30 @@ trait Logs {
 		}
 		
 	}
+	public function ActivityAgentLogs($description, $actionOn, $transactionName, $responseStatus='', $rrn='', $caution='', $reasonId='0'){
+
+		$is_agent_activity_logs=env('IS_AGENT_AVTIVITY_LOGS');
+
+        if($reasonId <> ''){
+			
+            if($is_agent_activity_logs == "1"){
+
+                $dateTime = GetCurrentDateTime();
+				$callId = Session::get('call_id');
+				$agentId = Session::get('user_id');
+				$loginId = Session::get('login_id');
+				$cnic = Session::get('nic');
+				return DB::insert('insert into tbl_logs_activity_agent (call_id, agent_id, login_id, description, action_on, cnic, transaction_name, rrn, reason_id, caution, response_status, created_datetime) 
+            values (?,?,?,?,?,?,?,?,?,?,?,?)', [$callId, $agentId , $loginId,$description,$actionOn,$cnic,$transactionName,$rrn,$reasonId,$caution,$responseStatus,$dateTime]);
+
+            }else{
+                return true;
+            }
+
+        }else{
+            return true;
+        }
+
+    }
 
 }

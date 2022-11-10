@@ -180,6 +180,16 @@ class User extends Authenticatable
         return $user;
 
     }
+    public function GetEmailAdcAndBranch($unitId)
+    {
+        //44 is adc back office id in tbl_org_unit
+        return DB::select(DB::raw("SELECT GROUP_CONCAT(email) AS emails FROM tbl_users WHERE isactive = '1' AND (unit_id = '44' OR unit_id = '$unitId')"));
+    }
+    public function GetEmailFromAndTo($dataFromUnitId, $dataUnitId)
+    {
+        return DB::select(DB::raw("SELECT GROUP_CONCAT(email) AS emails FROM tbl_users WHERE isactive = '1' AND (unit_id = '44' OR unit_id = '$dataFromUnitId' OR unit_id = '$dataUnitId')"));
+    }
+
    
 
    

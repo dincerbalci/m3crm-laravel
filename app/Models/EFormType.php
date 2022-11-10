@@ -30,7 +30,7 @@ class EFormType extends Model
      * @var string
      */
     public $timestamps = false;
-
+   
     public function eFormType($search)
     {
         $paginationEnv=env('PAGINATION');
