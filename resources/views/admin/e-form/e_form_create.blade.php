@@ -158,7 +158,7 @@
        
     </div>
     </div>
-</form>
+
 <div class="intro-y col-span-12 lg:col-span-6">
     <!-- BEGIN: Input -->
     <div class="intro-y box">
@@ -230,6 +230,7 @@
    
 </div>
 </div>
+</form>
 @push('scripts')
 {{-- <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> --}}
 <script>

@@ -326,7 +326,7 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="" class="side-menu">
+                            <a href="{{route('customer_search')}}" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="side-menu__title">Customer Search</div>
                             </a>

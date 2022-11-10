@@ -160,6 +160,14 @@ Route::get('announcement_edit/{id}', [AnnouncementController::class, 'edit'])->n
 Route::post('announcement_update/{id}', [AnnouncementController::class, 'update'])->name('announcement_update');
 #endregion Announcement management
 
+#region Customer Search
+Route::get('customer_search', function () {
+    return view('admin/customer-search/customer_search');
+})->name('customer_search');
+Route::get('customer_info', function () {
+    return view('admin/customer-search/customer_info');
+})->name('customer_info');
+#endregion Customer Search
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
 
