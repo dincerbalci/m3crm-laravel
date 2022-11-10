@@ -18,7 +18,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <meta name="keywords" content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
         <meta name="author" content="LEFT4CODE">
         <meta name="csrf-token" content="{{ csrf_token() }}">
-        <title>Dashboard - Midone - Tailwind HTML Admin Template</title>
+        <title>Dashboard - M3-CRM</title>
         <!-- BEGIN: CSS Assets-->
 
         <link rel="stylesheet" href="{{ asset('theme/dist/css/app.css')}}" />
@@ -588,7 +588,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN: Logo -->
                 <a href="" class="logo -intro-x hidden md:flex xl:w-[180px] block">
                     <img alt="Midone - HTML Admin Template" class="logo__image w-6" src="{{ asset('theme/dist/images/logo.svg')}}">
-                    <span class="logo__text text-white text-lg ml-3"> Enigma </span> 
+                    <span class="logo__text text-white text-lg ml-3">M3-CRM</span> 
                 </a>
                 <!-- END: Logo -->
                 <!-- BEGIN: Breadcrumb -->
