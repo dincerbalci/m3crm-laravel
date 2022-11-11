@@ -36,8 +36,8 @@ class ComplaintManagementController extends Controller
         $priority=DB::table('tbl_priority')->where('is_active','1')->get();
         $complaintStatus=DB::table('tbl_status')->where('isactive','1')->get();
         $product=DB::table('tbl_product')->where('isactive','1')->whereDate('end_date','>=','2020-10-07')->get();
-
-        return view('admin/complaint/complaint_index',compact('complaint','priority','complaintStatus','product'));
+        $userType = Session::get('user_type');
+        return view('admin/complaint/complaint_index',compact('complaint','priority','complaintStatus','product','userType'));
     }
 
     /**
