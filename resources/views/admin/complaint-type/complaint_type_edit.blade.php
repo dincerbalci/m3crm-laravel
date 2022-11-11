@@ -21,7 +21,7 @@
                         Edit complaint type
                     </h2>
                 </div>
-                <form  method="POST" action="{{ route('complaint_type_edit') }}" >
+                <form  method="POST" action="{{ route('complaint_type_edit',$complaintType->id) }}" >
                     @csrf
                 <div id="inline-form" class="p-5">
                     <div class="preview">
