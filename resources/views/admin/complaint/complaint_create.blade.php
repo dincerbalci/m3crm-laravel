@@ -185,7 +185,7 @@
                     </div>
                     <div class="mt-3">
                         <label for="regular-form-1" class="form-label">Residence Address <span style="color: red">*</span></label>
-                        <textarea id="validation-form-6" class="form-control" name="residence_address" placeholder="Residence Address" minlength="10" required></textarea>
+                        <textarea id="validation-form-6" class="form-control" maxlength='255' name="residence_address" placeholder="Residence Address" minlength="10" required></textarea>
                     </div>
                     
                     </div>

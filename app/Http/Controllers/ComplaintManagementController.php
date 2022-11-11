@@ -92,6 +92,7 @@ class ComplaintManagementController extends Controller
         $userType = Session::get('user_type');
 
         $getDuplicate = $this->objComplaintManagement->GetDuplicateComplaint($cnic,$productCateg,$productId,$complaintType);
+        // dd(count($getDuplicate));
         // return count($getDuplicate);
         if(count($getDuplicate) == 0){
            $this->insertToComplaintAndDetails($request);
@@ -642,7 +643,7 @@ class ComplaintManagementController extends Controller
             'source' => $request->source,
             'amount' => $request->amount
         ]);
-        $complaintId=$complaintData->id;
+        $complaintId=$complaintData->complaint_id;
         DB::table('tbl_complaint_details')->insert(
             [   'complaint_id' => $complaintId,
                 'compl_title' => $request->complaint_title,

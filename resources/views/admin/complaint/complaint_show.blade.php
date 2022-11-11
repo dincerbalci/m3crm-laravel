@@ -303,7 +303,7 @@
                     </div>
                     <div class="mt-3">
                         <label for="regular-form-1" class="form-label">Residence Address <span style="color: red">*</span></label>
-                        <textarea id="validation-form-6" class="form-control"   name="residence_address" placeholder="Residence Address" minlength="10" required>{{$complaint[0]->residence_address}}</textarea>
+                        <textarea id="validation-form-6" class="form-control"   name="residence_address" placeholder="Residence Address" minlength="10" maxlength='255' required>{{$complaint[0]->residence_address}}</textarea>
                     </div>
                     
                     </div>

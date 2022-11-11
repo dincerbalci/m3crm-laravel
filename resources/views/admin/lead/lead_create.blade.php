@@ -90,7 +90,7 @@
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Complete Address <span style="color: red">*</span></label>
-                                <textarea id="validation-form-6" class="form-control" name="note" placeholder="Complete Address" minlength="10" required=""></textarea>
+                                <textarea id="validation-form-6" maxlength='255' class="form-control" name="note" placeholder="Complete Address" minlength="10" required=""></textarea>
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Product Name <span style="color: red">*</span></label>
@@ -123,7 +123,7 @@
                             </div>
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Description<span style="color: red">*</span></label>
-                                <textarea id="validation-form-6" class="form-control" name="note" placeholder="Enter Details about inquiry" minlength="10" required=""></textarea>
+                                <textarea id="validation-form-6" maxlength='255' class="form-control" name="note" placeholder="Enter Details about inquiry" minlength="10" required=""></textarea>
                             </div>
                         </div>
                             <button type="button"  class="btn btn-primary mt-5">Save</button>

@@ -83,7 +83,7 @@
                         </div>   
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Activity Notes <span style="color: red">*</span></label>
-                            <textarea id="validation-form-6" class="form-control" name="activity_note" {{$disa}} {{$disable_user}} placeholder="Activity Notes" minlength="10" required></textarea>
+                            <textarea id="validation-form-6" maxlength='255' class="form-control" name="activity_note" {{$disa}} {{$disable_user}} placeholder="Activity Notes" minlength="10" required></textarea>
                             @if($errors->has('activity_note'))
                             <div class="pristine-error text-danger mt-2" ><b>{{ $errors->first('activity_note') }}</b></div>
                             @endif
@@ -189,7 +189,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Notes</label>
-                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="description"  placeholder="Additional Information" minlength="10" required="">{{$data[0]->description}}</textarea>
+                            <textarea id="validation-form-6" maxlength='255' class="form-control" {{$disabled}} name="description"  placeholder="Additional Information" minlength="10" required="">{{$data[0]->description}}</textarea>
                         </div>
                         
                         </div>
@@ -223,7 +223,7 @@
                     </div>
                     <div class="">
                         <label for="regular-form-1" class="form-label">Residence Address <span style="color: red">*</span></label>
-                        <textarea id="validation-form-6" class="form-control" {{$disabled}} value="{{$data[0]->residence_address}}" name="residence_address"  placeholder="Residence Address" minlength="10" required=""></textarea>
+                        <textarea id="validation-form-6" maxlength='255' class="form-control" {{$disabled}} value="{{$data[0]->residence_address}}" name="residence_address"  placeholder="Residence Address" minlength="10" required=""></textarea>
                     </div>
                     
                     </div>

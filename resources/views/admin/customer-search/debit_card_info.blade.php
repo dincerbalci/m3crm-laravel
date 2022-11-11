@@ -108,7 +108,7 @@
                                                         </div>
                                                         <div class="mt-3">
                                                             <label for="regular-form-1" class="form-label">Caution</label>
-                                                            <textarea id="validation-form-6" class="form-control" name="description" placeholder="Description" minlength="10" required></textarea>
+                                                            <textarea id="validation-form-6" class="form-control" maxlength='255' name="description" placeholder="Description" minlength="10" required></textarea>
                                                         </div>
                                                     </div>
                                                     <button type="button" class="btn btn-primary mt-5">Submit</button>
@@ -139,7 +139,7 @@
                                                         </div>
                                                         <div >
                                                             <label for="regular-form-1" class="form-label">Caution</label>
-                                                            <textarea id="validation-form-6" class="form-control" name="description" placeholder="Description" minlength="10" required></textarea>
+                                                            <textarea id="validation-form-6" class="form-control" maxlength='255' name="description" placeholder="Description" minlength="10" required></textarea>
                                                         </div>
                                                     </div>
                                                     <button type="button" class="btn btn-primary mt-5">Submit</button>

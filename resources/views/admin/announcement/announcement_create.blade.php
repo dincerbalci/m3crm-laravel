@@ -39,7 +39,7 @@
                         </div>
                         <div>
                             <label for="regular-form-1" class="form-label">Description <span style="color: red">*</span></label>
-                            <textarea id="validation-form-6" class="form-control" name="description" placeholder="Description" minlength="10" required></textarea>
+                            <textarea id="validation-form-6" class="form-control" name="description" placeholder="Description" minlength="10" maxlength='255' required></textarea>
                         </div>
                         <div class="form-check form-switch sm:mt-0" style="margin-top: 17px;margin-bottom: 10px;">
                             <label for="regular-form-1" class="form-label">IsActive</label>
