@@ -31,7 +31,8 @@ class ComplaintTypeController extends Controller
      */
     public function create()
     {
-        $complaintCategory=ComplaintCategory::where('isactive','1')->whereNull('end_date')->orderBy('fullname')->get();
+        // $complaintCategory=ComplaintCategory::where('isactive','1')->whereNull('end_date')->orderBy('fullname')->get();
+        $complaintCategory=ComplaintCategory::where('isactive','1')->orderBy('fullname')->get();
         return view('admin/complaint-type/complaint_type_create',compact('complaintCategory'));
         
     }
@@ -90,7 +91,8 @@ class ComplaintTypeController extends Controller
     public function edit(int $id)
     {
         $complaintType=ComplaintType::find($id);
-    $complaintCategory=ComplaintCategory::where('isactive','1')->whereNull('end_date')->orderBy('fullname')->get();
+    // $complaintCategory=ComplaintCategory::where('isactive','1')->whereNull('end_date')->orderBy('fullname')->get();
+    $complaintCategory=ComplaintCategory::where('isactive','1')->orderBy('fullname')->get();
     return view('admin/complaint-type/complaint_type_edit',compact('complaintCategory','complaintType'));
         
     }
