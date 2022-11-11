@@ -2,7 +2,7 @@ import helper from "./helper";
 import colors from "./colors";
 import Chart from "chart.js/auto";
 
-(function () {
+(function() {
     "use strict";
 
     // Chart
@@ -25,8 +25,7 @@ import Chart from "chart.js/auto";
                     "Nov",
                     "Dec",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "# of Votes",
                         data: [
                             0, 200, 250, 200, 700, 550, 650, 1050, 950, 1100,
@@ -46,9 +45,9 @@ import Chart from "chart.js/auto";
                         ],
                         borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.slate["400"](0.6)
-                            : colors.slate["400"](),
+                        borderColor: $("html").hasClass("dark") ?
+                            colors.slate["400"](0.6) :
+                            colors.slate["400"](),
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                         tension: 0.4,
@@ -81,14 +80,14 @@ import Chart from "chart.js/auto";
                                 size: 12,
                             },
                             color: colors.slate["500"](0.8),
-                            callback: function (value, index, values) {
+                            callback: function(value, index, values) {
                                 return "$" + value;
                             },
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.slate["500"](0.3)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.slate["500"](0.3) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -108,25 +107,23 @@ import Chart from "chart.js/auto";
                     ">= 50 Years old",
                     "17 - 30 Years old",
                 ],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 5,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 5,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.white,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -149,25 +146,23 @@ import Chart from "chart.js/auto";
                     ">= 50 Years old",
                     "17 - 30 Years old",
                 ],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 5,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 5,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.white,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -194,18 +189,18 @@ import Chart from "chart.js/auto";
         // Fake visitor bar color
         let reportBarChartColor = reportBarChartData.map((data) => {
             if (data >= 8 && data <= 14) {
-                return $("html").hasClass("dark")
-                    ? "#2E51BBA6"
-                    : colors.primary(0.65);
+                return $("html").hasClass("dark") ?
+                    "#2E51BBA6" :
+                    colors.primary(0.65);
             } else if (data >= 15) {
-                return $("html").hasClass("dark")
-                    ? "#2E51BB"
-                    : colors.primary();
+                return $("html").hasClass("dark") ?
+                    "#2E51BB" :
+                    colors.primary();
             }
 
-            return $("html").hasClass("dark")
-                ? "#2E51BB59"
-                : colors.primary(0.35);
+            return $("html").hasClass("dark") ?
+                "#2E51BB59" :
+                colors.primary(0.35);
         });
 
         let ctx = $("#report-bar-chart")[0].getContext("2d");
@@ -213,14 +208,12 @@ import Chart from "chart.js/auto";
             type: "bar",
             data: {
                 labels: reportBarChartData,
-                datasets: [
-                    {
-                        label: "Html Template",
-                        barThickness: 6,
-                        data: reportBarChartData,
-                        backgroundColor: reportBarChartColor,
-                    },
-                ],
+                datasets: [{
+                    label: "Html Template",
+                    barThickness: 6,
+                    data: reportBarChartData,
+                    backgroundColor: reportBarChartColor,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -285,8 +278,7 @@ import Chart from "chart.js/auto";
                     "Nov",
                     "Dec",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Html Template",
                         barThickness: 8,
                         maxBarThickness: 6,
@@ -304,9 +296,9 @@ import Chart from "chart.js/auto";
                             50, 135, 40, 180, 190, 60, 150, 90, 250, 170, 240,
                             250,
                         ],
-                        backgroundColor: $("html").hasClass("dark")
-                            ? colors.darkmode["400"]()
-                            : colors.slate["300"](),
+                        backgroundColor: $("html").hasClass("dark") ?
+                            colors.darkmode["400"]() :
+                            colors.slate["300"](),
                     },
                 ],
             },
@@ -335,9 +327,9 @@ import Chart from "chart.js/auto";
                             display: false,
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.darkmode["300"](0.8)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.darkmode["300"](0.8) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -353,25 +345,23 @@ import Chart from "chart.js/auto";
             type: "doughnut",
             data: {
                 labels: ["Yellow", "Dark"],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 2,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 2,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.white,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -391,25 +381,23 @@ import Chart from "chart.js/auto";
             type: "doughnut",
             data: {
                 labels: ["Yellow", "Dark"],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 2,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 2,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.white,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -429,25 +417,23 @@ import Chart from "chart.js/auto";
             type: "doughnut",
             data: {
                 labels: ["Yellow", "Dark"],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 5,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.slate[200](),
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 5,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.slate[200](),
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -462,7 +448,7 @@ import Chart from "chart.js/auto";
     }
 
     if ($(".simple-line-chart-1").length) {
-        $(".simple-line-chart-1").each(function () {
+        $(".simple-line-chart-1").each(function() {
             let ctx = $(this)[0].getContext("2d");
             let myChart = new Chart(ctx, {
                 type: "line",
@@ -481,26 +467,22 @@ import Chart from "chart.js/auto";
                         "Nov",
                         "Dec",
                     ],
-                    datasets: [
-                        {
-                            label: "# of Votes",
-                            data:
-                                $(this).data("random") !== undefined
-                                    ? helper.randomNumbers(0, 5, 12)
-                                    : [
-                                          0, 200, 250, 200, 500, 450, 850, 1050,
-                                          950, 1100, 900, 1200,
-                                      ],
-                            borderWidth: 2,
-                            borderColor:
-                                $(this).data("line-color") !== undefined
-                                    ? $(this).data("line-color")
-                                    : colors.primary(0.8),
-                            backgroundColor: "transparent",
-                            pointBorderColor: "transparent",
-                            tension: 0.4,
-                        },
-                    ],
+                    datasets: [{
+                        label: "# of Votes",
+                        data: $(this).data("random") !== undefined ?
+                            helper.randomNumbers(0, 5, 12) :
+                            [
+                                0, 200, 250, 200, 500, 450, 850, 1050,
+                                950, 1100, 900, 1200,
+                            ],
+                        borderWidth: 2,
+                        borderColor: $(this).data("line-color") !== undefined ?
+                            $(this).data("line-color") :
+                            colors.primary(0.8),
+                        backgroundColor: "transparent",
+                        pointBorderColor: "transparent",
+                        tension: 0.4,
+                    }, ],
                 },
                 options: {
                     maintainAspectRatio: false,
@@ -535,7 +517,7 @@ import Chart from "chart.js/auto";
     }
 
     if ($(".simple-line-chart-2").length) {
-        $(".simple-line-chart-2").each(function () {
+        $(".simple-line-chart-2").each(function() {
             let ctx = $(this)[0].getContext("2d");
             let myChart = new Chart(ctx, {
                 type: "line",
@@ -554,26 +536,22 @@ import Chart from "chart.js/auto";
                         "Nov",
                         "Dec",
                     ],
-                    datasets: [
-                        {
-                            label: "# of Votes",
-                            data:
-                                $(this).data("random") !== undefined
-                                    ? helper.randomNumbers(0, 5, 12)
-                                    : [
-                                          0, 300, 400, 560, 320, 600, 720, 850,
-                                          690, 805, 1200, 1010,
-                                      ],
-                            borderWidth: 2,
-                            borderDash: [2, 2],
-                            borderColor:
-                                $(this).data("line-color") !== undefined
-                                    ? $(this).data("line-color")
-                                    : colors.slate["300"](),
-                            backgroundColor: "transparent",
-                            pointBorderColor: "transparent",
-                        },
-                    ],
+                    datasets: [{
+                        label: "# of Votes",
+                        data: $(this).data("random") !== undefined ?
+                            helper.randomNumbers(0, 5, 12) :
+                            [
+                                0, 300, 400, 560, 320, 600, 720, 850,
+                                690, 805, 1200, 1010,
+                            ],
+                        borderWidth: 2,
+                        borderDash: [2, 2],
+                        borderColor: $(this).data("line-color") !== undefined ?
+                            $(this).data("line-color") :
+                            colors.slate["300"](),
+                        backgroundColor: "transparent",
+                        pointBorderColor: "transparent",
+                    }, ],
                 },
                 options: {
                     maintainAspectRatio: false,
@@ -626,8 +604,7 @@ import Chart from "chart.js/auto";
                     "Nov",
                     "Dec",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "# of Votes",
                         data: [
                             0, 200, 250, 200, 700, 550, 650, 1050, 950, 1100,
@@ -647,9 +624,9 @@ import Chart from "chart.js/auto";
                         ],
                         borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode["100"]()
-                            : colors.slate["400"](),
+                        borderColor: $("html").hasClass("dark") ?
+                            colors.darkmode["100"]() :
+                            colors.slate["400"](),
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                         tension: 0.4,
@@ -706,8 +683,7 @@ import Chart from "chart.js/auto";
                     "Nov",
                     "Dec",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "# of Votes",
                         data: [
                             0, 200, 250, 200, 700, 550, 650, 1050, 950, 1100,
@@ -727,9 +703,9 @@ import Chart from "chart.js/auto";
                         ],
                         borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode["100"]()
-                            : colors.slate["400"](),
+                        borderColor: $("html").hasClass("dark") ?
+                            colors.darkmode["100"]() :
+                            colors.slate["400"](),
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                         tension: 0.4,
@@ -783,8 +759,7 @@ import Chart from "chart.js/auto";
                     "Jul",
                     "Aug",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Html Template",
                         barPercentage: 0.5,
                         barThickness: 6,
@@ -800,9 +775,9 @@ import Chart from "chart.js/auto";
                         maxBarThickness: 8,
                         minBarLength: 2,
                         data: [0, 300, 400, 560, 320, 600, 720, 850],
-                        backgroundColor: $("html").hasClass("dark")
-                            ? colors.darkmode["200"]()
-                            : colors.slate["300"](),
+                        backgroundColor: $("html").hasClass("dark") ?
+                            colors.darkmode["200"]() :
+                            colors.slate["300"](),
                     },
                 ],
             },
@@ -834,14 +809,14 @@ import Chart from "chart.js/auto";
                                 size: "12",
                             },
                             color: colors.slate["500"](0.8),
-                            callback: function (value, index, values) {
+                            callback: function(value, index, values) {
                                 return "$" + value;
                             },
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.slate["500"](0.3)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.slate["500"](0.3) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -866,8 +841,7 @@ import Chart from "chart.js/auto";
                     "Jul",
                     "Aug",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Html Template",
                         barPercentage: 0.5,
                         barThickness: 6,
@@ -883,9 +857,9 @@ import Chart from "chart.js/auto";
                         maxBarThickness: 8,
                         minBarLength: 2,
                         data: [0, 300, 400, 560, 320, 600, 720, 850],
-                        backgroundColor: $("html").hasClass("dark")
-                            ? colors.darkmode["200"]()
-                            : colors.slate["300"](),
+                        backgroundColor: $("html").hasClass("dark") ?
+                            colors.darkmode["200"]() :
+                            colors.slate["300"](),
                     },
                 ],
             },
@@ -906,7 +880,7 @@ import Chart from "chart.js/auto";
                                 size: "12",
                             },
                             color: colors.slate["500"](0.8),
-                            callback: function (value, index, values) {
+                            callback: function(value, index, values) {
                                 return "$" + value;
                             },
                         },
@@ -923,9 +897,9 @@ import Chart from "chart.js/auto";
                             color: colors.slate["500"](0.8),
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.slate["500"](0.3)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.slate["500"](0.3) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -954,8 +928,7 @@ import Chart from "chart.js/auto";
                     "Nov",
                     "Dec",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Html Template",
                         barPercentage: 0.5,
                         barThickness: 6,
@@ -970,9 +943,9 @@ import Chart from "chart.js/auto";
                         barThickness: 6,
                         maxBarThickness: 8,
                         minBarLength: 2,
-                        backgroundColor: $("html").hasClass("dark")
-                            ? colors.darkmode["200"]()
-                            : colors.slate["300"](),
+                        backgroundColor: $("html").hasClass("dark") ?
+                            colors.darkmode["200"]() :
+                            colors.slate["300"](),
                         data: helper.randomNumbers(-100, 100, 12),
                     },
                 ],
@@ -1007,14 +980,14 @@ import Chart from "chart.js/auto";
                                 size: "12",
                             },
                             color: colors.slate["500"](0.8),
-                            callback: function (value, index, values) {
+                            callback: function(value, index, values) {
                                 return "$" + value;
                             },
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.slate["500"](0.3)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.slate["500"](0.3) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -1030,8 +1003,7 @@ import Chart from "chart.js/auto";
             type: "bar",
             data: {
                 labels: [...Array(16).keys()],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Html Template",
                         barPercentage: 0.5,
                         barThickness: 6,
@@ -1046,9 +1018,9 @@ import Chart from "chart.js/auto";
                         barThickness: 6,
                         maxBarThickness: 8,
                         minBarLength: 2,
-                        backgroundColor: $("html").hasClass("dark")
-                            ? colors.darkmode["200"]()
-                            : colors.slate["300"](),
+                        backgroundColor: $("html").hasClass("dark") ?
+                            colors.darkmode["200"]() :
+                            colors.slate["300"](),
                         data: helper.randomNumbers(-100, 100, 16),
                     },
                 ],
@@ -1081,14 +1053,14 @@ import Chart from "chart.js/auto";
                                 size: "12",
                             },
                             color: colors.slate["500"](0.8),
-                            callback: function (value, index, values) {
+                            callback: function(value, index, values) {
                                 return "$" + value;
                             },
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.slate["500"](0.3)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.slate["500"](0.3) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -1117,8 +1089,7 @@ import Chart from "chart.js/auto";
                     "Nov",
                     "Dec",
                 ],
-                datasets: [
-                    {
+                datasets: [{
                         label: "Html Template",
                         data: [
                             0, 200, 250, 200, 500, 450, 850, 1050, 950, 1100,
@@ -1138,9 +1109,9 @@ import Chart from "chart.js/auto";
                         ],
                         borderWidth: 2,
                         borderDash: [2, 2],
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.slate["400"](0.6)
-                            : colors.slate["400"](),
+                        borderColor: $("html").hasClass("dark") ?
+                            colors.slate["400"](0.6) :
+                            colors.slate["400"](),
                         backgroundColor: "transparent",
                         pointBorderColor: "transparent",
                         tension: 0.4,
@@ -1175,14 +1146,14 @@ import Chart from "chart.js/auto";
                                 size: "12",
                             },
                             color: colors.slate["500"](0.8),
-                            callback: function (value, index, values) {
+                            callback: function(value, index, values) {
                                 return "$" + value;
                             },
                         },
                         grid: {
-                            color: $("html").hasClass("dark")
-                                ? colors.slate["500"](0.3)
-                                : colors.slate["300"](),
+                            color: $("html").hasClass("dark") ?
+                                colors.slate["500"](0.3) :
+                                colors.slate["300"](),
                             borderDash: [2, 2],
                             drawBorder: false,
                         },
@@ -1198,25 +1169,23 @@ import Chart from "chart.js/auto";
             type: "doughnut",
             data: {
                 labels: ["Html", "Vuejs", "Laravel"],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 5,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 5,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.white,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,
@@ -1238,25 +1207,23 @@ import Chart from "chart.js/auto";
             type: "pie",
             data: {
                 labels: ["Html", "Vuejs", "Laravel"],
-                datasets: [
-                    {
-                        data: [15, 10, 65],
-                        backgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        hoverBackgroundColor: [
-                            colors.pending(0.9),
-                            colors.warning(0.9),
-                            colors.primary(0.9),
-                        ],
-                        borderWidth: 5,
-                        borderColor: $("html").hasClass("dark")
-                            ? colors.darkmode[700]()
-                            : colors.white,
-                    },
-                ],
+                datasets: [{
+                    data: [15, 10, 65],
+                    backgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    hoverBackgroundColor: [
+                        colors.pending(0.9),
+                        colors.warning(0.9),
+                        colors.primary(0.9),
+                    ],
+                    borderWidth: 5,
+                    borderColor: $("html").hasClass("dark") ?
+                        colors.darkmode[700]() :
+                        colors.white,
+                }, ],
             },
             options: {
                 maintainAspectRatio: false,

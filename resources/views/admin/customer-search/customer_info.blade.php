@@ -155,7 +155,7 @@
                                                 </thead>
                                                 <tbody id="table_data">
                                                     <tr class="intro-x">
-                                                        <td class="text-left">2205550001000003</td>
+                                                        <td class="text-left" ><a href='#' onclick='deleteAnn()'> 2205550001000003</a></td>
                                                         <td class="text-left">Paypak Card</td>
                                                         <td class="text-left">MUHAMMAD NOUMAN</td>
                                                         <td class="text-left">09-Nov-2022</td>
@@ -172,11 +172,22 @@
                 </div>
             </div>
         </div>
-   
-
+    </div>
+</div>
 @push('scripts')
 <script>
-  
+function deleteAnn(id) {
+    
+    jQuery.ajax({
+    type: 'GET',
+    url: "{{ route('debit_card_info') }}",
+    success: function(result) {
+        $('#myModalLgHeading').html('ATM/Debit Card');
+        $('#modalBodyLarge').html(result);
+        tailwind.Modal.getInstance(document.querySelector("#header-footer-modal-preview")).show();
+    }
+    });
+}
 </script>
 @endpush
     

@@ -167,6 +167,9 @@ Route::get('customer_search', function () {
 Route::get('customer_info', function () {
     return view('admin/customer-search/customer_info');
 })->name('customer_info');
+Route::get('debit_card_info', function () {
+    return view('admin/customer-search/debit_card_info');
+})->name('debit_card_info');
 #endregion Customer Search
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
@@ -181,6 +184,14 @@ Route::get('get_product_category_eform', [EFormTypeController::class, 'productCa
 
 
 
+
+Route::get('lead_create', function () {
+    return view('admin/lead/lead_create');
+})->name('lead_create');
+
+Route::get('lead_index', function () {
+    return view('admin/lead/lead_index');
+})->name('lead_index');
 
 
 // Route::get('e_form_create', function () {
