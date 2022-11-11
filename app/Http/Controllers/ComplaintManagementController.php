@@ -959,5 +959,10 @@ class ComplaintManagementController extends Controller
             return redirect()->back();
 
    }
+   private function redirect()
+    {
+        return redirect()->route('complaint_index');
+
+    }
 
 }

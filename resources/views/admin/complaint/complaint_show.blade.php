@@ -209,7 +209,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Card Numbers <span style="color: red">*</span></label>
-                            <input type="text" class="form-control col-span-4" max='16' {{$disabled}} value="{{$complaint[0]->account_no}}" name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
+                            <input type="text" class="form-control col-span-4" maxlength='16' {{$disabled}} value="{{$complaint[0]->account_no}}" name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
 
                         </div>
                         <div class="mt-3">
