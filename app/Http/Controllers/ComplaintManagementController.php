@@ -47,7 +47,8 @@ class ComplaintManagementController extends Controller
      */
     public function create()
     {
-        $complaintCategory=ComplaintCategory::where('isactive','1')->whereNull('end_date')->orderBy('fullname')->get();
+        // $complaintCategory=ComplaintCategory::where('isactive','1')->whereNull('end_date')->orderBy('fullname')->get();
+        $complaintCategory=ComplaintCategory::where('isactive','1')->orderBy('fullname')->get();
         $priority=DB::table('tbl_priority')->where('is_active','1')->get();
         $branch=DB::table('tbl_org_unit')->where('group_id','4')->get();
         $channel=DB::table('tbl_channel')->get();
