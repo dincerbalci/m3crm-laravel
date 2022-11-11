@@ -24,7 +24,7 @@ class ComplaintManagementController extends Controller
         $this->objComplaintManagement = new ComplaintManagement();
         $this->objUser = new User();
     }
-     
+
     /**
      * Display a listing of the resource.
      *
@@ -36,7 +36,7 @@ class ComplaintManagementController extends Controller
         $priority=DB::table('tbl_priority')->where('is_active','1')->get();
         $complaintStatus=DB::table('tbl_status')->where('isactive','1')->get();
         $product=DB::table('tbl_product')->where('isactive','1')->whereDate('end_date','>=','2020-10-07')->get();
-        
+
         return view('admin/complaint/complaint_index',compact('complaint','priority','complaintStatus','product'));
     }
 
@@ -96,7 +96,7 @@ class ComplaintManagementController extends Controller
            $this->insertToComplaintAndDetails($request);
            return 'insert';
         }else{
-            
+
             return view('admin/complaint/complaint_duplicate',compact('getDuplicate','userType'));
             // $sb='';
             // foreach($getDuplicate as $row){
@@ -178,7 +178,7 @@ class ComplaintManagementController extends Controller
             $JsonPermission = json_decode($checkPermission,true);
             $checkSupervisor = $JsonPermission[0][$permissionType];
         }
-        
+
 
         $complaint=$this->objComplaintManagement->ComplaintShow($id);
         $activityData=$this->objComplaintManagement->GetComplaintStatus($id);
@@ -218,7 +218,7 @@ class ComplaintManagementController extends Controller
                 $approval_dis = "disabled='disabled'";
                 //$disable_user = "disabled='disabled'";
             }
-			
+
 			//$data[0]["progress"] == 0 ||
             // check branch authorizer user for update progress complaints
             if(($checkSupervisor == "0" || $complaint[0]->progress == 0 || $complaint[0]->progress == 100) && $userType != 2){
@@ -234,7 +234,7 @@ class ComplaintManagementController extends Controller
                 }
 
             }
-			
+
 
             if($complaint[0]->progress == 100 || ($complaint[0]->progress == 90 && $userType != 2)){
                 $disable_user = "disabled='disabled'";
@@ -259,7 +259,7 @@ class ComplaintManagementController extends Controller
             }
 
         }
-		
+
 		if($roleId == 2){	//For Complaint Handling Departs (Creator)
 			// $disable_info = "disabled='disabled'";
             $disable_info = "readonly";
@@ -436,7 +436,7 @@ class ComplaintManagementController extends Controller
             $toUnits = $toUnits[0]->unit_name;
             $this->ActivityLogs("Forward Complaint [To Group: ($groupName), To Branch: ($toUnits), Approved: 1, Complaint #: $complaintNo]");
             $this->objComplaintManagement->SaveComplaintStatus($loginId,$id,$previousStatusId,2,'',$unitId,0,0,"Complaint Forwarded To $toUnits");
-            
+
             return $this->redirect();
 
 
@@ -458,29 +458,34 @@ class ComplaintManagementController extends Controller
     {
         $productCategoryId=$request->product_category_id;
         $endDate=$request->end_date;
-        if($endDate == 'not null')
+        /*if($endDate == 'not null')
         {
             $complaintProduct=ComplaintProduct::where('product_category',$productCategoryId)->where('isactive','1')->get();
         }
         else
         {
             $complaintProduct=ComplaintProduct::where('product_category',$productCategoryId)->where('isactive','1')->whereNull('end_date')->get();
-        }
+        }*/
+
+        $complaintProduct = ComplaintProduct::where('product_category',$productCategoryId)->where('isactive','1')->get();
+
         return $complaintProduct;
     }
     public function complaintType(Request $request)
     {
         $productId=$request->product_id;
         $endDate=$request->end_date;
-        if($endDate == 'not null')
+        /*if($endDate == 'not null')
         {
         $complaintType=ComplaintType::where('product_id',$productId)->where('isactive','1')->get();
         }
         else
         {
         $complaintType=ComplaintType::where('product_id',$productId)->where('isactive','1')->whereNull('end_date')->get();
+        }*/
 
-        }
+        $complaintType=ComplaintType::where('product_id',$productId)->where('isactive','1')->get();
+
         return $complaintType;
 
     }
@@ -492,13 +497,13 @@ class ComplaintManagementController extends Controller
 
         $tat = $complaintType[0]->tat;
 		$tat = !empty($tat) ? $tat : "7";
-		
+
 		if($start_date != ''){
             $current_date = $start_date;
         }else{
             $current_date = GetCurrentDate();
         }
-		
+
         return $this->GetWorkingDays($current_date,$tat);
     }
     public function GetWorkingDays($startDate, $wDays)
@@ -600,7 +605,7 @@ class ComplaintManagementController extends Controller
         $channel=$request->channel;
         $callbackNum=$request->call_back_phone;
         $response_no=$request->customer_mobile;
-        
+
         $endDatetime = $this->getEndDate($productCateg,$productId,$complaintType);
         $smsInterimDate = $this->GetWorkingDays(GetCurrentDate(),11); //for sms interim every 11th working days but calculate from today so pass param is 10 :) // but now  calculate from next working days so pass 11
         $dataCounter = explode('|',$this->objComplaintManagement->GenComplaintCounter());
@@ -638,7 +643,7 @@ class ComplaintManagementController extends Controller
         ]);
         $complaintId=$complaintData->id;
         DB::table('tbl_complaint_details')->insert(
-            [   'complaint_id' => $complaintId, 
+            [   'complaint_id' => $complaintId,
                 'compl_title' => $request->complaint_title,
                 'cnic' => $request->cnic,
                 'customer_name' => $request->customer_name,
@@ -668,7 +673,7 @@ class ComplaintManagementController extends Controller
                 'sms_interim_counter' => '1',
                 'sms_interim_date' => $smsInterimDate,
                 'language' => $request->language,
-                
+
             ]
         );
 
@@ -683,7 +688,7 @@ class ComplaintManagementController extends Controller
                 ->update(['group_id' => $groupId,'user_id' => $usersId]);
             }
         }
-            
+
 
             $this->SendSMSEmailCustomer($complaintId,'complaint_initiated');
 
@@ -733,7 +738,7 @@ class ComplaintManagementController extends Controller
 
         $str = date("Y-m-d", strtotime($datetime));
         $current_date = date("Y-m-d");
-        
+
         if ($current_date > $datetime){
             return 1;
         }
@@ -746,7 +751,7 @@ class ComplaintManagementController extends Controller
         return 0;
     }
 
-    
+
    }
     private function SendSMSEmailCustomer($complaintId,$type)
     {
@@ -791,7 +796,7 @@ class ComplaintManagementController extends Controller
         $unitIds=$request->unitId;
         $isAll=$request->is_all;
         $sb='';
-        
+
         if($isAll == 1){
             if($group == 4){
                 $sb .= "<option value='0'> ALL </option>";
@@ -935,7 +940,7 @@ class ComplaintManagementController extends Controller
 
             $emailUsers = $this->objUser->GetEmailByBranchUsers($unitId);
             SaveEmailCompEform('complaint',$id,'2',$emailUsers[0]->emails);
-            
+
             //here update tbl_escalation_execute table for email escalation dates
         }
     }
@@ -948,9 +953,9 @@ class ComplaintManagementController extends Controller
             $complaint['favor']=$favor;
             $complaint['close_notes']=$closeNotes;
             $complaint->save();
-                    
+
             return redirect()->back();
-   
+
    }
 
 }
