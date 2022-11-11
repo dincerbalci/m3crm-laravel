@@ -14,7 +14,7 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                     <div class="side-menu__title">
-                        E-Form Management
+                        E-Form 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
@@ -49,7 +49,7 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                     <div class="side-menu__title">
-                        Complaint Management
+                        Complaint 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
@@ -185,7 +185,7 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                     <div class="side-menu__title">
-                        Product Management
+                        Products 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
@@ -338,7 +338,7 @@
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                         <div class="side-menu__title">
-                            Leads Management
+                            Leads 
                             <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                         </div>
                     </a>

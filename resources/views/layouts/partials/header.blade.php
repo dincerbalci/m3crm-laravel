@@ -600,7 +600,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </nav>
                 <!-- END: Breadcrumb -->
                 <!-- BEGIN: Search -->
-                <div class="intro-x relative mr-3 sm:mr-6">
+                {{-- <div class="intro-x relative mr-3 sm:mr-6">
                     <div class="search hidden sm:block">
                         <input type="text" class="search__input form-control border-transparent" placeholder="Search...">
                         <i data-lucide="search" class="search__icon dark:text-slate-500"></i> 
@@ -685,7 +685,7 @@ License: You must have a valid license purchased only from themeforest(the above
                             </a>
                         </div>
                     </div>
-                </div>
+                </div> --}}
                 <!-- END: Search -->
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown mr-4 sm:mr-6">

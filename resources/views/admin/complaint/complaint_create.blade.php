@@ -91,7 +91,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Card Numbers <span style="color: red">*</span></label>
-                            <input type="text" class="form-control col-span-4" name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
+                            <input type="text" class="form-control col-span-4" max='16' name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
 
                         </div>
                         <div class="mt-3">
@@ -139,7 +139,7 @@
                         </div>  
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Notes</label>
-                            <textarea id="validation-form-6" class="form-control" name="note" placeholder="Additional Information" minlength="10" required=""></textarea>
+                            <textarea id="validation-form-6" class="form-control" name="note" maxlength='255' placeholder="Additional Information" minlength="10" required=""></textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Language  <span style="color: red">*</span></label>

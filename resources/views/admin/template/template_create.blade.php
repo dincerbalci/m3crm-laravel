@@ -40,7 +40,7 @@
                         </div>
                         <div>
                             <label for="regular-form-1" class="form-label">Description <span style="color: red">*</span></label>
-                            <textarea id="validation-form-6" class="form-control" name="template_desc" placeholder="Additional Information" minlength="10" ></textarea>
+                            <textarea id="validation-form-6" class="form-control"  name="template_desc" placeholder="Additional Information" minlength="10" ></textarea>
                         </div>
                         <div>
                             <label for="regular-form-1" class="form-label">Subject <span style="color: red">*</span></label>

@@ -96,7 +96,7 @@
                             </div>   
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Activity Notes <span style="color: red">*</span></label>
-                                <textarea id="validation-form-6" class="form-control" name="activity_note" {{$disable_user}} placeholder="Activity Notes" minlength="10" required></textarea>
+                                <textarea id="validation-form-6" class="form-control" name="activity_note" maxlength='255' {{$disable_user}} placeholder="Activity Notes" minlength="10" required></textarea>
                                 @if($errors->has('activity_note'))
                                 <div class="pristine-error text-danger mt-2" ><b>{{ $errors->first('activity_note') }}</b></div>
                                 @endif
@@ -209,7 +209,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Card Numbers <span style="color: red">*</span></label>
-                            <input type="text" class="form-control col-span-4" {{$disabled}} value="{{$complaint[0]->account_no}}" name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
+                            <input type="text" class="form-control col-span-4" max='16' {{$disabled}} value="{{$complaint[0]->account_no}}" name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
 
                         </div>
                         <div class="mt-3">
@@ -249,11 +249,11 @@
                        
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Notes</label>
-                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Additional Information" minlength="10"  required="">{{$complaint[0]->description}}</textarea>
+                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Additional Information" minlength="10"  maxlength='255' required="">{{$complaint[0]->description}}</textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Comments</label>
-                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Comments" minlength="10"  required="">{{$complaint[0]->comments}}</textarea>
+                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Comments" minlength="10" maxlength='255'  required="">{{$complaint[0]->comments}}</textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Language  <span style="color: red">*</span></label>
