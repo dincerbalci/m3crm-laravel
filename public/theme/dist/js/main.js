@@ -16,8 +16,7 @@ function validateNumbers(key) {
 function validateAlphabets(evt) {
     evt = evt ? evt : window.event;
     var charCode = evt.which ? evt.which : evt.keyCode;
-    if (
-        !(charCode >= 65 && charCode <= 123) &&
+    if (!(charCode >= 65 && charCode <= 123) &&
         charCode != 32 &&
         charCode != 0
     ) {
@@ -25,6 +24,12 @@ function validateAlphabets(evt) {
     } else {
         return true;
     }
+}
+
+function validateAlphabetsAndNUumber(evt) {
+    const origin = evt.target;
+    origin.value = origin.value.replace(/[^a-z0-9]$/i, "");
+    //                   ^ only the last inputted character
 }
 
 function validateEmail(EMAIL) {

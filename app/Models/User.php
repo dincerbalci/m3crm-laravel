@@ -151,6 +151,7 @@ class User extends Authenticatable
         $search=$request->search;
         $email=$request->email;
         $status=$request->status;
+        $unitId=$request->unit_id;
         $paginationEnv=env('PAGINATION');
         
         $user= DB::table('tbl_users AS u')
@@ -165,18 +166,21 @@ class User extends Authenticatable
         ->when($email, function ($query, $email) {
             return $query->where('u.email', $email);
           })
-          ->when($search, function ($query, $search) {
-            return $query->whereRaw("CONCAT(b.branch_code,t.group_name,u.first_name) like '%$search%'");
-          })
-          ->when($status, function ($query, $status) {
-            if($status != '99')
-            {
-                $status=$status == 'active' ? '1' : '0';
-                return $query->where('u.isactive', $status);
-            }
-          })
+        ->when($unitId, function ($query, $unitId) {
+        return $query->where('b.id', $unitId);
+        })
+        ->when($search, function ($query, $search) {
+        return $query->whereRaw("CONCAT(b.unit_name,b.branch_code,t.group_name,u.first_name) like '%$search%'");
+        })
+        ->when($status, function ($query, $status) {
+        if($status != '99')
+        {
+            $status=$status == 'active' ? '1' : '0';
+            return $query->where('u.isactive', $status);
+        }
+        })
         ->orderBy('u.id', 'desc')->paginate($paginationEnv);
-        $user->appends(['group_id' => $groupId,'email'=>$email,'status'=>$status,'search'=>$search]);
+        $user->appends(['group_id' => $groupId,'email'=>$email,'status'=>$status,'unit_id'=>$unitId,'search'=>$search]);
         return $user;
 
     }

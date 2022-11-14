@@ -28,10 +28,6 @@
                     <div class="preview">
                         <div class="grid grid-cols-12 gap-2">
                             <div>
-                            <label for="regular-form-1" class="form-label">E-Form Num</label>
-                            <input type="text" class="form-control col-span-4" placeholder="E-Form Num" name="e_form_number" aria-label="default input inline 1">
-                            </div>
-                            <div>
                             <label for="regular-form-1" class="form-label">CNIC <span style="color: red">*</span></label>
                             <input type="text" id='cnic' name="cnic" class="form-control col-span-4" onkeypress="return validateNumbers(event);" placeholder="CNIC" aria-label="default input inline 2" required>
                         </div>
@@ -39,7 +35,7 @@
                             <label for="regular-form-1" class="form-label">Customer Name <span style="color: red">*</span></label>
                             <input type="text" name="customer_name" class="form-control col-span-4" placeholder="Customer Name" onkeypress="return validateAlphabets(event);"  aria-label="default input inline 2" required>
                         </div>
-                        <div class="mt-3">
+                        <div >
                             <label for="regular-form-1" class="form-label">Mother Maiden Name</label>
                             <input type="text" name="mother_maiden_name" class="form-control col-span-4" placeholder="Mother Maiden Name" onkeypress="return validateAlphabets(event);"  aria-label="default input inline 1">
                             </div>
@@ -85,7 +81,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Account Number </label>
-                            <input type="text" class="form-control col-span-4" name="account_number" placeholder="Account Number" onkeypress="return validateNumbers(event)" aria-label="default input inline 2">
+                            <input type="text" class="form-control col-span-4" name="account_number" maxlength="16" placeholder="Account Number" onkeypress="return validateNumbers(event)" aria-label="default input inline 2">
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Card Number</label>
@@ -110,7 +106,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Notes</label>
-                            <textarea id="validation-form-6" class="form-control" name="notes" maxlength='255'  placeholder="Additional Information" minlength="10" required=""></textarea>
+                            <textarea id="validation-form-6" class="form-control" onkeyup="validateAlphabetsAndNUumber(event)"  name="notes" maxlength='255'  placeholder="Additional Information" minlength="10" required=""></textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Select File</label>
@@ -149,7 +145,7 @@
                     </div>
                     <div class="">
                         <label for="regular-form-1" class="form-label">Residence Address <span style="color: red">*</span></label>
-                        <textarea id="validation-form-6" class="form-control" maxlength='255' name="residence_address"  placeholder="Residence Address" minlength="10" required=""></textarea>
+                        <textarea id="validation-form-6" class="form-control" onkeyup="validateAlphabetsAndNUumber(event)" maxlength='255' name="residence_address"  placeholder="Residence Address" minlength="10" required=""></textarea>
                     </div>
                     
                     </div>

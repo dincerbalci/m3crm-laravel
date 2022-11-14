@@ -35,6 +35,15 @@
                                     @endfor
                                 </select>
                         </div>
+                        <div >
+                            <label for="regular-form-1" class="form-label">Branch Name</label>
+                                <select data-placeholder="Select your favorite actors" name="unit_id" class="tom-select w-full tomselected" id="tomselect-1" tabindex="-1" hidden="hidden">
+                                    <option value="0" selected="true">Select Branch Name</option>
+                                    @for($i=0; $i < count($unit); $i++)
+                                    <option value="{{$unit[$i]->id}}" {{request()->unit_id == $unit[$i]->id ? 'Selected' : ''}}>{{ucwords($unit[$i]->unit_name)}} ({{$unit[$i]->branch_code}})</option>
+                                    @endfor
+                                </select>
+                        </div>
                         <div>
                             <label for="regular-form-1" class="form-label">E-Mail</label>
                             <input type="email" name="email" class="form-control col-span-4" value="{{request()->email}}" placeholder="abc@gmail.com" aria-label="default input inline 2">
@@ -42,9 +51,9 @@
                         <div >
                             <label for="regular-form-1" class="form-label">Status</label>
                                 <select data-placeholder="Select your favorite actors" name="status" class="tom-select w-full tomselected" id="tomselect-1" tabindex="-1" hidden="hidden">
-                                    <option value="99" <?php echo (request()->status == '99' ? "selected='selected'" : ''); ?>>All</option>
-                                    <option value="active" <?php echo (request()->status == 'active' ? "selected='selected'" : ''); ?>>Active</option>
-                                    <option value="inactive" <?php echo (request()->status == 'inactive' ? "selected='selected'" : ''); ?>>Deactive</option>
+                                    <option value="99" {{ request()->status == '99' ? "selected='selected'" : '' }} >All</option>
+                                    <option value="active" {{ request()->status == 'active' ? "selected='selected'" : '' }}>Active</option>
+                                    <option value="inactive" {{ request()->status == 'inactive' ? "selected='selected'" : '' }}>Deactive</option>
                                 </select>
                         </div>
                        

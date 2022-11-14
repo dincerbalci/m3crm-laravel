@@ -22,8 +22,9 @@ class UserController extends Controller
     {
         $objUser= new User();
         $group=Group::where('isactive','1')->where('id','!=','1')->get();
+        $unit=Unit::get();
         $user=$objUser->GetUsers($request);
-        return view('admin/administration/user_index',compact('user','group'));
+        return view('admin/administration/user_index',compact('user','group','unit'));
     }
 
     /**

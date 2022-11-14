@@ -10,7 +10,7 @@
     <meta name="keywords"
           content="admin template, Enigma Admin Template, dashboard template, flat admin template, responsive admin template, web app">
     <meta name="author" content="LEFT4CODE">
-    <title>Login - Midone - Tailwind HTML Admin Template</title>
+    <title>Login - M3 - CRM</title>
     <!-- BEGIN: CSS Assets-->
     <link rel="stylesheet" href="{{ asset('theme/dist/css/app.css') }}"/>
     <!-- END: CSS Assets-->
@@ -34,7 +34,7 @@
                     sign in to your account.
                 </div>
                 <div class="-intro-x mt-5 text-lg text-white text-opacity-70 dark:text-slate-400">Manage all your
-                    e-commerce accounts in one place
+                    CRM in one place
                 </div>
             </div>
         </div>

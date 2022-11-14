@@ -84,7 +84,7 @@
                     </div>
                    
                     <button type="submit" class="btn btn-primary mt-5">Search</button>
-                    <button type="button" class="btn btn-inverse mt-5" onclick='document.getElementById("e_form_search").reset()'>Reset</button>
+                    <a href="{{route('e_form_index')}}"  class="btn btn-inverse mt-5">Reset</a>
                     <button type="submit" class="btn btn-success mt-5">Export</button>
                 </div>
                 </form>
@@ -110,7 +110,7 @@
                         <tr>
                             <th class="whitespace-nowrap">E-Form Num</th>
                             <th class="whitespace-nowrap">Released By</th>
-                            <th class="whitespace-nowrap">Branch Name & Code</th>
+                            <th class="whitespace-nowrap">Customer Branch Name & Code</th>
                             <th class="whitespace-nowrap">Product</th>
                             <th class="whitespace-nowrap">Type</th>
                             <th class="whitespace-nowrap">Progress</th>
@@ -184,8 +184,20 @@
                             <td class="text-left">{{$eForm[$i]->product}}</td>
                             <td class="text-left">{{$eForm[$i]->eform_type}}</td>
                             <td class="text-left">
-                                <div class="progress h-4">
-                                <div class="progress-bar" style="width: {{$eForm[$i]->progress}}%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">{{$eForm[$i]->progress}}%</div>
+                                <div class="relative pt-1">
+                                    <div class="flex mb-2 items-center justify-between">
+                                      <div class="text-right">
+                                        <span class="text-xs font-semibold inline-block text-pink-600">
+                                            {{$eForm[$i]->progress}}%
+                                        </span>
+                                      </div>
+                                    </div>
+                                    <div class="progress h-4">
+                                      <div style="width:{{$eForm[$i]->progress}}%" class="progress-bar"></div>
+                                    </div>
+                                  </div>
+                                {{-- <div class="progress h-4">
+                                <div class="progress-bar" style="width: {{$eForm[$i]->progress}}%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">{{$eForm[$i]->progress}}%</div> --}}
                             </div>
                             </td>
                             <td class="text-left">{{$eForm[$i]->priority}}</td>

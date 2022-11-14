@@ -38,7 +38,7 @@
                                 <label for="regular-form-1" class="form-label">CNIC <span style="color: red">*</span></label>
                                 <input type="text" id="cnic" class="form-control col-span-4" name="cnic" placeholder="42201-XXXXXXX-X" aria-label="default input inline 2" required>
                                 </div>
-                        <div>
+                        <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Customer Name <span style="color: red">*</span></label>
                             <input type="text" class="form-control col-span-4" name="customer_name" placeholder="Customer Name" aria-label="default input inline 2" required>
                         </div>
@@ -91,7 +91,7 @@
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Card Numbers <span style="color: red">*</span></label>
-                            <input type="text" class="form-control col-span-4" maxlength='16' name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
+                            <input type="text" class="form-control col-span-4"  maxlength="16" name="card_number" onkeypress="return validateNumbers(event)" placeholder="Card Numbers" aria-label="default input inline 1" required>
 
                         </div>
                         <div class="mt-3">
@@ -139,7 +139,7 @@
                         </div>  
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Notes</label>
-                            <textarea id="validation-form-6" class="form-control" name="note" maxlength='255' placeholder="Additional Information" minlength="10" required=""></textarea>
+                            <textarea id="validation-form-6" class="form-control" onkeyup="validateAlphabetsAndNUumber(event)" name="note" maxlength='255' placeholder="Additional Information" minlength="10" required=""></textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Language  <span style="color: red">*</span></label>
@@ -185,7 +185,7 @@
                     </div>
                     <div class="mt-3">
                         <label for="regular-form-1" class="form-label">Residence Address <span style="color: red">*</span></label>
-                        <textarea id="validation-form-6" class="form-control" maxlength='255' name="residence_address" placeholder="Residence Address" minlength="10" required></textarea>
+                        <textarea id="validation-form-6" class="form-control" onkeyup="validateAlphabetsAndNUumber(event)" maxlength='255' name="residence_address" placeholder="Residence Address" minlength="10" required></textarea>
                     </div>
                     
                     </div>

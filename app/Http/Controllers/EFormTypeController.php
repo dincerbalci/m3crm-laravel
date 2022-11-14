@@ -77,24 +77,24 @@ class EFormTypeController extends Controller
             'updated_on' => '0000-00-00 00:00:00',
         ]);
         $this->ActivityLogs("Add Eform Type [Eform Type Name:$request->type]");
-        $eFormEscalationId=$data->id;
-        if($eFormEscalationId > 0)
-        {
-            DB::table('tbl_eform_type_escalation')->insert(
-                [   'eform_escalation_id' => $eFormEscalationId, 
-                    'escalation_time1' => $request->escalation_time1, 
-                    'level1' => is_null($request->level1) ? '' : implode(",", $request->level1), 
-                    'escalation_time2' => $request->escalation_time2, 
-                    'level2' => is_null($request->level2) ? '' : implode(",", $request->level2), 
-                    'escalation_time3' => $request->escalation_time3, 
-                    'level3' => is_null($request->level3) ? '' : implode(",", $request->level3), 
-                    'escalation_time4' => $request->escalation_time4, 
-                    'level4' => is_null($request->level4) ? '' : implode(",", $request->level4),  
-                    'escalation_time5' => $request->escalation_time5,
-                    'level5' => is_null($request->level5) ? '' : implode(",", $request->level5), 
-                ]
-            );  
-        }
+        // $eFormEscalationId=$data->id;
+        // if($eFormEscalationId > 0)
+        // {
+        //     DB::table('tbl_eform_type_escalation')->insert(
+        //         [   'eform_escalation_id' => $eFormEscalationId, 
+        //             'escalation_time1' => $request->escalation_time1, 
+        //             'level1' => is_null($request->level1) ? '' : implode(",", $request->level1), 
+        //             'escalation_time2' => $request->escalation_time2, 
+        //             'level2' => is_null($request->level2) ? '' : implode(",", $request->level2), 
+        //             'escalation_time3' => $request->escalation_time3, 
+        //             'level3' => is_null($request->level3) ? '' : implode(",", $request->level3), 
+        //             'escalation_time4' => $request->escalation_time4, 
+        //             'level4' => is_null($request->level4) ? '' : implode(",", $request->level4),  
+        //             'escalation_time5' => $request->escalation_time5,
+        //             'level5' => is_null($request->level5) ? '' : implode(",", $request->level5), 
+        //         ]
+        //     );  
+        // }
         return $this->redirect();
     }
 

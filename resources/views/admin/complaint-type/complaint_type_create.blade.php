@@ -53,7 +53,7 @@
                         </div>
                         <div class="form-check form-switch  mt-3 sm:mt-0">
                             <label for="regular-form-1" class="form-label">IsActive</label>
-                            <input id="show-example-3" data-target="#header" name='is_active' value="1" class="show-code form-check-input mr-0 ml-3" type="checkbox">
+                            <input id="show-example-3" data-target="#header" checked name='is_active' value="1" class="show-code form-check-input mr-0 ml-3" type="checkbox">
                         </div>
                         
                         </div>

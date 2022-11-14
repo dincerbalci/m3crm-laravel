@@ -84,6 +84,30 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
                     <div class="side-menu__title">
+                        Leads 
+                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                    </div>
+                </a>
+                <ul class="">
+                    <li>
+                        <a href="{{route('lead_create')}}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Add Leads</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{route('lead_index')}}" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">View Leads</div>
+                        </a>
+                    </li>
+                   
+                </ul>
+            </li>
+            <li>
+                <a href="javascript:;" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__title">
                         Administration
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
@@ -334,30 +358,7 @@
                        
                     </ul>
                 </li>
-                <li>
-                    <a href="javascript:;" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
-                        <div class="side-menu__title">
-                            Leads 
-                            <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                        </div>
-                    </a>
-                    <ul class="">
-                        <li>
-                            <a href="{{route('lead_create')}}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                <div class="side-menu__title">Add Leads</div>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{route('lead_index')}}" class="side-menu">
-                                <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                                <div class="side-menu__title">View Leads</div>
-                            </a>
-                        </li>
-                       
-                    </ul>
-                </li>
+                
                 <li>
                     <a href="javascript:;" class="side-menu">
                         <div class="side-menu__icon"> <i data-lucide="box"></i> </div>

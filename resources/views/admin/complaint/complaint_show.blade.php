@@ -96,7 +96,7 @@
                             </div>   
                             <div class="mt-3">
                                 <label for="regular-form-1" class="form-label">Activity Notes <span style="color: red">*</span></label>
-                                <textarea id="validation-form-6" class="form-control" name="activity_note" maxlength='255' {{$disable_user}} placeholder="Activity Notes" minlength="10" required></textarea>
+                                <textarea id="validation-form-6" class="form-control" name="activity_note" maxlength='255' {{$disable_user}} placeholder="Activity Notes" onkeyup="validateAlphabetsAndNUumber(event)" minlength="10" required></textarea>
                                 @if($errors->has('activity_note'))
                                 <div class="pristine-error text-danger mt-2" ><b>{{ $errors->first('activity_note') }}</b></div>
                                 @endif
@@ -114,7 +114,7 @@
                             </div>
                             <div class="mt-3" id="closeNoteDiv" style="display: {{($complaint[0]->progress >= 90 && $userType == 2) ? 'block' : 'none'}}">
                                 <label>Close Notes<span style="color: red;">*</span></label>
-                                <textarea type="text" class="form-control" maxlength="255" id="txtCloseNotes" name="close_notes" rows="4" placeholder="Close Notes" dir="{{$complaint[0]->language == 1 ? 'ltr' : 'rtl'}}" {{$disable_user}}>{{$complaint[0]->close_notes}}</textarea>
+                                <textarea type="text" class="form-control" onkeyup="validateAlphabetsAndNUumber(event)" maxlength="255" id="txtCloseNotes" name="close_notes" rows="4" placeholder="Close Notes" dir="{{$complaint[0]->language == 1 ? 'ltr' : 'rtl'}}" {{$disable_user}}>{{$complaint[0]->close_notes}}</textarea>
                                 <div class="input-error form-control-input" style="color: Red; display: none;">Close Notes is required</div>
                                 <small id="count">Characters left: <b>0/255</b></small>
                                 @if($errors->has('close_notes'))
@@ -249,11 +249,11 @@
                        
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Notes</label>
-                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Additional Information" minlength="10"  maxlength='255' required="">{{$complaint[0]->description}}</textarea>
+                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Additional Information" minlength="10" onkeyup="validateAlphabetsAndNUumber(event)" maxlength='255' required="">{{$complaint[0]->description}}</textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Comments</label>
-                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Comments" minlength="10" maxlength='255'  required="">{{$complaint[0]->comments}}</textarea>
+                            <textarea id="validation-form-6" class="form-control" {{$disabled}} name="note" placeholder="Comments" minlength="10" onkeyup="validateAlphabetsAndNUumber(event)" maxlength='255'  required="">{{$complaint[0]->comments}}</textarea>
                         </div>
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Language  <span style="color: red">*</span></label>
@@ -266,12 +266,10 @@
                         
                         </div>
                         
-                    <fieldset >
-
+                    <fieldset class="grid grid-cols-12 gap-2">
                     <div class="mt-3">
                         <label for="regular-form-1" class="form-label">Amount </label>
-                        <input type="text" class="form-control col-span-4" {{$disabled_types}}  name="amount" value="{{$complaint[0]->amount}}" placeholder="Amount" onkeypress="return validateNumbers(event)" aria-label="default input inline 1">
-
+                        <input type="text" class="form-control " {{$disabled_types}}  name="amount" value="{{$complaint[0]->amount}}" placeholder="Amount" onkeypress="return validateNumbers(event)" aria-label="default input inline 1">
                     </div>
                     </fieldset>
                     </div>
@@ -303,7 +301,7 @@
                     </div>
                     <div class="mt-3">
                         <label for="regular-form-1" class="form-label">Residence Address <span style="color: red">*</span></label>
-                        <textarea id="validation-form-6" class="form-control"   name="residence_address" placeholder="Residence Address" minlength="10" maxlength='255' required>{{$complaint[0]->residence_address}}</textarea>
+                        <textarea id="validation-form-6" class="form-control"   name="residence_address" placeholder="Residence Address" minlength="10" onkeyup="validateAlphabetsAndNUumber(event)" maxlength='255' required>{{$complaint[0]->residence_address}}</textarea>
                     </div>
                     
                     </div>

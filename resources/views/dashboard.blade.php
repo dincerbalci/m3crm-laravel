@@ -150,7 +150,7 @@
                         </div>
                     </div>
                     @endif
-                
+                    @if(count($agentActivityLogs) > 0)
                     <div class="col-span-12 mt-6">
                         <div class="intro-y block sm:flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
@@ -169,48 +169,21 @@
                                     </tr>
                                 </thead>
                                 <tbody>
+                                    @for($i=0; $i < count($agentActivityLogs); $i++)
                                     <tr class="intro-x">
-                                        
-                                        <td class="text-left">admin_50716_82340</td>
-                                        <td class="text-left">Samsung Q90 QLED TV</td>
-                                        <td class="text-left">End CLI</td>
-                                        <td class="text-left">42301-2082228-5</td>
-                                        <td class="text-left">2020-10-05 13:00:38</td>
+                                        <td class="text-left">{{$agentActivityLogs[$i]->call_id}}</td>
+                                        <td class="text-left">{{$agentActivityLogs[$i]->agent_id}}</td>
+                                        <td class="text-left">{{$agentActivityLogs[$i]->description}}</td>
+                                        <td class="text-left">{{$agentActivityLogs[$i]->action_on}}</td>
+                                        <td class="text-left">{{$agentActivityLogs[$i]->created_datetime}}</td>
                                     </tr>
+                                    @endfor
                                 </tbody>
                             </table>
                         </div>
-                        <div class="intro-y flex flex-wrap sm:flex-row sm:flex-nowrap items-center mt-3">
-                            <nav class="w-full sm:w-auto sm:mr-auto">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-left"></i> </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-left"></i> </a>
-                                    </li>
-                                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                                    <li class="page-item"> <a class="page-link" href="#">1</a> </li>
-                                    <li class="page-item active"> <a class="page-link" href="#">2</a> </li>
-                                    <li class="page-item"> <a class="page-link" href="#">3</a> </li>
-                                    <li class="page-item"> <a class="page-link" href="#">...</a> </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevron-right"></i> </a>
-                                    </li>
-                                    <li class="page-item">
-                                        <a class="page-link" href="#"> <i class="w-4 h-4" data-lucide="chevrons-right"></i> </a>
-                                    </li>
-                                </ul>
-                            </nav>
-                            <select class="w-20 form-select box mt-3 sm:mt-0">
-                                <option>10</option>
-                                <option>25</option>
-                                <option>35</option>
-                                <option>50</option>
-                            </select>
-                        </div>
+                        
                     </div>
-                    
+                    @endif
                     <!-- END: Weekly Top Products -->
                 </div>
             </div>

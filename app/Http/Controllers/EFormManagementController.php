@@ -61,7 +61,6 @@ class EFormManagementController extends Controller
     public function store(Request $request)
     {
        
-        $eFormNumber         = isset($request->e_form_number) ? $request->e_form_number : '';
         $groupId            = isset($request->group_id) ? $request->group_id : 0;
         $cnic                = isset($request->cnic) ? ($request->cnic) : '';
         $customerName           = isset($request->customer_name) ? ($request->customer_name) : '';
@@ -281,8 +280,8 @@ class EFormManagementController extends Controller
         $display_button      = ($data[0]->status_id == 3 && $userType == 2) ? "" : "display: none";
         // $is_subscription     = ($data[0]->subscription_date) == "" ? "display: none" : "";
         $comments_progress   = $userType == 2 ? $data[0]->comments_progress : '';
-        $is_approved         = $data[0]->is_approved == 1 ? "checked='checked'" : "";
-        $approval_dis        = $data[0]->is_approved == 1 ? "disabled='disabled'" : "";
+        $is_approved         = 1 ;
+        $approval_dis        = 1 ;
         if($userType != '1')
         {
             $checkPermission = $this->objUser->GetPermissions($pageName,$permissionType,$userType);
@@ -299,7 +298,7 @@ class EFormManagementController extends Controller
         $groupIdArr=array('4','5');
         $groupId=$data[0]->group_id;
         $group=DB::table('tbl_groups')->where('isactive','1')->whereIn('id',$groupIdArr)->get();
-        $units=Unit::where('group_id',$groupId)->get();
+        $units=Unit::get();
         $source=DB::table('tbl_source')->get();
         $priority=DB::table('tbl_priority')->where('is_active','1')->get();
         $category=EFormCategory::where('isactive','1')->where('id','<>','1')->get();

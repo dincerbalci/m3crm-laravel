@@ -88,7 +88,7 @@
                     </div>
                    
                     <button type="submit" class="btn btn-primary mt-5">Search</button>
-                    <button type="button" class="btn btn-inverse mt-5" onclick='document.getElementById("complaint_form_search").reset()'>Reset</button>
+                    <a href="{{route('complaint_index')}}"  class="btn btn-inverse mt-5">Reset</a>
                     <button type="submit" class="btn btn-success mt-5">Export</button>
                 </div>
             </form>
@@ -187,9 +187,21 @@
                             <td class="text-left">{{ ucwords($complaint[$i]->product_name)}}</td>
                             <td class="text-left">{{ ucwords($complaint[$i]->complaint_type)}}</td>
                             <td class="text-left">
-                                <div class="progress h-4">
+                                {{-- <div class="progress h-4">
                                 <div class="progress-bar" style="width: {{$complaint[$i]->progress}}%" role="progressbar" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100">{{$complaint[$i]->progress}}%</div>
-                            </div>
+                            </div> --}}
+                            <div class="relative pt-1">
+                                <div class="flex mb-2 items-center justify-between">
+                                  <div class="text-right">
+                                    <span class="text-xs font-semibold inline-block text-pink-600">
+                                        {{$complaint[$i]->progress}}%
+                                    </span>
+                                  </div>
+                                </div>
+                                <div class="progress h-4">
+                                  <div style="width:{{$complaint[$i]->progress}}%" class="progress-bar"></div>
+                                </div>
+                              </div>
                             </td>
                             <td class="text-left">{{ $complaint[$i]->priority}}</td>
                             <td class="text-left"><span class='{{$label}}'>{{ $status}}</span></td>
@@ -212,9 +224,9 @@
     <!-- END: HTML Table Data -->
     @push('scripts')
 <script>
-    var date = $('#from_date').datepicker({ dateFormat: 'dd-mm-yy' }).val();
-    console.log(date);
-
+    // var date = $('#from_date').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+    $('input[name="to_date"]').val('{{request()->to_date}}')
+    $('input[name="from_date"]').val('{{request()->from_date}}')
 </script>
 @endpush
 @endsection
