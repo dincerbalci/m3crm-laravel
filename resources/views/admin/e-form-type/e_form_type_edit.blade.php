@@ -52,11 +52,11 @@
                             <label for="regular-form-1" class="form-label">IsActive</label>
                             <input id="show-example-3" name="is_active" {{$eFormType->isactive == '1' ? "Checked" : '' }} data-target="#header" value="1" class="show-code form-check-input mr-0 ml-3" type="checkbox">
                         </div>
-                        <div class="form-check form-switch  mt-3 sm:mt-0">
+                        {{-- <div class="form-check form-switch  mt-3 sm:mt-0">
                             <label for="regular-form-1" class="form-label">Subcription</label>
                             <input id="show-example-3" name="is_subscription" {{$eFormType->is_subscription == '1' ? "Checked" : '' }} data-target="#header" value="1" class="show-code form-check-input mr-0 ml-3" type="checkbox">
-                        </div>
-                        <div class="flex flex-col sm:flex-row mt-2">
+                        </div> --}}
+                        {{-- <div class="flex flex-col sm:flex-row mt-2">
                             <label for="regular-form-1" class="form-label" style="margin-right: 14px;">Operation Mode</label>
                             <div class="form-check mr-2">
                                 <input id="radio-switch-4" class="form-check-input" type="radio" checked name="operation_mode" value="1" {{$eFormType->operation_mode == '1' ? "Checked" : '' }} onclick="assignee(this.value)">
@@ -66,8 +66,8 @@
                                 <input id="radio-switch-5" class="form-check-input" type="radio" name="operation_mode" value="0" {{$eFormType->operation_mode == '0' ? "Checked" : '' }} onclick="assignee(this.value)">
                                 <label class="form-check-label"  for="radio-switch-5">Manual</label>
                             </div>
-                        </div>
-                        <div class="mt-3" id='aaa' >
+                        </div> --}}
+                        {{-- <div class="mt-3" id='aaa' >
                             <label for="regular-form-1" class="form-label">Assignee  </label>
                                 <select name="group_id" class="tom-select w-full tomselected "  tabindex="-1" hidden="hidden">
                                     <option value="0" selected="true">Select Assignee </option>
@@ -75,7 +75,7 @@
                                     <option value="{{$group[$i]->id}}" {{$eFormType->group_id == $group[$i]->id ? "selected" : '' }}>{{ucwords($group[$i]->group_name)}}</option>
                                     @endfor
                                 </select>
-                        </div>
+                        </div> --}}
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Turn Around Time <span style="color: red">*</span></label>
                             <input type="text" name="tat" id="tat" class="form-control col-span-4" value="{{$eFormType->tat}}" onkeypress="return validateNumbers(event)" placeholder="Turn Around Time" aria-label="default input inline 2" required>
@@ -84,7 +84,7 @@
                        
                         
                         </div>
-                        @for($j=1; $j <= 5; $j++)
+                        {{-- @for($j=1; $j <= 5; $j++)
                         <div class="grid grid-cols-12 gap-2" id='clonediv'>
                             <div class="mt-3" >
                                 <label for="regular-form-1" class="form-label">Escalation Time Period {{$j}}</label>
@@ -114,14 +114,11 @@
 
                                 </select>
                             </div>
-                            {{-- <div style="margin-top: 39px;">
-                                <button class="btn btn-primary mr-1 mb-2"  onclick="appendDiv(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="activity" data-lucide="activity" class="lucide lucide-activity w-5 h-5"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"></polyline></svg> </button>
-                                <button class="btn btn-danger mr-1 mb-2" style="display: none"  onclick="removeDiv(this)"> <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" icon-name="trash" data-lucide="trash" class="lucide lucide-trash w-5 h-5"><polyline points="3 6 5 6 21 6"></polyline><path d="M19 6v14a2 2 0 01-2 2H7a2 2 0 01-2-2V6m3 0V4a2 2 0 012-2h4a2 2 0 012 2v2"></path></svg> </button>
-                            </div> --}}
+                           
                         </div>
                         @endfor
                     <div id='appenddiv'>
-                    </div>
+                    </div> --}}
                     <button type="submit" class="btn btn-primary mt-5">Update</button>
                         
                     </div>

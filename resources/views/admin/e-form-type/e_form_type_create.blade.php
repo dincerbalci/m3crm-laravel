@@ -63,7 +63,7 @@
                                 <label class="form-check-label"  for="radio-switch-5">Manual</label>
                             </div>
                         </div> --}}
-                        <div class="mt-3" id='aaa' >
+                        {{-- <div class="mt-3" id='aaa' >
                             <label for="regular-form-1" class="form-label">Assignee  </label>
                                 <select name="group_id" class="tom-select w-full tomselected "  tabindex="-1" hidden="hidden">
                                     <option value="0" selected="true">Select Assignee </option>
@@ -71,7 +71,7 @@
                                     <option value="{{$group[$i]->id}}" >{{ucwords($group[$i]->group_name)}}</option>
                                     @endfor
                                 </select>
-                        </div>
+                        </div> --}}
                         <div class="mt-3">
                             <label for="regular-form-1" class="form-label">Turn Around Time <span style="color: red">*</span></label>
                             <input type="text" name="tat" id="tat" class="form-control col-span-4"  onkeypress="return validateNumbers(event)" placeholder="Turn Around Time" aria-label="default input inline 2" required>

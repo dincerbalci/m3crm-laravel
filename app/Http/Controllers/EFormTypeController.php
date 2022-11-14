@@ -65,14 +65,14 @@ class EFormTypeController extends Controller
         $groupId=$request->operation_mode == '1' ? $request->group_id : '0';
         
         $data = EFormType::create([
-            'group_id' => $groupId,
+            // 'group_id' => $groupId,
             'product_category_id' => $request->product_category_id,
             'product_id' => $request->product_id,
-            'operation_mode'=>$request->operation_mode,
+            // 'operation_mode'=>$request->operation_mode,
             'fullname' => $request->type,
             'tat' => $request->tat,
             'isactive' => $isActive,
-            'is_subscription' => $isSubscription,
+            // 'is_subscription' => $isSubscription,
             'created_on' => GetCurrentDateTime(),
             'updated_on' => '0000-00-00 00:00:00',
         ]);
@@ -148,31 +148,31 @@ class EFormTypeController extends Controller
         $isSubscription=is_null($request->is_subscription) ? '0' : '1';
         $groupId=$request->operation_mode == '1' ? $request->group_id : '0';
         $eFormType=EFormType::find($id);
-        $eFormType['group_id']=$groupId;
+        // $eFormType['group_id']=$groupId;
         $eFormType['product_category_id']=$request->product_category_id;
         $eFormType['product_id']=$request->product_id;
-        $eFormType['operation_mode']=$request->operation_mode;
+        // $eFormType['operation_mode']=$request->operation_mode;
         $eFormType['fullname']=$request->type;
         $eFormType['tat']= $request->tat;
         $eFormType['isactive']=$isActive;
-        $eFormType['is_subscription']=$isSubscription;
+        // $eFormType['is_subscription']=$isSubscription;
         $eFormType['updated_on']=GetCurrentDateTime();
         $eFormType->save();
         $this->ActivityLogs("Update Eform Type [Eform Type Name:$request->type]");
-        DB::table('tbl_eform_type_escalation')->where('eform_escalation_id', $id)
-        ->update([
-                'escalation_time1' => $request->escalation_time1, 
-                'level1' => is_null($request->level1) ? '' : implode(",", $request->level1), 
-                'escalation_time2' => $request->escalation_time2, 
-                'level2' => is_null($request->level2) ? '' : implode(",", $request->level2), 
-                'escalation_time3' => $request->escalation_time3, 
-                'level3' => is_null($request->level3) ? '' : implode(",", $request->level3), 
-                'escalation_time4' => $request->escalation_time4, 
-                'level4' => is_null($request->level4) ? '' : implode(",", $request->level4),  
-                'escalation_time5' => $request->escalation_time5,
-                'level5' => is_null($request->level5) ? '' : implode(",", $request->level5),
+        // DB::table('tbl_eform_type_escalation')->where('eform_escalation_id', $id)
+        // ->update([
+        //         'escalation_time1' => $request->escalation_time1, 
+        //         'level1' => is_null($request->level1) ? '' : implode(",", $request->level1), 
+        //         'escalation_time2' => $request->escalation_time2, 
+        //         'level2' => is_null($request->level2) ? '' : implode(",", $request->level2), 
+        //         'escalation_time3' => $request->escalation_time3, 
+        //         'level3' => is_null($request->level3) ? '' : implode(",", $request->level3), 
+        //         'escalation_time4' => $request->escalation_time4, 
+        //         'level4' => is_null($request->level4) ? '' : implode(",", $request->level4),  
+        //         'escalation_time5' => $request->escalation_time5,
+        //         'level5' => is_null($request->level5) ? '' : implode(",", $request->level5),
             
-                ]);
+        //         ]);
        
         return $this->redirect();
 
