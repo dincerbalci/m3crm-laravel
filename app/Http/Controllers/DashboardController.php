@@ -15,7 +15,7 @@ class DashboardController extends Controller
         $message=Announcement::where('type','message')->where('is_active','1')->orderby('id','desc')->get();
         $userType = Session::get('user_type');
         $loginId = Session::get('login_id');
-        $agentActivityLogs=DB::table('tbl_logs_activity_agent')->select(DB::raw('call_id,agent_id,description,action_on,created_datetime'))
+        $agentActivityLogs=DB::table('tbl_logs_activity_agent')->select(DB::raw('call_id,agent_id,description,action_on,created_datetime'))->where('call_id','!=','')
         ->when($userType != "1", function ($query) use ($loginId) {
             return $query->where("login_id",$loginId);
         })->orderBy('id', 'desc')->limit(10)->get();
