@@ -93,10 +93,10 @@
                                                 </thead>
                                                 <tbody>
                                                     <tr class="intro-x">
-                                                        <td class="text-left"></td>
+                                                        <td class="text-left">dawngll08@gmail.com</td>
                                                         <td class="text-left">FWBL HO</td>
-                                                        <td class="text-left"></td>
-                                                        <td class="text-left"></td>
+                                                        <td class="text-left">021090078610</td>
+                                                        <td class="text-left">021090078610</td>
                                                     </tr>
                                                 </tbody>
                                             </table>

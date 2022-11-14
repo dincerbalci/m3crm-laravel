@@ -274,67 +274,67 @@
                 </a>
                 <ul class="">
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Session History Logs Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Transaction Logs Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Agent Activity Logs Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Complaints Detailed Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Complaints Escalation Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Complaint By TAT</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Complaint By Status</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">SMS Detailed Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">SMS Interim Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">Send Email Report</div>
                         </a>
                     </li>
                     <li>
-                        <a href="" class="side-menu">
+                        <a href="#" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title">EForm Detailed Report</div>
                         </a>
@@ -369,13 +369,13 @@
                     </a>
                     <ul class="">
                         <li>
-                            <a href="" class="side-menu">
+                            <a href="#" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="side-menu__title">CRM Force Logout</div>
                             </a>
                         </li>
                         <li>
-                            <a href="" class="side-menu">
+                            <a href="#" class="side-menu">
                                 <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                                 <div class="side-menu__title">CRM Account Unlock</div>
                             </a>

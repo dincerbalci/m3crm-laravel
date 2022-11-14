@@ -127,10 +127,10 @@
                                                 <tbody id="table_data">
                                                     <tr class="intro-x">
                                                         <td class="text-left">421017013239</td>
-                                                        <td class="text-left">Full Name</td>
-                                                        <td class="text-left"></td>
-                                                        <td class="text-left"></td>
-                                                        <td class="text-left"></td>
+                                                        <td class="text-left">Asad bhatti</td>
+                                                        <td class="text-left">Current</td>
+                                                        <td class="text-left">0001</td>
+                                                        <td class="text-left">Noth karachi</td>
                                                         <td class="text-left">OK</td>
                                                         <td class="text-left">RKR</td>
                                                     </tr>
