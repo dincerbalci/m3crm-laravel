@@ -178,7 +178,7 @@
                             }
                         @endphp
                         <tr class="intro-x">
-                            <td class="text-left"><a href="{{route('e_form_show',$eForm[$i]->id)}}">{{$eForm[$i]->eform_num}}</a></td>
+                            <td class="text-left "><a class="colorchange" href="{{route('e_form_show',$eForm[$i]->id)}}">{{$eForm[$i]->eform_num}}</a></td>
                             <td class="text-left">{{$eForm[$i]->released_by}}</td>
                             <td class="text-left">{{$eForm[$i]->branch}}</td>
                             <td class="text-left">{{$eForm[$i]->product}}</td>
@@ -220,7 +220,13 @@
         </div>
     </div>
     <!-- END: HTML Table Data -->
-    
+    @push('scripts')
+    <script>
+        // var date = $('#from_date').datepicker({ dateFormat: 'dd-mm-yy' }).val();
+        $('input[name="to_date"]').val('{{request()->to_date}}')
+        $('input[name="from_date"]').val('{{request()->from_date}}')
+    </script>
+    @endpush
 
 
 @endsection

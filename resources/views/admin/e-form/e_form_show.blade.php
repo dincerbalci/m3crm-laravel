@@ -422,7 +422,6 @@
 
     function eFormType(val)
     {
-        alert(val);
         let value = {
             product_id: val,
         };

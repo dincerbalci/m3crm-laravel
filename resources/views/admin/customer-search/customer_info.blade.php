@@ -155,7 +155,7 @@
                                                 </thead>
                                                 <tbody id="table_data">
                                                     <tr class="intro-x">
-                                                        <td class="text-left" ><a href='#' onclick='deleteAnn()'> 2205550001000003</a></td>
+                                                        <td class="text-left" ><a class="colorchange" href='#' onclick='deleteAnn()'> 2205550001000003</a></td>
                                                         <td class="text-left">Paypak Card</td>
                                                         <td class="text-left">MUHAMMAD NOUMAN</td>
                                                         <td class="text-left">09-Nov-2022</td>

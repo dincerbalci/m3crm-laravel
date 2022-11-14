@@ -26,6 +26,34 @@ License: You must have a valid license purchased only from themeforest(the above
         
         <!-- END: CSS Assets-->
     </head>
+    @if(Session::get('dark_mode') == 'light')
+    <style>
+        .colorchange {
+            color: #1517a7;
+            font: bold;
+        }  
+        .colorchange:hover
+        {
+            text-decoration: underline;
+            -webkit-text-decoration-color: #1517a7; /* Safari */  
+            text-decoration-color: #1517a7;
+        } 
+    </style>
+    @endif
+    @if(Session::get('dark_mode') == 'dark')
+    <style>
+        .colorchange {
+            color: #8ea8ff;
+            font: bold;
+        }  
+        .colorchange:hover
+        {
+            text-decoration: underline;
+            -webkit-text-decoration-color: #8ea8ff; /* Safari */  
+            text-decoration-color: #8ea8ff;
+        } 
+    </style>
+    @endif
     <!-- END: Head -->
     <body class="py-5 md:py-0">
         <!-- BEGIN: Mobile Menu -->

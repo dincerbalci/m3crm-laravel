@@ -177,7 +177,7 @@
                                     }
                         @endphp
                         <tr class="intro-x">
-                            <td class="text-left"><a href="{{route('complaint_show',$complaint[$i]->complaint_id)}}">{{$complaint[$i]->complaint_num}}</a></td>
+                            <td class="text-left"><a class="colorchange" href="{{route('complaint_show',$complaint[$i]->complaint_id)}}">{{$complaint[$i]->complaint_num}}</a></td>
                             @if($complaint[$i]->channel == "2")
                                 <td class="text-left">{{  ucwords($complaint[$i]->product_category_name) }}</td>
                             @else
