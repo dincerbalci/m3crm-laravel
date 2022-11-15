@@ -194,12 +194,12 @@
                                 <div class="flex mb-2 items-center justify-between">
                                   <div class="text-right">
                                     <span class="text-xs font-semibold inline-block text-pink-600">
-                                        {{$complaint[$i]->progress}}%
+                                        {{empty($complaint[$i]->progress) ? '0' : $complaint[$i]->progress}}%
                                     </span>
                                   </div>
                                 </div>
                                 <div class="progress h-4">
-                                  <div style="width:{{$complaint[$i]->progress}}%" class="progress-bar"></div>
+                                  <div style="width:{{empty($complaint[$i]->progress) ? '0' : $complaint[$i]->progress}}%" class="progress-bar"></div>
                                 </div>
                               </div>
                             </td>

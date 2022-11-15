@@ -28,7 +28,7 @@ function validateAlphabets(evt) {
 
 function validateAlphabetsAndNUumber(evt) {
     const origin = evt.target;
-    origin.value = origin.value.replace(/[^a-z0-9]$/i, "");
+    origin.value = origin.value.replace(/[^a-z0-9]$/i, " ");
     //                   ^ only the last inputted character
 }
 

@@ -147,6 +147,22 @@
                                                         <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class=""></td>
                                                         <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class=""></td>
                                                     </tr>
+                                                    <tr class="intro-x">
+                                                        <td class="text-left">4</td>
+                                                        <td class="text-left">Date of birth</td>
+                                                        <td class="text-left">08/10/1997 </td>
+                                                        <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class="checked"></td>
+                                                        <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class=""></td>
+                                                        <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class=""></td>
+                                                    </tr>
+                                                    <tr class="intro-x">
+                                                        <td class="text-left">5</td>
+                                                        <td class="text-left">E-mail</td>
+                                                        <td class="text-left">bhattiasad12@gmail.com</td>
+                                                        <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class="checked"></td>
+                                                        <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class=""></td>
+                                                        <td class="text-left"><input  id="bordered-radio-3" type="radio" value="" name="bordered-radio3" class=""></td>
+                                                    </tr>
                                                 </tbody>
                                             </table>
                                         </div>
