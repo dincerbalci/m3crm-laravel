@@ -31,7 +31,7 @@
                     <div class="grid grid-cols-12 gap-2">
                         <div>
                             <label for="regular-form-1" class="form-label">Groups <span style="color: red">*</span></label>
-                            <select data-placeholder="Select your favorite actors" id="ddlGroup" name='group_id' class="form-select " {{$disable_info}} required>
+                            <select data-placeholder="Select your favorite actors" id="ddlGroup" name='group_id' onchange="getUnit()" class="form-select " {{$disable_info}} required>
                                 <option value="" selected="true">Select Groups </option>
                                 @for($i=0; $i < count($group); $i++)
                                 <option value="{{$group[$i]->id}}" {{$data[0]->group_id == $group[$i]->id ? 'Selected' : ''}}>{{ucwords($group[$i]->group_name)}}</option>
@@ -447,11 +447,19 @@
             }
         });
     }
-    $(document).on('change', '#ddlGroup', function () {
+    // $(document).on('change', '#ddlGroup', function () {
 
-        var group = $(this).val();
+    //     var group = $(this).val();
 
-        $.ajax({
+       
+
+    //     });
+    getUnit();
+    
+        function getUnit()
+        {
+            var group = $('#ddlGroup').val();
+            $.ajax({
             type: "Get",
             url: "{{ route('get_unit_groups') }}",
             data:{
@@ -462,8 +470,7 @@
             //console.log(data);
             $('#ddlUnit').html(data);
         });
-
-        });
+        }
 </script>
 @endpush
     

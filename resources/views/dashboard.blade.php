@@ -27,7 +27,7 @@
                                                 <div class="report-box__indicator bg-success tooltip cursor-pointer" title="33% Higher than last month"> 33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div> --}}
                                         </div>
-                                        <div class="text-3xl font-medium leading-8 mt-6">4.710</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">4710</div>
                                         <div class="text-base text-slate-500 mt-1">TOTAL Complaints</div>
                                     </div>
                                 </div>
@@ -42,7 +42,7 @@
                                             </div> --}}
                                         </div>
                                             
-                                        <div class="text-3xl font-medium leading-8 mt-6">3.721</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">3721</div>
                                         <div class="text-base text-slate-500 mt-1">Closed Complaints</div>
                                     </div>
                                 </div>
@@ -56,7 +56,7 @@
                                                 <div class="report-box__indicator bg-success tooltip cursor-pointer" title="12% Higher than last month"> 12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div> --}}
                                         </div>
-                                        <div class="text-3xl font-medium leading-8 mt-6">2.149</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">2149</div>
                                         <div class="text-base text-slate-500 mt-1">TOTAL E-Forms</div>
                                     </div>
                                 </div>
@@ -70,11 +70,31 @@
                                                 <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month"> 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div> --}}
                                         </div>
-                                        <div class="text-3xl font-medium leading-8 mt-6">152.040</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">152040</div>
                                         <div class="text-base text-slate-500 mt-1">Closed E-Forms</div>
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 mt-8">
+                        <div class="intro-y block sm:flex items-center h-10">
+                            <h2 class="text-lg font-medium truncate mr-5">
+                                Complaints Report
+                            </h2>
+                        </div>
+                        <div class="intro-y box p-5 mt-12 sm:mt-5">
+                                <canvas class="p-10" id="chartPie"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-6 mt-8">
+                        <div class="intro-y block sm:flex items-center h-10">
+                            <h2 class="text-lg font-medium truncate mr-5">
+                                E-Forms Report
+                            </h2>
+                        </div>
+                        <div class="intro-y box p-5 mt-12 sm:mt-5">
+                            <canvas class="p-10" id="chartDoughnut"></canvas>
                         </div>
                     </div>
                     <!-- END: General Report -->
@@ -193,7 +213,61 @@
     <!-- END: Content -->
     
     @push('scripts')
-    
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+        const dataPie = {
+          labels: ["Total Complaint", "Closed Complaint", "In Process Complaint"],
+          datasets: [
+            {
+              label: "",
+              data: [4710, 3721, 989],
+              backgroundColor: [
+                "rgb(23 90 114)",
+                "rgb(200 112 13)",
+                "rgb(225 148 18)",
+              ],
+             
+              hoverOffset: 4,
+            },
+          ],
+        };
+      
+        const configPie = {
+          type: "pie",
+          data: dataPie,
+          options: {},
+        };
+      
+        var chartBar = new Chart(document.getElementById("chartPie"), configPie);
+
+        /// e-form
+        const dataDoughnut = {
+    labels: ["Total E-Forms", "Closed E-Forms", "In Process E-Forms"],
+    datasets: [
+      {
+        label: "",
+        data: [300, 50, 100],
+        backgroundColor: [
+            "rgb(23 90 114)",
+            "rgb(200 112 13)",
+            "rgb(225 148 18)",
+        ],
+        hoverOffset: 4,
+      },
+    ],
+  };
+
+  const configDoughnut = {
+    type: "doughnut",
+    data: dataDoughnut,
+    options: {},
+  };
+
+  var chartBar = new Chart(
+    document.getElementById("chartDoughnut"),
+    configDoughnut
+  );
+      </script>
 @endpush
 
 @endsection

@@ -66,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 </a>
                 <a href="javascript:;" id="mobile-menu-toggler"> <i data-lucide="bar-chart-2" class="w-8 h-8 text-white transform -rotate-90"></i> </a>
             </div>
-            <ul class="border-t border-white/[0.08] py-5 hidden">
+            {{-- <ul class="border-t border-white/[0.08] py-5 hidden"> --}}
                 <li>
                     <a href="javascript:;.html" class="menu menu--active">
                         <div class="menu__icon"> <i data-lucide="home"></i> </div>
@@ -622,8 +622,309 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- BEGIN: Breadcrumb -->
                 <nav aria-label="breadcrumb" class="-intro-x h-[45px] mr-auto">
                     <ol class="breadcrumb breadcrumb-light">
-                        <li class="breadcrumb-item"><a href="#">Application</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Dashboard</li>
+                        <li class="breadcrumb-item"><a href="{{route('dashboard')}}">Application</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">
+                            {{ Route::currentRouteName() == 'dashboard' ? 'Dashboard' : '' }}  
+                           @php 
+                           $newLi="";
+                           $newLiText="";
+                           if(Route::currentRouteName() == 'e_form_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'E-Form Management';
+                            $newLiText='Add E-Form';
+                           }
+                           if(Route::currentRouteName() == 'e_form_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'E-Form Management';
+                            $newLiText='View E-Form';
+                           }
+                           if(Route::currentRouteName() == 'e_form_type.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'E-Form Management';
+                            $newLiText='Add E-Form Type';
+                           }
+                           if(Route::currentRouteName() == 'e_form_type.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'E-Form Management';
+                            $newLiText='Edit E-Form Type';
+                           }
+                           if(Route::currentRouteName() == 'e_form_type.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'E-Form Management';
+                            $newLiText='View E-Form Type';
+                           }
+                           if(Route::currentRouteName() == 'complaint_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Complaint Management';
+                            $newLiText='Add Complaint';
+                           }
+                           if(Route::currentRouteName() == 'complaint_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Complaint Management';
+                            $newLiText='View Complaint';
+                           }
+                           if(Route::currentRouteName() == 'complaint_show')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Complaint Management';
+                            $newLiText='Complaint Details';
+                           }
+                           if(Route::currentRouteName() == 'complaint_type_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Complaint Management';
+                            $newLiText='Add Complaint Type';
+                           }
+                           if(Route::currentRouteName() == 'complaint_type_edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Complaint Management';
+                            $newLiText='Edit Complaint Type';
+                           }
+                           if(Route::currentRouteName() == 'complaint_type_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Complaint Management';
+                            $newLiText='View Complaint Type';
+                           }
+                           if(Route::currentRouteName() == 'lead_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Leads Management';
+                            $newLiText='Add Leads';
+                           }
+                           if(Route::currentRouteName() == 'lead_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Leads Management';
+                            $newLiText='View Leads';
+                           }
+                           if(Route::currentRouteName() == 'user.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Add User';
+                           }
+                           if(Route::currentRouteName() == 'user.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit User';
+                           }
+                           if(Route::currentRouteName() == 'user.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View User';
+                           }
+                           if(Route::currentRouteName() == 'group.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Group';
+                           }
+                           if(Route::currentRouteName() == 'group.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit Group';
+                           }
+                           if(Route::currentRouteName() == 'group.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Group';
+                           }
+                           if(Route::currentRouteName() == 'role.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Role';
+                           }
+                           if(Route::currentRouteName() == 'role.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit Role';
+                           }
+                           if(Route::currentRouteName() == 'role.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Role';
+                           }
+                           if(Route::currentRouteName() == 'unit.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Unit';
+                           }
+                           if(Route::currentRouteName() == 'unit.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit Unit';
+                           }
+                           if(Route::currentRouteName() == 'unit.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Unit';
+                           }
+                           if(Route::currentRouteName() == 'template.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Template';
+                           }
+                           if(Route::currentRouteName() == 'template.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit Template';
+                           }
+                           if(Route::currentRouteName() == 'template.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Template';
+                           }
+                           if(Route::currentRouteName() == 'daily_calendar')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Calendar Management';
+                           }
+                           if(Route::currentRouteName() == 'escalation_group.create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Escalation';
+                           }
+                           if(Route::currentRouteName() == 'escalation_group.edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit Escalation';
+                           }
+                           if(Route::currentRouteName() == 'escalation_group.index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Escalation';
+                           }
+                           if(Route::currentRouteName() == 'announcement_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Add Message & Announcement';
+                           }
+                           if(Route::currentRouteName() == 'announcement_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='View Message & Announcement';
+                           }
+                           if(Route::currentRouteName() == 'announcement_edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Administration';
+                            $newLiText='Edit Message & Announcement';
+                           }
+                           if(Route::currentRouteName() == 'complaint_category_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Add Complaint Category';
+                           }
+                           if(Route::currentRouteName() == 'complaint_category_edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Edit Complaint Category';
+                           }
+                           if(Route::currentRouteName() == 'complaint_category_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='View Complaint Category';
+                           }
+                           if(Route::currentRouteName() == 'e_form_category_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Add E-Form Category';
+                           }
+                           if(Route::currentRouteName() == 'e_form_category_edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Edit E-Form Category';
+                           }
+                           if(Route::currentRouteName() == 'e_form_category_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='View E-Form Category';
+                           }
+                           if(Route::currentRouteName() == 'complaint_product_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Add Product Complaint';
+                           }
+                           if(Route::currentRouteName() == 'complaint_product_edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Edit Product Complaint';
+                           }
+                           if(Route::currentRouteName() == 'complaint_product_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='View Product Complaint';
+                           }
+                           if(Route::currentRouteName() == 'e_form_product_create')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Add E-Form Product';
+                           }
+                           if(Route::currentRouteName() == 'e_form_product_edit')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='Edit E-Form Product';
+                           }
+                           if(Route::currentRouteName() == 'e_form_product_index')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Product Management';
+                            $newLiText='View E-Form Product';
+                           }
+                           if(Route::currentRouteName() == 'customer_search')
+                           {
+                            echo 'Customer Search';
+                           }
+                           if(Route::currentRouteName() == 'customer_info')
+                           {
+                            $newLi='breadcrumb-item active';
+                            echo 'Customer Search';
+                            $newLiText='Customer Infomation';
+                           }
+                           @endphp 
+                        </li>
+                        <li class="{{$newLi}}" aria-current="page">
+                            {{$newLiText}}
+                        </li>
                     </ol>
                 </nav>
                 <!-- END: Breadcrumb -->
@@ -717,6 +1018,10 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- END: Search -->
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown mr-4 sm:mr-6">
+                    <div class="dropdown-toggle notification " role="button" >{{Session::get('user_name')}}</div>
+                    
+                </div>
+                <div class="intro-x dropdown mr-4 sm:mr-6">
                     <div class="dropdown-toggle notification notification--bullet cursor-pointer" role="button" aria-expanded="false" data-tw-toggle="dropdown"> <i data-lucide="bell" class="notification__icon dark:text-slate-500"></i> </div>
                     <div class="notification-content pt-2 dropdown-menu">
                         <div class="notification-content__box dropdown-content">
@@ -798,8 +1103,8 @@ License: You must have a valid license purchased only from themeforest(the above
                     <div class="dropdown-menu w-56">
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                             <li class="p-2">
-                                <div class="font-medium">Al Pacino</div>
-                                <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">Software Engineer</div>
+                                <div class="font-medium">{{Session::get('user_name')}}</div>
+                                <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">{{Session::get('user_name')}}</div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">

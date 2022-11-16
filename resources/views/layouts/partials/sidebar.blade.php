@@ -12,7 +12,7 @@
             </li>
             <li>
                 <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__icon"> <i data-lucide="file-text" class="block mx-auto"></i> </div>
                     <div class="side-menu__title">
                         E-Form 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -21,7 +21,7 @@
                 <ul class="">
                     <li>
                         <a href="{{route('e_form_create')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i>  </div>
                             <div class="side-menu__title"> Add E-Form </div>
                         </a>
                     </li>
@@ -47,7 +47,7 @@
             </li>
             <li>
                 <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__icon">  <i data-lucide="book" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
                         Complaint 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -82,7 +82,7 @@
             </li>
             <li>
                 <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__icon"><i data-lucide="zap" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
                         Leads 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -106,7 +106,7 @@
             </li>
             <li>
                 <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__icon"> <i data-lucide="codesandbox" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
                         Administration
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -207,7 +207,7 @@
             </li>
             <li>
                 <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__icon"> <i data-lucide="package" class="block mx-auto"></i> </div>
                     <div class="side-menu__title">
                         Products 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -266,7 +266,7 @@
             </li>
             <li>
                 <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                    <div class="side-menu__icon"> <i data-lucide="archive" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
                         Reports
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -342,7 +342,7 @@
                 </ul>
                 <li>
                     <a href="javascript:;" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                        <div class="side-menu__icon"> <i data-lucide="search" class="block mx-auto"></i>  </div>
                         <div class="side-menu__title">
                             Search
                             <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
