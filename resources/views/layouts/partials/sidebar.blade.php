@@ -209,7 +209,7 @@
                 <a href="javascript:;" class="side-menu">
                     <div class="side-menu__icon"> <i data-lucide="package" class="block mx-auto"></i> </div>
                     <div class="side-menu__title">
-                        Products 
+                        Products Management 
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>

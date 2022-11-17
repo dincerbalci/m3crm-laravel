@@ -1018,7 +1018,7 @@ License: You must have a valid license purchased only from themeforest(the above
                 <!-- END: Search -->
                 <!-- BEGIN: Notifications -->
                 <div class="intro-x dropdown mr-4 sm:mr-6">
-                    <div class="dropdown-toggle notification " role="button" >{{Session::get('user_name')}}</div>
+                    <div class="dropdown-toggle notification " role="button" >{{Session::get('user_name')}} {{Session::get('unit_name')}}</div>
                     
                 </div>
                 <div class="intro-x dropdown mr-4 sm:mr-6">
@@ -1104,7 +1104,7 @@ License: You must have a valid license purchased only from themeforest(the above
                         <ul class="dropdown-content bg-primary/80 before:block before:absolute before:bg-black before:inset-0 before:rounded-md before:z-[-1] text-white">
                             <li class="p-2">
                                 <div class="font-medium">{{Session::get('user_name')}}</div>
-                                <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">{{Session::get('user_name')}}</div>
+                                <div class="text-xs text-white/60 mt-0.5 dark:text-slate-500">{{Session::get('unit_name')}}</div>
                             </li>
                             <li>
                                 <hr class="dropdown-divider border-white/[0.08]">
