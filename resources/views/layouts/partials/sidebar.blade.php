@@ -11,7 +11,7 @@
                 </li>
             </li>
             <li>
-                <a href="javascript:;" class="side-menu">
+                <a href="javascript:;" class="side-menu" onclick="sideBarView('19')">
                     <div class="side-menu__icon"> <i data-lucide="file-text" class="block mx-auto"></i> </div>
                     <div class="side-menu__title">
                         E-Form 
@@ -46,7 +46,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" class="side-menu">
+                <a href="javascript:;" class="side-menu" onclick="sideBarView('20')">
                     <div class="side-menu__icon">  <i data-lucide="book" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
                         Complaint 
@@ -105,7 +105,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" class="side-menu">
+                <a href="javascript:;" class="side-menu"  onclick="sideBarView('21')">
                     <div class="side-menu__icon"> <i data-lucide="codesandbox" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
                         Administration
@@ -206,7 +206,7 @@
                 </ul>
             </li>
             <li>
-                <a href="javascript:;" class="side-menu">
+                <a href="javascript:;" class="side-menu" onclick="sideBarView('22')">
                     <div class="side-menu__icon"> <i data-lucide="package" class="block mx-auto"></i> </div>
                     <div class="side-menu__title">
                         Products Management 

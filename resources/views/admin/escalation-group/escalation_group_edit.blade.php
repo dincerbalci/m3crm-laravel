@@ -6,7 +6,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 </style>
-<div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Administration
@@ -82,7 +81,6 @@
      
      
     </div>
-</div>
 <script>
     function removeDiv(obj)
     {

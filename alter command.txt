@@ -7,3 +7,11 @@ CREATE TABLE `laravel_m3crm`.`tbl_announcements`( `id` BIGINT(20) NOT NULL AUTO_
 ALTER TABLE `laravel_m3crm`.`tbl_announcements` ADD COLUMN `is_active` ENUM('1','0') NULL AFTER `updated_at`; 
 ALTER TABLE `laravel_m3crm`.`tbl_announcements` ADD COLUMN `type` ENUM('news','message') NULL AFTER `message`, CHANGE `is_active` `is_active` ENUM('1','0') CHARSET latin1 COLLATE latin1_swedish_ci NULL AFTER `type`;
 ALTER TABLE `laravel_m3crm`.`tbl_announcements` CHANGE `message` `description` TEXT CHARSET latin1 COLLATE latin1_swedish_ci NULL;  
+
+///////////////////////////////// 11/21/2022
+ALTER TABLE `laravel_m3crm`.`tbl_pages`   
+  ADD COLUMN `page_icon` VARCHAR(255) NULL AFTER `is_active`;
+
+  ALTER TABLE `laravel_m3crm`.`tbl_pages`   
+  CHANGE `page_icon` `page_icon` TEXT CHARSET latin1 COLLATE latin1_swedish_ci NULL;
+

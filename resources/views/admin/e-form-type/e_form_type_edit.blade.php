@@ -6,7 +6,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 </style>
-<div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             E-Form Management
@@ -130,7 +129,6 @@
      
      
     </div>
-</div>
 @push('scripts')
 {{-- <script src="https://cdn.jsdelivr.net/npm/tom-select@2.2.2/dist/js/tom-select.complete.min.js"></script> --}}
 <script>

@@ -6,7 +6,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 </style>
-<div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Services
@@ -173,7 +172,6 @@
             </div>
         </div>
     </div>
-</div>
 @push('scripts')
 <script>
 function deleteAnn(id) {

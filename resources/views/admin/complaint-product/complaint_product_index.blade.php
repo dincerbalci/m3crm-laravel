@@ -1,7 +1,6 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="content">
     <h2 class="intro-y text-lg font-medium mt-10">
         Product Complaint
     </h2>
@@ -84,7 +83,6 @@
         </div>
     </div>
     <!-- END: Delete Confirmation Modal -->
-</div>
     
 
 

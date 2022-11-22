@@ -2,8 +2,6 @@
 
 @section('content')
  <!-- END: Side Menu -->
-    <!-- BEGIN: Content -->
-    <div class="content">
         <div class="grid grid-cols-12 gap-6">
             {{--   2xl:col-span-9 --}}
             <div class="col-span-12 ">
@@ -77,7 +75,7 @@
                             </div>
                         </div>
                     </div>
-                    <div class="col-span-12 lg:col-span-6 mt-8">
+                    <div class="col-span-12 lg:col-span-4 mt-8">
                         <div class="intro-y block sm:flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
                                 Complaints Report
@@ -87,7 +85,7 @@
                                 <canvas class="p-10" id="chartPie"></canvas>
                         </div>
                     </div>
-                    <div class="col-span-12 lg:col-span-6 mt-8">
+                    <div class="col-span-12 lg:col-span-4 mt-8">
                         <div class="intro-y block sm:flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
                                 E-Forms Report
@@ -95,6 +93,16 @@
                         </div>
                         <div class="intro-y box p-5 mt-12 sm:mt-5">
                             <canvas class="p-10" id="chartDoughnut"></canvas>
+                        </div>
+                    </div>
+                    <div class="col-span-12 lg:col-span-4 mt-8">
+                        <div class="intro-y block sm:flex items-center h-10">
+                            <h2 class="text-lg font-medium truncate mr-5">
+                                Leads Report
+                            </h2>
+                        </div>
+                        <div class="intro-y box p-5 mt-12 sm:mt-5">
+                            <canvas class="p-10" id="chartPieLead"></canvas>
                         </div>
                     </div>
                     <!-- END: General Report -->
@@ -209,12 +217,36 @@
             </div>
           
         </div>
-    </div>
-    <!-- END: Content -->
     
     @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
+        //lead
+        const dataPieLead = {
+          labels: ["Total Leads", "Closed Leads", "In Process Leads"],
+          datasets: [
+            {
+              label: "",
+              data: [4710, 3721, 989],
+              backgroundColor: [
+                "rgb(23 90 114)",
+                "rgb(200 112 13)",
+                "rgb(225 148 18)",
+              ],
+             
+              hoverOffset: 4,
+            },
+          ],
+        };
+      
+        const configPieLead = {
+          type: "pie",
+          data: dataPieLead,
+          options: {},
+        };
+      
+        var chartBar = new Chart(document.getElementById("chartPieLead"), configPieLead);
+        // complaint
         const dataPie = {
           labels: ["Total Complaint", "Closed Complaint", "In Process Complaint"],
           datasets: [
@@ -267,6 +299,7 @@
     document.getElementById("chartDoughnut"),
     configDoughnut
   );
+  
       </script>
 @endpush
 

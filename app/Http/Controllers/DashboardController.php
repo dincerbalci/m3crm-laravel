@@ -20,6 +20,5 @@ class DashboardController extends Controller
             return $query->where("login_id",$loginId);
         })->orderBy('id', 'desc')->limit(10)->get();
         return view('dashboard',compact('message','news','agentActivityLogs'));
-
     }
 }

@@ -20,6 +20,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\EFormManagementController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\SideBarController;
 
 /*
 |--------------------------------------------------------------------------
@@ -184,6 +185,7 @@ Route::get('lead_index', function () {
 
 });
 
+Route::get('side_bar_view', [SideBarController::class, 'index'])->name('side_bar_view');
 
 
 

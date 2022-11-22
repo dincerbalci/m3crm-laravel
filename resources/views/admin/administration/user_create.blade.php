@@ -6,7 +6,6 @@
     grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 </style>
-<div class="content">
     <div class="intro-y flex items-center mt-8">
         <h2 class="text-lg font-medium mr-auto">
             Administration
@@ -151,7 +150,6 @@
      
     </div>
  
-</div>
 <div class="intro-y col-span-12 lg:col-span-6" style="margin-bottom: 200px; margin-top: 20px;">
     <!-- BEGIN: Input -->
     <div class="intro-y box">

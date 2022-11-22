@@ -45,6 +45,21 @@
   $.mask.definitions["^"] = "[0-9]";
   $(".number").mask("92^^^^^^^^^^");
   }
+  function sideBarView(parentId) {
+        let value = {
+          parentId: parentId
+        };
+        $.ajax({
+            type: 'GET',
+            url: "{{ route('side_bar_view') }}",
+            data: value,
+            success: function(result) {
+                document.getElementById('content').innerHTML ='';
+                document.getElementById('content').innerHTML =result;
+            }
+                   
+        });
+    }
 </script>
 
 
