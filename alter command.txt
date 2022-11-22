@@ -9,9 +9,9 @@ ALTER TABLE `laravel_m3crm`.`tbl_announcements` ADD COLUMN `type` ENUM('news','m
 ALTER TABLE `laravel_m3crm`.`tbl_announcements` CHANGE `message` `description` TEXT CHARSET latin1 COLLATE latin1_swedish_ci NULL;  
 
 ///////////////////////////////// 11/21/2022
-ALTER TABLE `laravel_m3crm`.`tbl_pages`   
+ALTER TABLE `m3crm`.`tbl_pages`   
   ADD COLUMN `page_icon` VARCHAR(255) NULL AFTER `is_active`;
 
-  ALTER TABLE `laravel_m3crm`.`tbl_pages`   
+  ALTER TABLE `m3crm`.`tbl_pages`   
   CHANGE `page_icon` `page_icon` TEXT CHARSET latin1 COLLATE latin1_swedish_ci NULL;
 
