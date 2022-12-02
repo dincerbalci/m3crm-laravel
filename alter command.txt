@@ -15,3 +15,5 @@ ALTER TABLE `m3crm`.`tbl_pages`
   ALTER TABLE `m3crm`.`tbl_pages`   
   CHANGE `page_icon` `page_icon` TEXT CHARSET latin1 COLLATE latin1_swedish_ci NULL;
 
+ALTER TABLE `m3crm`.`tbl_modules`   
+  ADD COLUMN `modules_icon` TEXT NULL AFTER `isactive`;

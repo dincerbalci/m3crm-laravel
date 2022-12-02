@@ -184,6 +184,49 @@ Route::get('lead_index', function () {
 })->name('lead_index');
 
 });
+Route::get('report_agent_activity_logs', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_agent_activity_logs');
+
+Route::get('report_session_history_logs', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_session_history_logs');
+Route::get('report_transaction_logs', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_transaction_logs');
+Route::get('report_complaints', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_complaints');
+Route::get('report_escalation', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_escalation');
+Route::get('report_complaint_tat', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_complaint_tat');
+Route::get('report_complaint_status', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_complaint_status');
+Route::get('report_sms_details', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_sms_details');
+Route::get('report_sms_interim', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_sms_interim');
+Route::get('report_send_emails', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_send_emails');
+Route::get('report_eforms', function () {
+    // return view('admin/lead/lead_index');
+})->name('report_eforms');
+Route::get('search', function () {
+    // return view('admin/lead/lead_index');
+})->name('search');
+Route::get('crm_force_logout', function () {
+    // return view('admin/lead/lead_index');
+})->name('crm_force_logout');
+Route::get('crm_account_unlock', function () {
+    // return view('admin/lead/lead_index');
+})->name('crm_account_unlock');
 
 Route::get('side_bar_view', [SideBarController::class, 'index'])->name('side_bar_view');
 

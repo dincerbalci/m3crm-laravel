@@ -83,14 +83,14 @@ class User extends Authenticatable
     public function GetSidebarMenu($loginId,$userType)
     {
         if($userType == 1){
-        $query= DB::select(DB::raw("SELECT pg.page_name,pg.page_title, tbl_modules.parent_id,tbl_modules.`id` AS module_id ,(SELECT md.`name` FROM tbl_modules md WHERE md.id = tbl_modules.parent_id) AS module,pg.page_icon
+        $query= DB::select(DB::raw("SELECT pg.page_name,pg.page_title,tbl_modules.`modules_icon`, tbl_modules.parent_id,tbl_modules.`id` AS module_id ,(SELECT md.`name` FROM tbl_modules md WHERE md.id = tbl_modules.parent_id) AS module,pg.page_icon
                         FROM tbl_modules
                         INNER JOIN tbl_pages pg ON pg.`module_id` = tbl_modules.`id`
                         WHERE pg.is_active = 1 GROUP BY pg.page_name
                         ORDER BY tbl_modules.`parent_id`, tbl_modules.`id`, pg.page_title"));
         }
         else{
-            $query= DB::select(DB::raw("SELECT pg.page_name,pg.page_title, tbl_modules.parent_id,tbl_modules.`id` AS module_id ,(SELECT md.`name` FROM tbl_modules md WHERE md.id = tbl_modules.parent_id) AS module,pg.page_icon
+            $query= DB::select(DB::raw("SELECT pg.page_name,pg.page_title ,tbl_modules.`modules_icon`, tbl_modules.parent_id,tbl_modules.`id` AS module_id ,(SELECT md.`name` FROM tbl_modules md WHERE md.id = tbl_modules.parent_id) AS module,pg.page_icon
             FROM tbl_roles_permissions gp
             INNER JOIN tbl_users_role ug ON ug.`role_id` = gp.`role_id`
             INNER JOIN tbl_modules ON tbl_modules.`id` = gp.`module_id`

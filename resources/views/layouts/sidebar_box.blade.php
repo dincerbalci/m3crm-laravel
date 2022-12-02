@@ -14,10 +14,10 @@
                     <a href="{{route($dataSiderBarArr[$i]->page_name)}}" class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                         <div class="report-box zoom-in">
                             <div class="box p-5">
-                                <div class="flex">
+                                <div class="flex side-menu__icon">
                                    <?php echo html_entity_decode($dataSiderBarArr[$i]->page_icon) ?>
                                 </div>
-                                <div class="text-3xl font-medium leading-8 mt-6">{{$dataSiderBarArr[$i]->page_title}}</div>
+                                <div class="text-2xl font-medium leading-8 mt-6">{{$dataSiderBarArr[$i]->page_title}}</div>
                             </div>
                         </div>
                     </a>

@@ -4,28 +4,52 @@
         <ul>
             <li>
                 <li>
-                    <a href="{{route('dashboard')}}" class="side-menu side-menu--active">
+                    <a href="{{route('dashboard')}}" class="side-menu {{ Route::currentRouteName() == 'dashboard'   ? 'side-menu--active' : '' }}">
                         <div class="side-menu__icon"> <i data-lucide="home"></i> </div>
                         <div class="side-menu__title"> Dashboard </div>
                     </a>
                 </li>
             </li>
+            {{-- onclick="sideBarView('19')" --}}
+            @php  $sidebarMenu=Session::get('sidebar_menu'); 
+            $i=0;
+           @endphp
+           @while($i <  count($sidebarMenu)) 
+           @php $module=$sidebarMenu[$i]->module; @endphp
+           @php $pageName=$sidebarMenu[$i]->page_name;
+            $active='';
+            $activeSub='';
+           @endphp
+           @for($j=0; $j < count($sidebarMenu); $j++)
+           @php 
+            if(Route::currentRouteName() == $sidebarMenu[$j]->page_name && $module == $sidebarMenu[$j]->module)
+            {
+                $active='side-menu--active';
+                $activeSub='side-menu__sub-open';
+            }
+           @endphp
+           @endfor
             <li>
-                <a href="javascript:;" class="side-menu" onclick="sideBarView('19')">
-                    <div class="side-menu__icon"> <i data-lucide="file-text" class="block mx-auto"></i> </div>
+                <a href="javascript:;" class="side-menu  {{$active}}"  onclick="sideBarView('{{$sidebarMenu[$i]->parent_id}}')">
+                    <div class="side-menu__icon"> <?php echo html_entity_decode($sidebarMenu[$i]->modules_icon) ?> </div>
                     <div class="side-menu__title">
-                        E-Form 
+                        {{$sidebarMenu[$i]->module}}
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
-                <ul class="">
+                <ul class="{{ $activeSub }}">
+                    @foreach ($sidebarMenu as $data)
+                    @if($module == $data->module)
                     <li>
-                        <a href="{{route('e_form_create')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i>  </div>
-                            <div class="side-menu__title"> Add E-Form </div>
+                        <a href="{{route($sidebarMenu[$i]->page_name)}}" class="side-menu {{ Route::currentRouteName() == $sidebarMenu[$i]->page_name   ? 'side-menu--active' : '' }}">
+                            <div class="side-menu__icon"> <?php echo html_entity_decode($data->page_icon) ?>  </div>
+                            <div class="side-menu__title"> {{$data->page_title}}</div>
                         </a>
                     </li>
-                    <li>
+                    @php  $i++; @endphp
+                    @endif
+                    @endforeach
+                    {{-- <li>
                         <a href="{{route('e_form_index')}}" class="side-menu">
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> View E-Form </div>
@@ -42,10 +66,36 @@
                             <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
                             <div class="side-menu__title"> View E-Form Type</div>
                         </a>
-                    </li>
+                    </li> --}}
                 </ul>
             </li>
-            <li>
+           @endwhile
+
+           <li>
+            <a href="javascript:;" class="side-menu">
+                <div class="side-menu__icon"><i data-lucide="zap" class="block mx-auto"></i>  </div>
+                <div class="side-menu__title">
+                    Leads 
+                    <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                </div>
+            </a>
+            <ul class="">
+                <li>
+                    <a href="{{route('lead_create')}}" class="side-menu ">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title">Add Leads</div>
+                    </a>
+                </li>
+                <li>
+                    <a href="{{route('lead_index')}}" class="side-menu">
+                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__title">View Leads</div>
+                    </a>
+                </li>
+               
+            </ul>
+        </li>
+            {{-- <li>
                 <a href="javascript:;" class="side-menu" onclick="sideBarView('20')">
                     <div class="side-menu__icon">  <i data-lucide="book" class="block mx-auto"></i>  </div>
                     <div class="side-menu__title">
@@ -80,30 +130,7 @@
                     </li>
                 </ul>
             </li>
-            <li>
-                <a href="javascript:;" class="side-menu">
-                    <div class="side-menu__icon"><i data-lucide="zap" class="block mx-auto"></i>  </div>
-                    <div class="side-menu__title">
-                        Leads 
-                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                    </div>
-                </a>
-                <ul class="">
-                    <li>
-                        <a href="{{route('lead_create')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title">Add Leads</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('lead_index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title">View Leads</div>
-                        </a>
-                    </li>
-                   
-                </ul>
-            </li>
+            
             <li>
                 <a href="javascript:;" class="side-menu"  onclick="sideBarView('21')">
                     <div class="side-menu__icon"> <i data-lucide="codesandbox" class="block mx-auto"></i>  </div>
@@ -384,6 +411,119 @@
                     </ul>
                 </li>
             </li>
+            <li>
+                <a href="javascript:;" class="side-menu">
+                    <div class="side-menu__icon"> <i data-lucide="archive" class="block mx-auto"></i>  </div>
+                    <div class="side-menu__title">
+                        Reports
+                        <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                    </div>
+                </a>
+                <ul class="menu__sub-open">
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="side-menu__title">
+                                Complaint
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Detailed Report</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Escalation Report</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">TAT</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Status</div>
+                                </a>
+                            </li>
+                           
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="side-menu__title">
+                                Logs
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Session History Report
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Transaction Report</div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Agent Activity Report</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="javascript:;" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="box"></i> </div>
+                            <div class="side-menu__title">
+                                SMS
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Detailed Report
+                                    </div>
+                                </a>
+                            </li>
+                            <li>
+                                <a href="#" class="side-menu">
+                                    <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                                    <div class="side-menu__title">Interim Report</div>
+                                </a>
+                            </li>
+                        </ul>
+                    </li>
+                    <li>
+                        <a href="#" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">Send Email Report</div>
+                        </a>
+                    </li>
+                    <li>
+                        <a href="#" class="side-menu">
+                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                            <div class="side-menu__title">EForm Detailed Report</div>
+                        </a>
+                    </li>
+                </ul>
+            </li> --}}
             
         </ul>
     </nav>
