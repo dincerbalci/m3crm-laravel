@@ -48,120 +48,135 @@ Route::get('permission_error', function () {
 
 Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
-Route::middleware(['auth','permission'])->group(function () {
+Route::middleware(['auth'])->group(function () {
+    #region Customer Search
+    Route::get('customer_search', function () {
+        return view('admin/customer-search/customer_search');
+    })->name('customer_search');
+    Route::get('customer_info', function () {
+        return view('admin/customer-search/customer_info');
+    })->name('customer_info');
+    Route::get('debit_card_info', function () {
+        return view('admin/customer-search/debit_card_info');
+    })->name('debit_card_info');
+    #endregion Customer Search
+    });
+
+    
+Route::middleware(['auth'])->group(function () {
 
 #region complaint category
-Route::get('complaint_category_create', [ComplaintCategoryController::class, 'create'])->name('complaint_category_create');
+Route::get('complaint_category_create', [ComplaintCategoryController::class, 'create'])->middleware(['permission'])->name('complaint_category_create');
+Route::get('complaint_category_index', [ComplaintCategoryController::class, 'index'])->middleware(['permission'])->name('complaint_category_index');
+Route::get('complaint_category_edit/{id}', [ComplaintCategoryController::class, 'edit'])->middleware(['permission'])->name('complaint_category_edit');
 Route::post('complaint_category_create', [ComplaintCategoryController::class, 'store'])->name('complaint_category_create');
-Route::get('complaint_category_index', [ComplaintCategoryController::class, 'index'])->name('complaint_category_index');
-Route::get('complaint_category_edit/{id}', [ComplaintCategoryController::class, 'edit'])->name('complaint_category_edit');
 Route::post('complaint_category_edit/{id}', [ComplaintCategoryController::class, 'update'])->name('complaint_category_edit');
 #endregion complaint category
 
 #region complaint product
-Route::get('complaint_product_create', [ComplaintProductController::class, 'create'])->name('complaint_product_create');
+Route::get('complaint_product_create', [ComplaintProductController::class, 'create'])->middleware(['permission'])->name('complaint_product_create');
+Route::get('complaint_product_index', [ComplaintProductController::class, 'index'])->middleware(['permission'])->name('complaint_product_index');
+Route::get('complaint_product_edit/{id}', [ComplaintProductController::class, 'edit'])->middleware(['permission'])->name('complaint_product_edit');
 Route::post('complaint_product_create', [ComplaintProductController::class, 'store'])->name('complaint_product_create');
-Route::get('complaint_product_index', [ComplaintProductController::class, 'index'])->name('complaint_product_index');
-Route::get('complaint_product_edit/{id}', [ComplaintProductController::class, 'edit'])->name('complaint_product_edit');
 Route::post('complaint_product_edit/{id}', [ComplaintProductController::class, 'update'])->name('complaint_product_edit');
 #endregion complaint product
 
 #region e form category
-Route::get('e_form_category_create', [EFormCategoryController::class, 'create'])->name('e_form_category_create');
+Route::get('e_form_category_create', [EFormCategoryController::class, 'create'])->middleware(['permission'])->name('e_form_category_create');
+Route::get('e_form_category_index', [EFormCategoryController::class, 'index'])->middleware(['permission'])->name('e_form_category_index');
+Route::get('e_form_category_edit/{id}', [EFormCategoryController::class, 'edit'])->middleware(['permission'])->name('e_form_category_edit');
 Route::post('e_form_category_create', [EFormCategoryController::class, 'store'])->name('e_form_category_create');
-Route::get('e_form_category_index', [EFormCategoryController::class, 'index'])->name('e_form_category_index');
-Route::get('e_form_category_edit/{id}', [EFormCategoryController::class, 'edit'])->name('e_form_category_edit');
 Route::post('e_form_category_edit/{id}', [EFormCategoryController::class, 'update'])->name('e_form_category_edit');
 #endregion e form category
 
 #region e form product
-Route::get('e_form_product_create', [EFormProductController::class, 'create'])->name('e_form_product_create');
+Route::get('e_form_product_create', [EFormProductController::class, 'create'])->middleware(['permission'])->name('e_form_product_create');
+Route::get('e_form_product_index', [EFormProductController::class, 'index'])->middleware(['permission'])->name('e_form_product_index');
+Route::get('e_form_product_edit/{id}', [EFormProductController::class, 'edit'])->middleware(['permission'])->name('e_form_product_edit');
 Route::post('e_form_product_create', [EFormProductController::class, 'store'])->name('e_form_product_create');
-Route::get('e_form_product_index', [EFormProductController::class, 'index'])->name('e_form_product_index');
-Route::get('e_form_product_edit/{id}', [EFormProductController::class, 'edit'])->name('e_form_product_edit');
 Route::post('e_form_product_edit/{id}', [EFormProductController::class, 'update'])->name('e_form_product_edit');
 #endregion e form product
 
 #region Complaint type
-Route::get('complaint_type_create', [ComplaintTypeController::class, 'create'])->name('complaint_type_create');
+Route::get('complaint_type_create', [ComplaintTypeController::class, 'create'])->middleware(['permission'])->name('complaint_type_create');
+Route::get('complaint_type_index', [ComplaintTypeController::class, 'index'])->middleware(['permission'])->name('complaint_type_index');
+Route::get('complaint_type_edit/{id}', [ComplaintTypeController::class, 'edit'])->middleware(['permission'])->name('complaint_type_edit');
 Route::post('complaint_type_create', [ComplaintTypeController::class, 'store'])->name('complaint_type_create');
-Route::get('complaint_type_index', [ComplaintTypeController::class, 'index'])->name('complaint_type_index');
-Route::get('complaint_type_edit/{id}', [ComplaintTypeController::class, 'edit'])->name('complaint_type_edit');
 Route::post('complaint_type_edit/{id}', [ComplaintTypeController::class, 'update'])->name('complaint_type_edit');
 #endregion Complaint type
 
 #region Complaint management
-Route::get('complaint_create', [ComplaintManagementController::class, 'create'])->name('complaint_create');
+Route::get('complaint_create', [ComplaintManagementController::class, 'create'])->middleware(['permission'])->name('complaint_create');
+Route::get('complaint_index', [ComplaintManagementController::class, 'index'])->middleware(['permission'])->name('complaint_index');
+Route::get('complaint_show/{id}', [ComplaintManagementController::class, 'show'])->middleware(['permission'])->name('complaint_show');
 Route::get('get_product_category', [ComplaintManagementController::class, 'productCategory'])->name('get_product_category');
 Route::get('get_complaint_type', [ComplaintManagementController::class, 'complaintType'])->name('get_complaint_type');
 Route::post('complaint_create', [ComplaintManagementController::class, 'store'])->name('complaint_create');
-Route::get('complaint_index', [ComplaintManagementController::class, 'index'])->name('complaint_index');
 Route::get('get_unit_groups', [ComplaintManagementController::class, 'unitGroup'])->name('get_unit_groups');
-Route::get('complaint_show/{id}', [ComplaintManagementController::class, 'show'])->name('complaint_show');
 Route::post('complaint_edit/{id}', [ComplaintManagementController::class, 'update'])->name('complaint_edit');
 Route::post('update_progress/{id}', [ComplaintManagementController::class, 'updateProgress'])->name('update_progress');
 #endregion Complaint management
 
 #region E Form type
-Route::resource('e_form_type', EFormTypeController::class);
+Route::resource('e_form_type', EFormTypeController::class)->middleware(['permission']);
 #endregion E Form type
 
 #region Escalation Group
-Route::resource('escalation_group', EscalationGroupController::class);
+Route::resource('escalation_group', EscalationGroupController::class)->middleware(['permission']);
 #endregion Escalation Group
 
 #region Daily Calendar
-Route::resource('daily_calendar', DailyCalendarController::class);
+Route::resource('daily_calendar', DailyCalendarController::class)->middleware(['permission']);
 #endregion Daily Calendar
 
 #region Week End
-Route::resource('week_end', WeekendsCalendarController::class);
+Route::resource('week_end', WeekendsCalendarController::class)->middleware(['permission']);
 #endregion Week End
 
 #region Week End
-Route::resource('holidays', HolidaysCalendarController::class);
+Route::resource('holidays', HolidaysCalendarController::class)->middleware(['permission']);
 #endregion Week End
 
 #region Template
-Route::resource('template', TemplateController::class);
+Route::resource('template', TemplateController::class)->middleware(['permission']);
 #endregion Template
 
 #region Unit
-Route::resource('unit', UnitController::class);
+Route::resource('unit', UnitController::class)->middleware(['permission']);
 #endregion Unit
 
 #region Group
-Route::resource('group', GroupController::class);
+Route::resource('group', GroupController::class)->middleware(['permission']);
 #endregion Group
 
 #region User
-Route::resource('user', UserController::class);
+Route::resource('user', UserController::class)->middleware(['permission']);
 Route::get('user_status/{id}', [UserController::class, 'status'])->name('user_status');
 Route::get('get_all_regions', [UserController::class, 'GetAllRegion'])->name('get_all_regions');
 Route::get('get_unit_regions', [UserController::class, 'GetUnitRegion'])->name('get_unit_regions');
 #endregion User
 
 #region Role
-Route::resource('role', RoleController::class);
+Route::resource('role', RoleController::class)->middleware(['permission']);
 #endregion Role
 
 #region E From management
-Route::get('e_form_create', [EFormManagementController::class, 'create'])->name('e_form_create');
+Route::get('e_form_create', [EFormManagementController::class, 'create'])->middleware(['permission'])->name('e_form_create');
+Route::get('e_form_index', [EFormManagementController::class, 'index'])->middleware(['permission'])->name('e_form_index');
+Route::get('e_form_show/{id}', [EFormManagementController::class, 'show'])->middleware(['permission'])->name('e_form_show');
 Route::post('e_form_store', [EFormManagementController::class, 'store'])->name('e_form_store');
 Route::get('get_e_form_type', [EFormManagementController::class, 'eFormType'])->name('get_e_form_type');
-Route::get('e_form_index', [EFormManagementController::class, 'index'])->name('e_form_index');
-Route::get('e_form_show/{id}', [EFormManagementController::class, 'show'])->name('e_form_show');
 Route::post('e_form_edit/{id}', [EFormManagementController::class, 'update'])->name('e_form_edit');
 Route::post('e_form_update_progress/{id}', [EFormManagementController::class, 'updateProgress'])->name('e_form_update_progress');
 #endregion E From management
 
 #region Announcement management
-Route::get('announcement_create', [AnnouncementController::class, 'create'])->name('announcement_create');
+Route::get('announcement_create', [AnnouncementController::class, 'create'])->middleware(['permission'])->name('announcement_create');
+Route::get('announcement_index', [AnnouncementController::class, 'index'])->middleware(['permission'])->name('announcement_index');
+Route::get('announcement_edit/{id}', [AnnouncementController::class, 'edit'])->middleware(['permission'])->name('announcement_edit');
 Route::post('announcement_submit', [AnnouncementController::class, 'store'])->name('announcement_submit');
 Route::get('delete_annoucement', [AnnouncementController::class, 'destroyShow'])->name('delete_annoucement');
 Route::post('announcement_delete/{id}', [AnnouncementController::class, 'destroy'])->name('announcement_delete');
-Route::get('announcement_index', [AnnouncementController::class, 'index'])->name('announcement_index');
-Route::get('announcement_edit/{id}', [AnnouncementController::class, 'edit'])->name('announcement_edit');
 Route::post('announcement_update/{id}', [AnnouncementController::class, 'update'])->name('announcement_update');
 #endregion Announcement management
 
@@ -223,18 +238,6 @@ Route::get('crm_account_unlock', function () {
 
 Route::get('side_bar_view', [SideBarController::class, 'index'])->name('side_bar_view');
 
-Route::middleware(['auth'])->group(function () {
-#region Customer Search
-Route::get('customer_search', function () {
-    return view('admin/customer-search/customer_search');
-})->name('customer_search');
-Route::get('customer_info', function () {
-    return view('admin/customer-search/customer_info');
-})->name('customer_info');
-Route::get('debit_card_info', function () {
-    return view('admin/customer-search/debit_card_info');
-})->name('debit_card_info');
-#endregion Customer Search
-});
+
 
 require __DIR__.'/auth.php';
