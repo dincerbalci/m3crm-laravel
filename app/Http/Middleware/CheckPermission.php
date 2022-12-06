@@ -40,10 +40,6 @@ class CheckPermission
             {
                 $endName ='view'; 
             }
-            if($endName == 'dashboard')
-            {
-                return $next($request);
-            }
             if($userType != 1)
             {
                 $permission=$user->GetPermissions($pageName, $endName,$userType);

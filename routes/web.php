@@ -46,10 +46,9 @@ Route::get('permission_error', function () {
     return view('error-page/permission_error');
 })->middleware(['auth'])->name('permission_error');
 
+Route::get('dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
+
 Route::middleware(['auth','permission'])->group(function () {
-
-Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
-
 
 #region complaint category
 Route::get('complaint_category_create', [ComplaintCategoryController::class, 'create'])->name('complaint_category_create');
@@ -166,21 +165,7 @@ Route::get('announcement_edit/{id}', [AnnouncementController::class, 'edit'])->n
 Route::post('announcement_update/{id}', [AnnouncementController::class, 'update'])->name('announcement_update');
 #endregion Announcement management
 
-#region Customer Search
-Route::get('customer_search', function () {
-    return view('admin/customer-search/customer_search');
-})->name('customer_search');
-Route::get('customer_info', function () {
-    return view('admin/customer-search/customer_info');
-})->name('customer_info');
-Route::get('debit_card_info', function () {
-    return view('admin/customer-search/debit_card_info');
-})->name('debit_card_info');
-#endregion Customer Search
-
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
-
-
 
 Route::get('lead_create', function () {
     return view('admin/lead/lead_create');
@@ -191,6 +176,7 @@ Route::get('lead_index', function () {
 })->name('lead_index');
 
 });
+
 Route::get('report_agent_activity_logs', function () {
     // return view('admin/lead/lead_index');
 })->name('report_agent_activity_logs');
@@ -237,195 +223,18 @@ Route::get('crm_account_unlock', function () {
 
 Route::get('side_bar_view', [SideBarController::class, 'index'])->name('side_bar_view');
 
-
-
-
-
-
-
-
-// Route::get('e_form_create', function () {
-//     return view('admin/e-form/e_form_create');
-// })->name('e_form_create');
-
-// Route::get('e_form_index', function () {
-//     return view('admin/e-form/e_form_index');
-// })->name('e_form_index');
-
-// Route::get('e_form_type_create', function () {
-//     return view('admin/e-form/e_form_type_create');
-// })->name('e_form_type_create');
-
-// Route::get('e_form_type_index', function () {
-//     return view('admin/e-form/e_form_type_index');
-// })->name('e_form_type_index');
-
-// Route::get('e_form_type_edit', function () {
-//     return view('admin/e-form/e_form_type_edit');
-// })->name('e_form_type_edit');
-
-
-
-// Route::get('complaint_type_create', function () {
-//     return view('admin/complaint/complaint_type_create');
-// })->name('complaint_type_create');
-
-// Route::get('complaint_type_index', function () {
-//     return view('admin/complaint/complaint_type_index');
-// })->name('complaint_type_index');
-
-// Route::get('complaint_type_edit', function () {
-//     return view('admin/complaint/complaint_type_edit');
-// })->name('complaint_type_edit');
-
-// Route::get('user_create', function () {
-//     return view('admin/administration/user_create');
-// })->name('user_create');
-
-// Route::get('user_index', function () {
-//     return view('admin/administration/user_index');
-// })->name('user_index');
-// Route::get('user_edit', function () {
-//     return view('admin/administration/user_edit');
-// })->name('user_edit');
-
-// Route::get('group_edit', function () {
-//     return view('admin/group/group_edit');
-// })->name('group_edit');
-
-// Route::get('group_create', function () {
-//     return view('admin/group/group_create');
-// })->name('group_create');
-
-// Route::get('group_index', function () {
-//     return view('admin/group/group_index');
-// })->name('group_index');
-
-// Route::get('role_index', function () {
-//     return view('admin/role/role_index');
-// })->name('role_index');
-
-// Route::get('role_create', function () {
-//     return view('admin/role/role_create');
-// })->name('role_create');
-
-// Route::get('role_edit', function () {
-//     return view('admin/role/role_edit');
-// })->name('role_edit');
-
-// Route::get('unit_index', function () {
-//     return view('admin/organization-unit/unit_index');
-// })->name('unit_index');
-
-// Route::get('unit_create', function () {
-//     return view('admin/organization-unit/unit_create');
-// })->name('unit_create');
-
-// Route::get('unit_edit', function () {
-//     return view('admin/organization-unit/unit_edit');
-// })->name('unit_edit');
-
-// Route::get('template_index', function () {
-//     return view('admin/template/template_index');
-// })->name('template_index');
-
-// Route::get('template_create', function () {
-//     return view('admin/template/template_create');
-// })->name('template_create');
-
-// Route::get('template_edit', function () {
-//     return view('admin/template/template_edit');
-// })->name('template_edit');
-
-
-// Route::get('calender_index', function () {
-//     return view('admin/calender/calender_index');
-// })->name('calender_index');
-
-// Route::get('calender_daily_create', function () {
-//     return view('admin/calender/calender_daily_create');
-// })->name('calender_daily_create');
-
-// Route::get('calender_daily_edit', function () {
-//     return view('admin/calender/calender_daily_edit');
-// })->name('calender_daily_edit');
-
-// Route::get('calender_weekend_create', function () {
-//     return view('admin/calender/calender_weekend_create');
-// })->name('calender_weekend_create');
-
-// Route::get('calender_weekend_edit', function () {
-//     return view('admin/calender/calender_weekend_edit');
-// })->name('calender_weekend_edit');
-
-// Route::get('calender_eventholiday_create', function () {
-//     return view('admin/calender/calender_eventholiday_create');
-// })->name('calender_eventholiday_create');
-
-// Route::get('calender_eventholiday_edit', function () {
-//     return view('admin/calender/calender_eventholiday_edit');
-// })->name('calender_eventholiday_edit');
-
-// Route::get('escalation_group_create', function () {
-//     return view('admin/escalation-group/escalation_group_create');
-// })->name('escalation_group_create');
-
-// Route::get('escalation_group_index', function () {
-//     return view('admin/escalation-group/escalation_group_index');
-// })->name('escalation_group_index');
-
-// Route::get('escalation_group_edit', function () {
-//     return view('admin/escalation-group/escalation_group_edit');
-// })->name('escalation_group_edit');
-
-// Route::get('complaint_category_create', function () {
-//     return view('admin/complaint-category/complaint_category_create');
-// })->name('complaint_category_create');
-
-// Route::get('complaint_category_edit', function () {
-//     return view('admin/complaint-category/complaint_category_edit');
-// })->name('complaint_category_edit');
-
-// Route::get('complaint_category_index', function () {
-//     return view('admin/complaint-category/complaint_category_index');
-// })->name('complaint_category_index');
-
-
-// Route::get('e_form_category_create', function () {
-//     return view('admin/e-form-category/e_form_category_create');
-// })->name('e_form_category_create');
-
-// Route::get('e_form_category_edit', function () {
-//     return view('admin/e-form-category/e_form_category_edit');
-// })->name('e_form_category_edit');
-
-// Route::get('e_form_category_index', function () {
-//     return view('admin/e-form-category/e_form_category_index');
-// })->name('e_form_category_index');
-
-// Route::get('complaint_product_create', function () {
-//     return view('admin/complaint-product/complaint_product_create');
-// })->name('complaint_product_create');
-
-// Route::get('complaint_product_edit', function () {
-//     return view('admin/complaint-product/complaint_product_edit');
-// })->name('complaint_product_edit');
-
-// Route::get('complaint_product_index', function () {
-//     return view('admin/complaint-product/complaint_product_index');
-// })->name('complaint_product_index');
-
-// Route::get('e_form_product_create', function () {
-//     return view('admin/e-form-product/e_form_product_create');
-// })->name('e_form_product_create');
-
-// Route::get('e_form_product_edit', function () {
-//     return view('admin/e-form-product/e_form_product_edit');
-// })->name('e_form_product_edit');
-
-// Route::get('e_form_product_index', function () {
-//     return view('admin/e-form-product/e_form_product_index');
-// })->name('e_form_product_index');
-
+Route::middleware(['auth'])->group(function () {
+#region Customer Search
+Route::get('customer_search', function () {
+    return view('admin/customer-search/customer_search');
+})->name('customer_search');
+Route::get('customer_info', function () {
+    return view('admin/customer-search/customer_info');
+})->name('customer_info');
+Route::get('debit_card_info', function () {
+    return view('admin/customer-search/debit_card_info');
+})->name('debit_card_info');
+#endregion Customer Search
+});
 
 require __DIR__.'/auth.php';
