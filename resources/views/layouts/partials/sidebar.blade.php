@@ -42,7 +42,6 @@
                     @if($module == $data->module)
                     <li>
                         <a href="{{route($sidebarMenu[$i]->page_name)}}" class="side-menu {{ Route::currentRouteName() == $sidebarMenu[$i]->page_name   ? 'side-menu--active' : '' }}">
-                            <div class="side-menu__icon"> <?php echo html_entity_decode($data->page_icon) ?>  </div>
                             <div class="side-menu__title"> {{$data->page_title}}</div>
                         </a>
                     </li>

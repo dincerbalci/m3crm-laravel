@@ -41,7 +41,12 @@ Route::get('/', function () {
 //     return view('dashboard');
 // })->middleware(['auth'])->name('dashboard');
 
-Route::middleware(['auth'])->group(function () {
+
+Route::get('permission_error', function () {
+    return view('error-page/permission_error');
+})->middleware(['auth'])->name('permission_error');
+
+Route::middleware(['auth','permission'])->group(function () {
 
 Route::get('dashboard', [DashboardController::class, 'index'])->name('dashboard');
 
@@ -175,6 +180,8 @@ Route::get('debit_card_info', function () {
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
 
+
+
 Route::get('lead_create', function () {
     return view('admin/lead/lead_create');
 })->name('lead_create');
@@ -229,10 +236,6 @@ Route::get('crm_account_unlock', function () {
 })->name('crm_account_unlock');
 
 Route::get('side_bar_view', [SideBarController::class, 'index'])->name('side_bar_view');
-
-
-
-
 
 
 
