@@ -114,8 +114,91 @@ class AuthenticatedSessionController extends Controller
 					
 					$group_name = $checkuser[0]->group_name;
 					Session::put('session_id', $this->SessionLoginLogs(Session::get('login_id'), Session::get('user_name'), $user_agent, $userIp));
+					$sidebarMenu=$objUser->GetSidebarMenu($checkuser[0]->id,$checkuser[0]->user_type);
 					
-					Session::put('sidebar_menu', $objUser->GetSidebarMenu($checkuser[0]->id,$checkuser[0]->user_type));
+                    $dataArray=array();
+                    // $data=array();
+                    // $a=array();
+                    // $a['aa']='aa';
+                    // $a['a2a']='aa2';
+                    // array_push($data,$a);
+                    // $a=array();
+                    // $a['aa1']='aa';
+                    // $a['a2a2']='aa2';
+                    // array_push($data,$a);
+                    // $dataArray['E=form']=$data;
+                    // dd($dataArray);
+                    $i=0;
+                    while($i <  count($sidebarMenu)) 
+                    {
+                        $module=$sidebarMenu[$i]->module;
+                        $pageName=$sidebarMenu[$i]->page_name;
+                        $side=array();
+                        for($j=0; $j < count($sidebarMenu); $j++)
+                        {
+                            if($module == $sidebarMenu[$j]->module)
+                            {
+                                $str = strpos($sidebarMenu[$j]->page_title, '/');
+                                if($str == '')
+                                {
+                                    array_push($side,$sidebarMenu[$j]);
+                                }
+                                if($str != '')
+                                {
+                                    $pageTitle=explode('/',$sidebarMenu[$j]->page_title);
+                                    $pageModule=$pageTitle[1];
+                                    $report=array();
+                                    for($k=0; $k < count($sidebarMenu); $k++)
+                                    {
+                                        $str2 = strpos($sidebarMenu[$k]->page_title, '/');
+                                        if($str2 != '')
+                                        {
+
+                                            $pageTitleNew=explode('/',$sidebarMenu[$k]->page_title);
+                                            if($pageModule == $pageTitleNew[1])
+                                            {
+                                                $pageDate=array();
+                                                $pageDate['page_name']=$sidebarMenu[$k]->page_name;
+                                                $pageDate['page_title']=$pageTitleNew[0];
+                                                $pageDate['modules_icon']=$sidebarMenu[$k]->modules_icon;
+                                                $pageDate['parent_id']=$sidebarMenu[$k]->parent_id;
+                                                $pageDate['module_id']=$sidebarMenu[$k]->module_id;
+                                                $pageDate['module']=$sidebarMenu[$k]->module;
+                                                $pageDate['page_icon']=$sidebarMenu[$k]->page_icon;
+                                                array_push($report,$pageDate);
+                                            }
+                                        }
+                                        else
+                                        {
+                                            continue;
+                                        }
+                                    }
+                                    $side[$pageModule]=$report;
+                                }
+                                $i++;
+                            }
+                        }
+                        $dataArray[$module]=$side;
+                    }
+                    // dd($dataArray);
+                    Session::put('sidebar_menu', $dataArray);
+                    // foreach($dataArray AS $key => $data)
+                    // {
+
+                    //     foreach($data AS $key => $val)
+                    //     {
+                    //         if(is_numeric($key))
+                    //         {
+                    //         }
+                    //         else{                                 
+                    //             for ($i=0; $i < count($val); $i++) { 
+                    //             dd($val[$i]['page_title']);
+                                    
+                    //             }
+                    //         }
+                    //     }
+                    // }
+                    // dd($dataArray);
 					$this->ActivityLogs("Success Login Attempt [User Id:$userId, Group Name:$group_name, User IP:$userIp]");
 					// $output = "200";
 		            //print_r($_SESSION['sidebar_menu']);die;

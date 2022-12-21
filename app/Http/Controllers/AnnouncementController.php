@@ -4,7 +4,11 @@ namespace App\Http\Controllers;
 
 use App\Models\Announcement;
 use Illuminate\Http\Request;
+use App\Models\Group;
+use App\Models\User;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
+use Illuminate\Support\Facades\File;
 use App\Http\Requests\AnnouncementRequest;
 
 class AnnouncementController extends Controller
@@ -34,7 +38,10 @@ class AnnouncementController extends Controller
      */
     public function create()
     {
-        return view('admin/announcement/announcement_create');
+        $userId=Auth::user()->id;
+        $group=Group::where('isactive','1')->where('id','!=','1')->get();
+        $user=User::where('user_type','!=','1')->where('id','!=',$userId)->get();
+        return view('admin/announcement/announcement_create',compact('group','user'));
     }
 
     /**
@@ -46,11 +53,28 @@ class AnnouncementController extends Controller
     public function store(AnnouncementRequest $request)
     {
         $loginId = Session::get('login_id');
+        $userId='';
+        $path='';
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+                $file_name = time() . $file->getClientOriginalName();
+                $size = $file->getSize();
+                $destinationPath = base_path('public/uploads/messagefile/' . $loginId);
+                $file->move($destinationPath, $file_name);
+                $path = 'uploads/messagefile/' . $loginId . "/" . $file_name;
+        }
+        if(isset($request->forward_to_user))
+        {
+            $userId=implode(',',$request->forward_to_user);
+        }
         $data = Announcement::create([
             'user_id' => $loginId,
             'subject' => $request->subject,
             'description' => $request->description,
             'type' => $request->type,
+            'forward_to_user_type' => $request->forward_to_user_type,
+            'forward_to_user' => $userId,
+            'path' => $path,
             'is_active' => $request->is_active,
             'created_at' => GetCurrentDate(),
         ]);
@@ -77,8 +101,11 @@ class AnnouncementController extends Controller
      */
     public function edit(int $id)
     {
+        $userId=Auth::user()->id;
         $announcement=Announcement::find($id);
-        return view('admin/announcement/announcement_edit',compact('announcement'));
+        $group=Group::where('isactive','1')->where('id','!=','1')->get();
+        $user=User::where('user_type','!=','1')->where('id','!=',$userId)->get();
+        return view('admin/announcement/announcement_edit',compact('announcement','group','user'));
     }
 
     /**
@@ -90,9 +117,27 @@ class AnnouncementController extends Controller
      */
     public function update(AnnouncementRequest $request, int $id)
     {
+        $loginId = Session::get('login_id');
         $announcement=Announcement::find($id);
+        if ($request->hasFile('file')) {
+            $file = $request->file('file');
+            File::delete($announcement->path);
+                $file_name = time() . $file->getClientOriginalName();
+                $size = $file->getSize();
+                $destinationPath = base_path('public/uploads/messagefile/' . $loginId);
+                $file->move($destinationPath, $file_name);
+                $path = 'uploads/messagefile/' . $loginId . "/" . $file_name;
+                $announcement['path']=$path;
+
+        }
+        if(isset($request->forward_to_user))
+        {
+            $userId=implode(',',$request->forward_to_user);
+            $announcement['forward_to_user']=$userId;
+        }
         $announcement['subject']=$request->subject;
         $announcement['description']=$request->description;
+        $announcement['forward_to_user_type']=$request->forward_to_user_type;
         $announcement['type']=$request->type;
         $announcement['is_active']=$request->is_active;
         $announcement['updated_at']=GetCurrentDate();
@@ -109,6 +154,7 @@ class AnnouncementController extends Controller
     public function destroy(int $id)
     {
         $data = Announcement::find($id);
+        File::delete($data->path);
         $data->delete();
         return redirect()->back();
     }

@@ -60,6 +60,8 @@
                    
         });
     }
+    $('.side-menu--active').parent().parent().addClass('side-menu__sub-open');
+    $('.side-menu--active').parent().parent().parent().children(1).addClass('side-menu--active');
 </script>
 
 

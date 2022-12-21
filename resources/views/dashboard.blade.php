@@ -25,7 +25,7 @@
                                                 <div class="report-box__indicator bg-success tooltip cursor-pointer" title="33% Higher than last month"> 33% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div> --}}
                                         </div>
-                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format('4710')}}</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format($result[0]->total_complaints)}}</div>
                                         <div class="text-base text-slate-500 mt-1">TOTAL Complaints</div>
                                     </div>
                                 </div>
@@ -40,7 +40,7 @@
                                             </div> --}}
                                         </div>
                                             
-                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format('3721')}}</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format($result[0]->closed_complaints)}}</div>
                                         <div class="text-base text-slate-500 mt-1">Closed Complaints</div>
                                     </div>
                                 </div>
@@ -54,7 +54,7 @@
                                                 <div class="report-box__indicator bg-success tooltip cursor-pointer" title="12% Higher than last month"> 12% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div> --}}
                                         </div>
-                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format('2149')}}</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format($result[0]->total_eforms)}}</div>
                                         <div class="text-base text-slate-500 mt-1">TOTAL E-Forms</div>
                                     </div>
                                 </div>
@@ -68,7 +68,7 @@
                                                 <div class="report-box__indicator bg-success tooltip cursor-pointer" title="22% Higher than last month"> 22% <i data-lucide="chevron-up" class="w-4 h-4 ml-0.5"></i> </div>
                                             </div> --}}
                                         </div>
-                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format('1500')}}</div>
+                                        <div class="text-3xl font-medium leading-8 mt-6">{{number_format($result[0]->closed_eforms)}}</div>
                                         <div class="text-base text-slate-500 mt-1">Closed E-Forms</div>
                                     </div>
                                 </div>
@@ -252,7 +252,7 @@
           datasets: [
             {
               label: "",
-              data: [4710, 3721, 989],
+              data: [{!! $result[0]->total_complaints !!}, {!! $result[0]->closed_complaints !!}, {!! $result[0]->total_complaints-$result[0]->closed_complaints !!}],
               backgroundColor: [
                 "rgb(23 90 114)",
                 "rgb(200 112 13)",
@@ -278,7 +278,7 @@
     datasets: [
       {
         label: "",
-        data: [2149, 1500, 649],
+        data: [{!! $result[0]->total_eforms !!}, {!! $result[0]->closed_eforms !!}, {!! $result[0]->total_eforms-$result[0]->closed_eforms !!}],
         backgroundColor: [
             "rgb(23 90 114)",
             "rgb(200 112 13)",

@@ -17,3 +17,14 @@ ALTER TABLE `m3crm`.`tbl_pages`
 
 ALTER TABLE `m3crm`.`tbl_modules`   
   ADD COLUMN `modules_icon` TEXT NULL AFTER `isactive`;
+/////////////////////////////// 12/20/2022 /////////////////////////////////////////////////////
+
+  ALTER TABLE `m3crm`.`tbl_announcements`   
+  ADD COLUMN `forward_to` VARCHAR(255) NULL   COMMENT 'if type=message then forward_to has user_id if type=news then forward_to has user_type' AFTER `updated_at`;
+
+  ALTER TABLE `laravel_m3crm`.`tbl_announcements`   
+  CHANGE `forward_to` `forward_to_user` VARCHAR(255) CHARSET latin1 COLLATE latin1_swedish_ci NULL,
+  ADD COLUMN `forward_to_user_type` VARCHAR(255) NULL AFTER `forward_to_user`,
+  ADD COLUMN `path` VARCHAR(255) NULL AFTER `forward_to_user_type`;
+
+

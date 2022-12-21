@@ -10,65 +10,51 @@
                     </a>
                 </li>
             </li>
-            {{-- onclick="sideBarView('19')" --}}
-            @php  $sidebarMenu=Session::get('sidebar_menu'); 
-            $i=0;
-           @endphp
-           @while($i <  count($sidebarMenu)) 
-           @php $module=$sidebarMenu[$i]->module; @endphp
-           @php $pageName=$sidebarMenu[$i]->page_name;
-            $active='';
-            $activeSub='';
-           @endphp
-           @for($j=0; $j < count($sidebarMenu); $j++)
-           @php 
-            if(Route::currentRouteName() == $sidebarMenu[$j]->page_name && $module == $sidebarMenu[$j]->module)
-            {
-                $active='side-menu--active';
-                $activeSub='side-menu__sub-open';
-            }
-           @endphp
-           @endfor
+            {{-- onclick="sideBarView('19')"   --}}
+            @php  $sidebarMenu=Session::get('sidebar_menu');
+          
+            @endphp
+            @foreach($sidebarMenu AS $key => $data)
             <li>
-                <a href="javascript:;" class="side-menu  {{$active}}"  onclick="sideBarView('{{$sidebarMenu[$i]->parent_id}}')">
-                    <div class="side-menu__icon"> <?php echo html_entity_decode($sidebarMenu[$i]->modules_icon) ?> </div>
+                <a href="javascript:;" class="side-menu  "  onclick="sideBarView('{{$data[0]->parent_id}}')">
+                    <div class="side-menu__icon"> <?php echo html_entity_decode($data[0]->modules_icon) ?> </div>
                     <div class="side-menu__title">
-                        {{$sidebarMenu[$i]->module}}
+                        {{$key}}
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
-                <ul class="{{ $activeSub }}">
-                    @foreach ($sidebarMenu as $data)
-                    @if($module == $data->module)
+                <ul >
+                    @foreach($data AS $key => $val)
+                    @if(is_numeric($key))
                     <li>
-                        <a href="{{route($sidebarMenu[$i]->page_name)}}" class="side-menu {{ Route::currentRouteName() == $sidebarMenu[$i]->page_name   ? 'side-menu--active' : '' }}">
-                            <div class="side-menu__title"> {{$data->page_title}}</div>
+                        <a href="{{route($val->page_name)}}" class="side-menu {{ Route::currentRouteName() == $val->page_name  ? 'side-menu--active' : '' }}">
+                            <div class="side-menu__title">{{$val->page_title}}</div>
                         </a>
                     </li>
-                    @php  $i++; @endphp
+                    @else
+                    <li>
+                        <a href="javascript:;" class="side-menu  "  >
+                            <div class="side-menu__title">
+                                {{$key}}
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            @for ($i=0; $i < count($val); $i++)
+                            @php $pageName=$val[$i]['page_name'] @endphp
+                            <li>
+                                <a href="{{route($pageName)}}" class="side-menu {{ Route::currentRouteName() == $pageName  ? 'side-menu--active' : '' }}">
+                                    <div class="side-menu__title">{{$val[$i]['page_title']}}</div>
+                                </a>
+                            </li>
+                            @endfor
+                        </ul>
+                    </li>
                     @endif
                     @endforeach
-                    {{-- <li>
-                        <a href="{{route('e_form_index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title"> View E-Form </div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('e_form_type.create')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title"> Add E-Form Type</div>
-                        </a>
-                    </li>
-                    <li>
-                        <a href="{{route('e_form_type.index')}}" class="side-menu">
-                            <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
-                            <div class="side-menu__title"> View E-Form Type</div>
-                        </a>
-                    </li> --}}
                 </ul>
             </li>
-           @endwhile
+            @endforeach
 
            <li>
             <a href="javascript:;" class="side-menu">
@@ -526,4 +512,5 @@
             
         </ul>
     </nav>
+
    

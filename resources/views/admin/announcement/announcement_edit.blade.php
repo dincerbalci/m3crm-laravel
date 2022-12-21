@@ -20,18 +20,39 @@
                         Edit Message & Announcement
                     </h2>
                 </div>
-                <form  method="POST" action="{{ route('announcement_update',$announcement->id) }}" >
+                <form  method="POST" action="{{ route('announcement_update',$announcement->id) }}" enctype="multipart/form-data">
                     @csrf
                 <div id="inline-form" class="p-5">
                     <div class="preview">
                         <div class="grid grid-cols-12 gap-2">
                             <div>
                             <label for="regular-form-1" class="form-label">Type<span style="color: red">*</span></label>
-                                <select data-placeholder="Select your favorite actors" name="type" class="tom-select w-full tomselected" id="tomselect-1" tabindex="-1" hidden="hidden" required>
+                                <select data-placeholder="Select your favorite actors" id="type" name="type" class="tom-select w-full tomselected" id="tomselect-1" tabindex="-1" hidden="hidden" required onchange="showAndHideDiv()">
                                     <option value="news" {{$announcement->type == 'news' ? 'Selected' : '' }}>News</option>
                                     <option value="message" {{$announcement->type == 'message' ? 'Selected' : '' }}>Message</option>
                                 </select>
                             </div>
+                            <div id="news">
+                                <label for="regular-form-1" class="form-label">Group<span style="color: red">*</span></label>
+                                    <select data-placeholder="Select your favorite actors" name="forward_to_user_type" class="tom-select w-full tomselected" id="tomselect-1" tabindex="-1" hidden="hidden" required>
+                                        @for ($i = 0; $i < count($group); $i++) 
+                                        <option value="{{$group[$i]->id}}" {{$announcement->forward_to_user_type == $group[$i]->id ? 'Selected' : ''}}>{{ucwords($group[$i]->group_name)}}</option>
+                                        @endfor
+                                    </select>
+                                </div>
+                                <div id="message">
+                                    <label for="regular-form-1" class="form-label">Users<span style="color: red">*</span></label>
+                                        <select data-placeholder="Select your favorite actors" name="forward_to_user[]" class="tom-select w-full tomselected" id="tomselect-1" multiple tabindex="-1" hidden="hidden" required>
+                                            @for ($i = 0; $i < count($user); $i++) 
+                                            @php $users=explode(',',$announcement->forward_to_user) @endphp 
+                                            <option value="{{$user[$i]->id}}" {{in_array($user[$i]->id, $users) ? "Selected" : ''}}>{{ucwords($user[$i]->first_name)}} {{ucwords($user[$i]->last_name)}}</option>
+                                            @endfor
+                                        </select>
+                                </div>
+                                <div id="file"> 
+                                    <label for="regular-form-1" class="form-label">File<span style="color: red">*</span></label>
+                                    <input type="file" class="form-control col-span-4" name="file" placeholder="Subject" aria-label="default input inline 2" >
+                                </div>
                             <div>
                             <label for="regular-form-1" class="form-label">Subject<span style="color: red">*</span></label>
                             <input type="text" class="form-control col-span-4" value="{{$announcement->subject}}" name="subject" placeholder="Subject" aria-label="default input inline 2" required>
@@ -55,8 +76,42 @@
      
      
     </div>
-@push('scripts')
-
-@endpush
+    @push('scripts')
+    <script>
+        showAndHideDiv()
+        function showAndHideDiv()
+        {
+            $type=$("#type").val();
+            if($type == 'news')
+            {
+                $("#news").show();
+                $("#message").hide();
+                $("#file").hide();
+               
+                $("#news *").prop('disabled',false);
+                $("#message *").prop('disabled',true);
+                $("#file *").prop('disabled',true);
+            }
+            else if($type == 'message')
+            {
+                $("#news").hide()
+                $("#message").show()
+                $("#file").show()
+                $("#news *").prop('disabled',true);
+                $("#message *").prop('disabled',false);
+                $("#file *").prop('disabled',false);
+            }
+            else
+            {
+                $("#news").hide()
+                $("#message").hide()
+                $("#file").hide()
+                $("#news *").prop('disabled',true);
+                $("#message *").prop('disabled',true);
+                $("#file *").prop('disabled',true);
+            }
+        }
+    </script>
+    @endpush
 
 @endsection
