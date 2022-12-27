@@ -11,7 +11,6 @@ class DashboardController extends Controller
 {
     public function index()
     {
-        dd('aa');
         $unitId = Session::get('unit_id');
         $userType = Session::get('user_type');
         $loginId = Session::get('login_id');
@@ -23,6 +22,7 @@ class DashboardController extends Controller
         ->when($userType != "1", function ($query) use ($loginId) {
             return $query->where("login_id",$loginId);
         })->orderBy('id', 'desc')->limit(10)->get();
+        dd('aa');
         // if ($userType == 1 || $userType == 3) {
         //    $result= DB::select(DB::raw("SELECT
         //     (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
