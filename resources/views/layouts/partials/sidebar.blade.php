@@ -32,28 +32,10 @@
                         </a>
                     </li>
                     @else
-                    <li>
-                        <a href="javascript:;" class="side-menu  "  >
-                            <div class="side-menu__title">
-                                {{$key}}
-                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
-                            </div>
-                        </a>
-                        <ul class="">
-                            @for ($i=0; $i < count($val); $i++)
-                            @php $pageName=$val[$i]['page_name'] @endphp
-                            <li>
-                                <a href="{{route($pageName)}}" class="side-menu {{ Route::currentRouteName() == $pageName  ? 'side-menu--active' : '' }}">
-                                    <div class="side-menu__title">{{$val[$i]['page_title']}}</div>
-                                </a>
-                            </li>
-                            @endfor
-                        </ul>
-                    </li>
+                    
                     @endif
                     @endforeach
                 </ul>
-                @dd($data);
             </li>
             @endforeach
 
