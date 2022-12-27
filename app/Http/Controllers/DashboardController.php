@@ -112,7 +112,7 @@ class DashboardController extends Controller
             (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
             (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS closed_eforms"));
         }
-        dd($agentActivityLogs);
+        dd($news);
 
         return view('dashboard',compact('message','news','agentActivityLogs','result'));
     }
