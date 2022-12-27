@@ -218,7 +218,7 @@
             </div>
           
         </div>
-        @dd('dawna');
+        
     @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
@@ -304,4 +304,5 @@
       </script>
 @endpush
 
+@dd('dawna');
 @endsection
