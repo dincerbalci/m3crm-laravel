@@ -23,7 +23,6 @@
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
-                @dd($data);
                 <ul >
                     @foreach($data AS $key => $val)
                     @if(is_numeric($key))
@@ -54,6 +53,7 @@
                     @endif
                     @endforeach
                 </ul>
+                @dd($data);
             </li>
             @endforeach
 
