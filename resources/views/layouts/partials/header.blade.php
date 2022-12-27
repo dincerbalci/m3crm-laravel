@@ -1162,7 +1162,7 @@ License: You must have a valid license purchased only from themeforest(the above
 </div>
         <!-- END: Top Bar -->
             <!--begin::Aside-->
-            {{-- @include('layouts.partials.sidebar') --}}
+            @include('layouts.partials.sidebar')
 
            
          

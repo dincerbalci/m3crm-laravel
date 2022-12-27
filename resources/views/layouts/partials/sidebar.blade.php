@@ -12,7 +12,7 @@
             </li>
             {{-- onclick="sideBarView('19')"   --}}
             @php  $sidebarMenu=Session::get('sidebar_menu');
-          
+            dd($sidebarMenu);
             @endphp
             @foreach($sidebarMenu AS $key => $data)
             <li>
