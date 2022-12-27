@@ -11,6 +11,7 @@ class DashboardController extends Controller
 {
     public function index()
     {
+        dd('aa');
         $unitId = Session::get('unit_id');
         $userType = Session::get('user_type');
         $loginId = Session::get('login_id');
