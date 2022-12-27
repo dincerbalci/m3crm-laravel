@@ -12,7 +12,7 @@
             </li>
             {{-- onclick="sideBarView('19')"   --}}
             @php  $sidebarMenu=Session::get('sidebar_menu');
-            
+           
             @endphp
             @foreach($sidebarMenu AS $key => $data)
             <li>
@@ -23,6 +23,7 @@
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
                     </div>
                 </a>
+                @dd($data);
                 <ul >
                     @foreach($data AS $key => $val)
                     @if(is_numeric($key))
@@ -55,7 +56,7 @@
                 </ul>
             </li>
             @endforeach
-            @dd($sidebarMenu);
+
            <li>
             <a href="javascript:;" class="side-menu">
                 <div class="side-menu__icon"><i data-lucide="zap" class="block mx-auto"></i>  </div>
