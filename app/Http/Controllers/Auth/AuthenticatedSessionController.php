@@ -115,7 +115,7 @@ class AuthenticatedSessionController extends Controller
 					$group_name = $checkuser[0]->group_name;
 					Session::put('session_id', $this->SessionLoginLogs(Session::get('login_id'), Session::get('user_name'), $user_agent, $userIp));
 					$sidebarMenu=$objUser->GetSidebarMenu($checkuser[0]->id,$checkuser[0]->user_type);
-					
+					Session::put('sidebar_menu_box', $sidebarMenu);
                     $dataArray=array();
                     // $data=array();
                     // $a=array();

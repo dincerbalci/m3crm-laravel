@@ -11,7 +11,7 @@ class SideBarController extends Controller
     {
         $dataSiderBarArr=[];
         $parentId=$request->parentId;
-        $sidebarMenu=Session::get('sidebar_menu');
+        $sidebarMenu=Session::get('sidebar_menu_box');
         for ($i=0; $i < count($sidebarMenu); $i++) { 
             if($sidebarMenu[$i]->parent_id == $parentId)
             {
