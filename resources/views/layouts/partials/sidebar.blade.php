@@ -12,12 +12,12 @@
             </li>
             {{-- onclick="sideBarView('19')"   --}}
             @php  $sidebarMenu=Session::get('sidebar_menu');
-           
+          
             @endphp
             @foreach($sidebarMenu AS $key => $data)
             <li>
-                <a href="javascript:;" class="side-menu  "  onclick="sideBarView('{{$data[0]->parent_id}}')">
-                    <div class="side-menu__icon"> <?php echo html_entity_decode($data[0]->modules_icon) ?> </div>
+                <a href="javascript:;" class="side-menu  "  onclick="sideBarView('{{isset($data[0]->parent_id) ? $data[0]->parent_id : 26}}')">
+                    <div class="side-menu__icon"> <?php echo isset($data[0]->modules_icon) ? html_entity_decode($data[0]->modules_icon) : '<i data-lucide="archive" class="block mx-auto"></i>' ?> </div>
                     <div class="side-menu__title">
                         {{$key}}
                         <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
@@ -32,7 +32,24 @@
                         </a>
                     </li>
                     @else
-                    
+                    <li>
+                        <a href="javascript:;" class="side-menu  "  >
+                            <div class="side-menu__title">
+                                {{$key}}
+                                <div class="side-menu__sub-icon "> <i data-lucide="chevron-down"></i> </div>
+                            </div>
+                        </a>
+                        <ul class="">
+                            @for ($i=0; $i < count($val); $i++)
+                            @php $pageName=$val[$i]['page_name'] @endphp
+                            <li>
+                                <a href="{{route($pageName)}}" class="side-menu {{ Route::currentRouteName() == $pageName  ? 'side-menu--active' : '' }}">
+                                    <div class="side-menu__title">{{$val[$i]['page_title']}}</div>
+                                </a>
+                            </li>
+                            @endfor
+                        </ul>
+                    </li>
                     @endif
                     @endforeach
                 </ul>
@@ -50,13 +67,13 @@
             <ul class="">
                 <li>
                     <a href="{{route('lead_create')}}" class="side-menu ">
-                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__icon"> </div>
                         <div class="side-menu__title">Add Leads</div>
                     </a>
                 </li>
                 <li>
                     <a href="{{route('lead_index')}}" class="side-menu">
-                        <div class="side-menu__icon"> <i data-lucide="activity"></i> </div>
+                        <div class="side-menu__icon"> </div>
                         <div class="side-menu__title">View Leads</div>
                     </a>
                 </li>

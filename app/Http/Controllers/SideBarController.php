@@ -18,6 +18,7 @@ class SideBarController extends Controller
                 array_push($dataSiderBarArr,$sidebarMenu[$i]);
             }
         }
+        // dd($dataSiderBarArr);
         return view('layouts/sidebar_box',compact('dataSiderBarArr'));
     }
 }
