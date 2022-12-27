@@ -1,6 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
+@dd('dawn');
  <!-- END: Side Menu -->
         <div class="grid grid-cols-12 gap-6">
             {{--   2xl:col-span-9 --}}
