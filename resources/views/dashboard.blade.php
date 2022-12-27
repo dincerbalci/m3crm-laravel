@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('content')
-@dd('dawn');
+
  <!-- END: Side Menu -->
         <div class="grid grid-cols-12 gap-6">
             {{--   2xl:col-span-9 --}}
@@ -218,7 +218,7 @@
             </div>
           
         </div>
-    
+        @dd('dawna');
     @push('scripts')
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
