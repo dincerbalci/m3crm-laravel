@@ -22,97 +22,97 @@ class DashboardController extends Controller
         ->when($userType != "1", function ($query) use ($loginId) {
             return $query->where("login_id",$loginId);
         })->orderBy('id', 'desc')->limit(10)->get();
-        dd('aa');
-        // if ($userType == 1 || $userType == 3) {
-        //    $result= DB::select(DB::raw("SELECT
-        //     (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
-        //     (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,
-        //     (SELECT COUNT(1) FROM tbl_eform_add e INNER JOIN tbl_eform_type t ON t.id = e.eform_type_id) AS total_eforms,
-        //     (SELECT COUNT(1) FROM tbl_eform_add e INNER JOIN tbl_eform_type t ON t.id = e.eform_type_id WHERE e.status_id = 3) AS closed_eforms"));
-        // }
-        // elseif($userType == 2){
-        //     $result= DB::select(DB::raw("SELECT
-        //     (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
-        //     (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,
-        //     (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
-        //     (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND (e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId))) AS closed_eforms"));
-        // }
-        // elseif($userType == 5){
+        if ($userType == 1 || $userType == 3) {
+           $result= DB::select(DB::raw("SELECT
+            (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
+            (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,
+            (SELECT COUNT(1) FROM tbl_eform_add e INNER JOIN tbl_eform_type t ON t.id = e.eform_type_id) AS total_eforms,
+            (SELECT COUNT(1) FROM tbl_eform_add e INNER JOIN tbl_eform_type t ON t.id = e.eform_type_id WHERE e.status_id = 3) AS closed_eforms"));
+        }
+        elseif($userType == 2){
+            $result= DB::select(DB::raw("SELECT
+            (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
+            (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,
+            (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
+            (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND (e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId))) AS closed_eforms"));
+        }
+        elseif($userType == 5){
 
-        //     if($allComplaints == 1){
-        //         $queryPartAllComplaints44 = "(SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
-		// 			                            (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,";
-        //     }else{
-        //         $queryPartAllComplaints44 = "(SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
-        //                                         (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,";
-        //     }
-
-
-        //     if($allEforms == 1){
-        //         $queryPartAllEform44 = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
-        //                                    (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
-        //     }else{
-        //         $queryPartAllEform44 = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
-        //                                    (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS closed_eforms;";
-        //     }
-
-        //     if($unitId != 44){
-        //         $result= DB::select(DB::raw("SELECT $queryPartAllComplaints44 $queryPartAllEform44"));
-
-        //     }else{
-
-        //         if($allComplaints == 1){
-        //             $queryPartAllComplaints = "(SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
-		// 			                              (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,";
-        //         }else{
-        //             $queryPartAllComplaints = "(SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
-        //                                           (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,";
-        //         }
+            if($allComplaints == 1){
+                $queryPartAllComplaints44 = "(SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
+					                            (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,";
+            }else{
+                $queryPartAllComplaints44 = "(SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
+                                                (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,";
+            }
 
 
-        //         if($allEforms == 1){
-        //             $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
-        //                                      (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
-        //         }else{
-        //             $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
-        //                                      (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
-        //         }
-        //         $result= DB::select(DB::raw("SELECT $queryPartAllComplaints $queryPartAllEform"));
+            if($allEforms == 1){
+                $queryPartAllEform44 = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
+                                           (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
+            }else{
+                $queryPartAllEform44 = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
+                                           (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS closed_eforms;";
+            }
 
-        //     }
-        // }
+            if($unitId != 44){
+                $result= DB::select(DB::raw("SELECT $queryPartAllComplaints44 $queryPartAllEform44"));
 
-        // elseif($userType == 4){
+            }else{
 
-
-        //     if($allComplaints == 1){
-        //         $queryPartAllComplaints = "(SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
-		// 			                          (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,";
-        //     }else{
-        //         $query_part_all_complaints = "(SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
-        //                                       (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,";
-        //     }
+                if($allComplaints == 1){
+                    $queryPartAllComplaints = "(SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
+					                              (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,";
+                }else{
+                    $queryPartAllComplaints = "(SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
+                                                  (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,";
+                }
 
 
-        //     if($allEforms == 1){
-        //         $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
-        //                                  (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
-        //     }else{
-        //         $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
-        //                                  (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND (e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId))) AS closed_eforms;";
-        //     }
-        //     $result= DB::select(DB::raw("SELECT $queryPartAllComplaints $queryPartAllEform"));
+                if($allEforms == 1){
+                    $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
+                                             (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
+                }else{
+                    $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
+                                             (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
+                }
+                $result= DB::select(DB::raw("SELECT $queryPartAllComplaints $queryPartAllEform"));
+
+            }
+        }
+
+        elseif($userType == 4){
 
 
-        // }
+            if($allComplaints == 1){
+                $queryPartAllComplaints = "(SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id) AS total_complaints,
+					                          (SELECT COUNT(1) FROM tbl_complaints c INNER JOIN tbl_complaint_type t ON t.id = c.complaint_type_id WHERE status_id = 3) AS closed_complaints,";
+            }else{
+                $query_part_all_complaints = "(SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
+                                              (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,";
+            }
 
-        // else{
+
+            if($allEforms == 1){
+                $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE 1=1) AS total_eforms,
+                                         (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3) AS closed_eforms;";
+            }else{
+                $queryPartAllEform = "(SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
+                                         (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND (e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId))) AS closed_eforms;";
+            }
+            $result= DB::select(DB::raw("SELECT $queryPartAllComplaints $queryPartAllEform"));
+
+
+        }
+
+        else{
             $result= DB::select(DB::raw("SELECT
             (SELECT COUNT(1) FROM tbl_complaints c WHERE c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS total_complaints,
             (SELECT COUNT(1) FROM tbl_complaints c WHERE c.status_id = 3 AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId)) AS closed_complaints,
             (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS total_eforms,
             (SELECT COUNT(1) FROM tbl_eform_add e WHERE e.status_id = 3 AND e.unit_id IN ($unitId) OR e.from_unit_id IN ($unitId)) AS closed_eforms"));
-        // }
+        }
+        dd('aa');
 
         return view('dashboard',compact('message','news','agentActivityLogs','result'));
     }
