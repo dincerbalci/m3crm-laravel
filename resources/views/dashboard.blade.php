@@ -15,6 +15,7 @@
                             <a href="" class="ml-auto flex items-center text-primary"> <i data-lucide="refresh-ccw" class="w-4 h-4 mr-3"></i> Reload Data </a>
                         </div>
                         <div class="grid grid-cols-12 gap-6 mt-5">
+                            @if(isset($result[0]->total_complaints))
                             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                                 <div class="report-box zoom-in">
                                     <div class="box p-5">
@@ -30,6 +31,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(isset($result[0]->closed_complaints))
                             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                                 <div class="report-box zoom-in">
                                     <div class="box p-5">
@@ -45,6 +48,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(isset($result[0]->total_eforms))
                             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                                 <div class="report-box zoom-in">
                                     <div class="box p-5">
@@ -59,6 +64,8 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
+                            @if(isset($result[0]->closed_eforms))
                             <div class="col-span-12 sm:col-span-6 xl:col-span-3 intro-y">
                                 <div class="report-box zoom-in">
                                     <div class="box p-5">
@@ -73,8 +80,10 @@
                                     </div>
                                 </div>
                             </div>
+                            @endif
                         </div>
                     </div>
+                    @if(isset($result[0]->total_complaints))
                     <div class="col-span-12 lg:col-span-4 mt-8">
                         <div class="intro-y block sm:flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
@@ -85,6 +94,8 @@
                                 <canvas class="p-10" id="chartPie"></canvas>
                         </div>
                     </div>
+                    @endif
+                    @if(isset($result[0]->total_eforms))
                     <div class="col-span-12 lg:col-span-4 mt-8">
                         <div class="intro-y block sm:flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
@@ -95,6 +106,7 @@
                             <canvas class="p-10" id="chartDoughnut"></canvas>
                         </div>
                     </div>
+                    @endif
                     <div class="col-span-12 lg:col-span-4 mt-8">
                         <div class="intro-y block sm:flex items-center h-10">
                             <h2 class="text-lg font-medium truncate mr-5">
@@ -252,7 +264,7 @@
           datasets: [
             {
               label: "",
-              data: [{!! $result[0]->total_complaints !!}, {!! $result[0]->closed_complaints !!}, {!! $result[0]->total_complaints-$result[0]->closed_complaints !!}],
+              data: [{!! isset($result[0]->total_complaints) ? $result[0]->total_complaints : '' !!}, {!! isset($result[0]->closed_complaints) ? $result[0]->closed_complaints : '' !!}, {!! isset($result[0]->total_complaints) ? $result[0]->total_complaints-$result[0]->closed_complaints : '' !!}],
               backgroundColor: [
                 "rgb(23 90 114)",
                 "rgb(200 112 13)",
@@ -278,7 +290,7 @@
     datasets: [
       {
         label: "",
-        data: [{!! $result[0]->total_eforms !!}, {!! $result[0]->closed_eforms !!}, {!! $result[0]->total_eforms-$result[0]->closed_eforms !!}],
+        data: [{!! isset($result[0]->total_eforms) ? $result[0]->total_eforms : '' !!}, {!! isset($result[0]->closed_eforms) ? $result[0]->closed_eforms : '' !!}, {!! isset($result[0]->total_eforms) ? $result[0]->total_eforms-$result[0]->closed_eforms : '' !!}],
         backgroundColor: [
             "rgb(23 90 114)",
             "rgb(200 112 13)",

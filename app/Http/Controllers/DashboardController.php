@@ -18,6 +18,7 @@ class DashboardController extends Controller
         $message=Announcement::where('type','message')->where('is_active','1')->whereRaw("FIND_IN_SET('$loginId', forward_to_user)")->orderby('id','desc')->get();
         $allComplaints='';
         $allEforms='';
+        $queryPartAllComplaints='';
         $agentActivityLogs=DB::table('tbl_logs_activity_agent')->select(DB::raw('call_id,agent_id,description,action_on,created_datetime'))->where('call_id','!=','')
         ->when($userType != "1", function ($query) use ($loginId) {
             return $query->where("login_id",$loginId);
