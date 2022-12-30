@@ -21,6 +21,7 @@ use App\Http\Controllers\EFormManagementController;
 use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SideBarController;
+use App\Http\Controllers\ReportController;
 
 /*
 |--------------------------------------------------------------------------
@@ -179,6 +180,11 @@ Route::get('delete_annoucement', [AnnouncementController::class, 'destroyShow'])
 Route::post('announcement_delete/{id}', [AnnouncementController::class, 'destroy'])->name('announcement_delete');
 Route::post('announcement_update/{id}', [AnnouncementController::class, 'update'])->name('announcement_update');
 #endregion Announcement management
+#region Reports
+Route::get('report_agent_activity_logs', [ReportController::class, 'agentActivity'])->name('report_agent_activity_logs');
+Route::get('report_session_history_logs', [ReportController::class, 'sessionHistory'])->name('report_session_history_logs');
+Route::get('report_transaction_logs', [ReportController::class, 'transaction'])->name('report_transaction_logs');
+#region Reports
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
 
@@ -192,16 +198,10 @@ Route::get('lead_index', function () {
 
 });
 
-Route::get('report_agent_activity_logs', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_agent_activity_logs');
 
-Route::get('report_session_history_logs', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_session_history_logs');
-Route::get('report_transaction_logs', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_transaction_logs');
+// Route::get('report_transaction_logs', function () {
+//     // return view('admin/lead/lead_index');
+// })->name('report_transaction_logs');
 Route::get('report_complaints', function () {
     // return view('admin/lead/lead_index');
 })->name('report_complaints');
