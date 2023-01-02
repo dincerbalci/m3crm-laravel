@@ -184,6 +184,14 @@ Route::post('announcement_update/{id}', [AnnouncementController::class, 'update'
 Route::get('report_agent_activity_logs', [ReportController::class, 'agentActivity'])->name('report_agent_activity_logs');
 Route::get('report_session_history_logs', [ReportController::class, 'sessionHistory'])->name('report_session_history_logs');
 Route::get('report_transaction_logs', [ReportController::class, 'transaction'])->name('report_transaction_logs');
+Route::get('report_complaints', [ReportController::class, 'complaints'])->name('report_complaints');
+Route::get('report_escalation', [ReportController::class, 'escalation'])->name('report_escalation');
+Route::get('report_complaint_tat', [ReportController::class, 'complaintTat'])->name('report_complaint_tat');
+Route::get('report_complaint_status', [ReportController::class, 'complaintStatus'])->name('report_complaint_status');
+Route::get('report_sms_interim', [ReportController::class, 'smsInterim'])->name('report_sms_interim');
+Route::get('report_send_emails', [ReportController::class, 'sendEmails'])->name('report_send_emails');
+Route::get('report_eforms', [ReportController::class, 'eForm'])->name('report_eforms');
+Route::get('report_sms_details', [ReportController::class, 'smsDetails'])->name('report_sms_details');
 #region Reports
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
@@ -199,33 +207,12 @@ Route::get('lead_index', function () {
 });
 
 
-// Route::get('report_transaction_logs', function () {
+// Route::get('report_send_emails', function () {
 //     // return view('admin/lead/lead_index');
-// })->name('report_transaction_logs');
-Route::get('report_complaints', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_complaints');
-Route::get('report_escalation', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_escalation');
-Route::get('report_complaint_tat', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_complaint_tat');
-Route::get('report_complaint_status', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_complaint_status');
-Route::get('report_sms_details', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_sms_details');
-Route::get('report_sms_interim', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_sms_interim');
-Route::get('report_send_emails', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_send_emails');
-Route::get('report_eforms', function () {
-    // return view('admin/lead/lead_index');
-})->name('report_eforms');
+// })->name('report_send_emails');
+// Route::get('report_eforms', function () {
+//     // return view('admin/lead/lead_index');
+// })->name('report_eforms');
 Route::get('search', function () {
     // return view('admin/lead/lead_index');
 })->name('search');

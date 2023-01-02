@@ -93,6 +93,64 @@ function LeadTime($created_date, $closed_date){
 	$diff = $end_ts - $start_ts;
 	return round($diff / 86400);
 }
+function GetComplaintAging($startDate,$endDate='') {
+		
+	$start = new DateTime($startDate);
+
+	if($endDate <> '' && $endDate <> '0000-00-00 00:00:00' && $endDate <> '1970-01-01' && $endDate <> '-0001-11-30'){
+		$end = new DateTime($endDate);
+	}else{
+		$end = new DateTime(GetCurrentDate());
+	}
+
+	// otherwise the  end date is excluded (bug?)
+	$end->modify('+1 day');
+
+	$interval = $end->diff($start);
+
+	// total days
+	$days = $interval->days;
+
+	// create an iterateable period of date (P1D equates to 1 day)
+	$period = new DatePeriod($start, new DateInterval('P1D'), $end);
+
+	// best stored as array, so you can add more than one
+	//$holidays = array('2020-02-25');
+
+	$data = GetHolidaysCalendar();
+
+	$holidays = array();
+	foreach ($data as $line){
+		array_push($holidays,$line['holidays']);
+	}
+
+	foreach($period as $dt) {
+		$curr = $dt->format('D');
+
+		// for the updated question
+		if (in_array($dt->format('Y-m-d'), $holidays)) {
+			$days--;
+			continue;
+		}
+
+		if ($startDate < '2022-04-16' || $startDate > '2022-05-07'){
+
+			// substract if Saturday or Sunday
+			if ($curr == 'Sat' || $curr == 'Sun') {
+				$days--;
+			}
+
+		}else{
+
+			// substract only Sunday
+			if ($curr == 'Sun') {
+				$days--;
+			}
+		}
+	}
+
+	return $days;
+}
 
 function NumberFormat($msisdn){
 

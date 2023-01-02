@@ -41,7 +41,6 @@ class EFormManagement extends Model
         $eFormStatus=$request->status;
         $eFormProduct=$request->product;
         $fromDate=$request->from_date;
-        $fromDate=$request->from_date;
         $toDate=$request->to_date;
         $fromDate=str_replace(",","",$fromDate);
         $toDate=str_replace(",","",$toDate);
@@ -88,7 +87,7 @@ class EFormManagement extends Model
             {
                 $fromDate=Date('Y-m-d',strtotime($date['from_date']));
                 $toDate=Date('Y-m-d',strtotime($date['to_date']));
-                return $query->whereRaw("DATE(e.current_datetime) BETWEEN $fromDate  AND $toDate");
+                return $query->whereRaw("DATE(e.current_datetime) BETWEEN '$fromDate'  AND '$toDate'");
             }
         })
         ->when($dataSession, function ($query, $dataSession) {

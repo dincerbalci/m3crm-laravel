@@ -128,6 +128,61 @@ class ComplaintManagement extends Model
         return $complaint;
 
     }
+    public function getComplaintEscalation($request)
+    {
+        $paginationEnv=env('PAGINATION');
+        $complaintNum=$request->complaint_number;
+        $fromDate=$request->from_date;
+        $toDate=$request->to_date;
+        $userId = Session::get('login_id');
+        $unitId = Session::get('unit_id');
+        $userType = Session::get('user_type');
+        $dataSession=array('unit_id'=>$unitId,'agent_id'=>$userId,'user_type'=>$userType);
+        $fromDate=str_replace(",","",$fromDate);
+        $toDate=str_replace(",","",$toDate);
+        $date=array('from_date'=>$fromDate,'to_date'=>$toDate);
+        $complaint= DB::table('tbl_complaints AS c')
+        ->join('tbl_emails_comp_eform_save AS emails', 'emails.comp_eform_id', '=', 'c.complaint_id')
+        ->leftJoin('tbl_complaint_details AS d', 'd.complaint_id', '=', 'c.complaint_id')
+        ->leftJoin('tbl_users AS u', 'c.agent_id', '=', 'u.id')
+        ->leftJoin('tbl_priority AS pr', 'pr.id', '=', 'c.priority_id')
+        ->leftJoin('tbl_status AS s', 'c.status_id', '=', 's.id')
+        ->leftJoin('tbl_product_category AS pc', 'pc.id', '=', 'c.product_category')
+        ->leftJoin('tbl_product AS pp', 'pp.id', '=', 'c.product_id')
+        ->join('tbl_complaint_type AS ct', 'c.complaint_type_id', '=', 'ct.id')
+        ->leftJoin('tbl_users AS us', 'us.id', '=', 'c.user_id')
+        ->leftJoin('tbl_org_unit AS br', 'br.id', '=', 'd.customer_branch_id')
+        ->leftJoin('tbl_org_unit AS lodgeby', 'lodgeby.id', '=', 'c.from_unit_id')
+        ->leftJoin('tbl_source AS sor', 'sor.id', '=', 'c.source')
+        ->select(DB::raw("c.complaint_id, c.complaint_num, CONCAT(br.unit_name,' (', br.branch_code , ')') customer_branch, c.create_date, c.close_date, d.compl_title, d.customer_name, d.cnic, sor.source_name,
+        CONCAT(lodgeby.unit_name,' (', lodgeby.branch_code , ')') lodge_by, d.description, pc.fullname product_category_name, pp.fullname product_name, ct.fullname complaint_type, ct.tat,
+        c.status_id, s.fullname complaint_status, c.end_date, (SELECT CONCAT(SUBSTR(tbl_emails_comp_eform_save.template_subject,6,7),'|',tbl_emails_comp_eform_save.`datetime`)
+        FROM tbl_emails_comp_eform_save WHERE tbl_emails_comp_eform_save.comp_eform_id = c.complaint_id AND tbl_emails_comp_eform_save.`type` = 'complaint_escalation' ORDER BY tbl_emails_comp_eform_save.template_subject DESC LIMIT 1) current_escalation_level"))
+        ->when($dataSession, function ($query, $dataSession) {
+            if($dataSession['user_type'] != 1 && $dataSession['user_type'] != 2)
+            {
+                $unitId=$dataSession['unit_id'];
+                $userId=$dataSession['agent_id'];
+                return $query->whereRaw("AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId) OR c.agent_id = '$userId'");
+            }
+          })
+        ->when($date, function ($query, $date) {
+            if($date['from_date'] != '' && $date['to_date'] != '')
+            {
+                $fromDate=date("Y-m-d",strtotime($date['from_date']));
+                $toDate=date("Y-m-d",strtotime($date['to_date']));
+                return $query->whereRaw("DATE(emails.datetime) BETWEEN '$fromDate' AND '$toDate'");
+            }
+        })
+        ->when($complaintNum, function ($query, $complaintNum) {
+          return $query->where('c.complaint_num', $complaintNum);
+        })
+        ->where('emails.type','complaint_escalation')
+        ->groupBy('c.complaint_id')
+        ->orderBy('c.complaint_id', 'desc')->paginate($paginationEnv);
+        $complaint->appends(['complaint_number' => $complaintNum,'from_date'=>$fromDate,'to_date'=>$toDate]);
+        return $complaint;
+    }
     public function GenComplaintCounter()
     {
         $first_digit = "CT";
@@ -248,6 +303,179 @@ class ComplaintManagement extends Model
         return "success";
 
     }
-    
-   
+    public function getComplaintSMSDetails($request,$groupId)
+    {
+        $paginationEnv=env('PAGINATION');
+        $complaintNum=$request->complaint_number;
+        $fromDate=$request->from_date;
+        $toDate=$request->to_date;
+        $userId = Session::get('login_id');
+        $unitId = Session::get('unit_id');
+        $userType = Session::get('user_type');
+        $dataSession=array('unit_id'=>$unitId,'agent_id'=>$userId,'user_type'=>$userType);
+        $fromDate=str_replace(",","",$fromDate);
+        $toDate=str_replace(",","",$toDate);
+        $date=array('from_date'=>$fromDate,'to_date'=>$toDate);
+        $complaint= DB::table('tbl_complaints AS c')
+        ->join('tbl_sms_comp_eform_save AS sms', 'sms.comp_eform_id', '=', 'c.complaint_id')
+        ->leftJoin('tbl_complaint_details AS d', 'd.complaint_id', '=', 'c.complaint_id')
+        ->leftJoin('tbl_users AS u', 'c.agent_id', '=', 'u.id')
+        ->leftJoin('tbl_status AS s', 'c.status_id', '=', 's.id')
+        ->leftJoin('tbl_product_category AS pc', 'pc.id', '=', 'c.product_category')
+        ->leftJoin('tbl_product AS pp', 'pp.id', '=', 'c.product_id')
+        ->join('tbl_complaint_type AS ct', 'c.complaint_type_id', '=', 'ct.id')
+        ->leftJoin('tbl_groups AS g', 'c.group_id', '=', 'g.id')
+        ->leftJoin('tbl_users AS us', 'us.id', '=', 'c.user_id')
+        ->leftJoin('tbl_org_unit AS br', 'br.id', '=', 'd.customer_branch_id')
+        ->leftJoin('tbl_org_unit AS brass', 'brass.id', '=', 'c.unit_id')
+        ->leftJoin('tbl_org_unit AS lodgeby', 'lodgeby.id', '=', 'c.from_unit_id')
+        ->leftJoin('tbl_source AS sor', 'sor.id', '=', 'c.source')
+        ->select(DB::raw("c.complaint_id, c.complaint_num, CONCAT(br.unit_name,' (', br.branch_code , ')') customer_branch, c.create_date, c.close_date, d.compl_title, d.customer_name, d.cnic, sor.source_name,
+        CONCAT(lodgeby.unit_name,' (', lodgeby.branch_code , ')') lodge_by, d.description, pc.fullname product_category_name, pp.fullname product_name, ct.fullname complaint_type,
+        c.status_id, s.fullname complaint_status, c.end_date, g.group_name group_fullname, CONCAT(brass.unit_name,' (', brass.branch_code , ')') assign_branch,
+        (SELECT CONCAT(`datetime`,'|',sms) FROM tbl_sms_comp_eform_save WHERE `type` = 'complaint_initiated' AND tbl_sms_comp_eform_save.comp_eform_id = c.complaint_id ORDER BY tbl_sms_comp_eform_save.`datetime` DESC LIMIT 1) complaint_initiated,
+        (SELECT CONCAT(`datetime`,'|',sms) FROM tbl_sms_comp_eform_save WHERE `type` = 'complaint_interim' AND tbl_sms_comp_eform_save.comp_eform_id = c.complaint_id ORDER BY tbl_sms_comp_eform_save.`datetime` DESC LIMIT 1) complaint_interim,
+        (SELECT CONCAT(`datetime`,'|',sms) FROM tbl_sms_comp_eform_save WHERE `type` = 'complaint_closed' AND tbl_sms_comp_eform_save.comp_eform_id = c.complaint_id ORDER BY tbl_sms_comp_eform_save.`datetime` DESC LIMIT 1) complaint_closed"))
+        ->when($dataSession, function ($query, $dataSession) {
+            if($dataSession['user_type'] != 1 && $dataSession['user_type'] != 2)
+            {
+                $unitId=$dataSession['unit_id'];
+                $userId=$dataSession['agent_id'];
+                return $query->whereRaw("AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId) OR c.agent_id = '$userId'");
+            }
+          })
+        ->when($date, function ($query, $date) {
+            if($date['from_date'] != '' && $date['to_date'] != '')
+            {
+                $fromDate=date("Y-m-d",strtotime($date['from_date']));
+                $toDate=date("Y-m-d",strtotime($date['to_date']));
+                return $query->whereRaw("DATE(c.create_date) BETWEEN '$fromDate' AND '$toDate'");
+            }
+        })
+        ->when($complaintNum, function ($query, $complaintNum) {
+          return $query->where('c.complaint_num', $complaintNum);
+        })
+        ->when($groupId, function ($query, $groupId) {
+            return $query->groupBy('c.complaint_id');
+          })
+        ->orderBy('c.create_date', 'desc')->paginate($paginationEnv);
+        $complaint->appends(['complaint_number' => $complaintNum,'from_date'=>$fromDate,'to_date'=>$toDate]);
+        return $complaint;
+    }
+    public  function getComplaintByTAT($request)
+    {
+        $queryPart='';
+        if($request->status == 1)
+        {
+            if($request->from_date != '' && $request->to_date != '' )
+            {
+                $fromDate=str_replace(",","",$request->from_date);
+                $toDate=str_replace(",","",$request->to_date);
+                $fromDate=date("Y-m-d",strtotime($fromDate));
+                $toDate=date("Y-m-d",strtotime($toDate));
+                $queryPart = " AND DATE(create_date) BETWEEN '$fromDate' AND '$toDate'";
+            }
+            $queryStatus = "AND status_id IN (1,2,5)";
+
+            $result= DB::select(DB::raw("SELECT
+            (SELECT COUNT(1) FROM tbl_complaints WHERE 1=1 $queryStatus $queryPart) AS total,
+            (SELECT COUNT(1) FROM tbl_complaints WHERE DATE(NOW()) <= DATE(end_date) $queryStatus $queryPart) AS within_tat,
+            (SELECT COUNT(1) FROM tbl_complaints WHERE DATE(NOW()) > DATE(end_date) $queryStatus $queryPart) AS beyond_tat"));
+            return $result;
+        }
+        else
+        {
+            if($request->from_date != '' && $request->to_date != '' )
+            {
+                $fromDate=str_replace(",","",$request->from_date);
+                $toDate=str_replace(",","",$request->to_date);
+                $fromDate=date("Y-m-d",strtotime($fromDate));
+                $toDate=date("Y-m-d",strtotime($toDate));
+                $queryPart = " AND DATE(close_date) BETWEEN '$fromDate' AND '$toDate'";
+            }
+            $queryStatus = "AND status_id IN (3)";
+            $result= DB::select(DB::raw("SELECT
+            (SELECT COUNT(1) FROM tbl_complaints WHERE 1=1 $queryPart) AS total,
+            (SELECT COUNT(1) FROM tbl_complaints WHERE DATE(NOW()) <= DATE(end_date) $queryStatus $queryPart) AS within_tat,
+            (SELECT COUNT(1) FROM tbl_complaints WHERE DATE(NOW()) > DATE(end_date) $queryStatus $queryPart) AS beyond_tat"));
+            return $result;
+        }
+    }
+    public function getComplaintStatusReport($request)
+    {
+        $queryPart='';
+        if($request->from_date != '' && $request->to_date != '' )
+        {
+            $fromDate=str_replace(",","",$request->from_date);
+            $toDate=str_replace(",","",$request->to_date);
+            $fromDate=date("Y-m-d",strtotime($fromDate));
+            $toDate=date("Y-m-d",strtotime($toDate));
+            $queryPart = "AND DATE(create_date) BETWEEN '$fromDate' AND '$toDate'";
+        }
+        $result= DB::select(DB::raw("SELECT
+        (SELECT COUNT(1) FROM tbl_complaints WHERE 1=1 $queryPart) AS total_complaints,
+        (SELECT COUNT(1) FROM tbl_complaints WHERE status_id = 1 $queryPart) AS initiated,
+        (SELECT COUNT(1) FROM tbl_complaints WHERE status_id = 2 $queryPart) AS in_progress,
+        (SELECT COUNT(1) FROM tbl_complaints WHERE status_id = 3 $queryPart) AS closed,
+        (SELECT COUNT(1) FROM tbl_complaints WHERE status_id = 4 $queryPart) AS verified,
+        (SELECT COUNT(1) FROM tbl_complaints WHERE status_id = 5 $queryPart) AS invalid,
+        (SELECT COUNT(1) FROM tbl_complaints WHERE status_id = 6 $queryPart) AS onhold"));
+        return $result;
+    }
+    public function getSmsInterimReport($request,$groupId)
+    {
+        $paginationEnv=env('PAGINATION');
+        $complaintNum=$request->complaint_number;
+        $fromDate=$request->from_date;
+        $toDate=$request->to_date;
+        $userId = Session::get('login_id');
+        $unitId = Session::get('unit_id');
+        $userType = Session::get('user_type');
+        $dataSession=array('unit_id'=>$unitId,'agent_id'=>$userId,'user_type'=>$userType);
+        $fromDate=str_replace(",","",$fromDate);
+        $toDate=str_replace(",","",$toDate);
+        $date=array('from_date'=>$fromDate,'to_date'=>$toDate);
+        $complaint= DB::table('tbl_complaints AS c')
+        ->join('tbl_sms_interim AS sms', 'sms.complaint_id', '=', 'c.complaint_id')
+        ->leftJoin('tbl_complaint_details AS d', 'd.complaint_id', '=', 'c.complaint_id')
+        ->leftJoin('tbl_users AS u', 'c.agent_id', '=', 'u.id')
+        ->leftJoin('tbl_status AS s', 'c.status_id', '=', 's.id')
+        ->leftJoin('tbl_product_category AS pc', 'pc.id', '=', 'c.product_category')
+        ->leftJoin('tbl_product AS pp', 'pp.id', '=', 'c.product_id')
+        ->join('tbl_complaint_type AS ct', 'c.complaint_type_id', '=', 'ct.id')
+        ->leftJoin('tbl_groups AS g', 'c.group_id', '=', 'g.id')
+        ->leftJoin('tbl_users AS us', 'us.id', '=', 'c.user_id')
+        ->leftJoin('tbl_org_unit AS br', 'br.id', '=', 'd.customer_branch_id')
+        ->leftJoin('tbl_org_unit AS brass', 'brass.id', '=', 'c.unit_id')
+        ->leftJoin('tbl_org_unit AS lodgeby', 'lodgeby.id', '=', 'c.from_unit_id')
+        ->leftJoin('tbl_source AS sor', 'sor.id', '=', 'c.source')
+        ->select(DB::raw("c.complaint_id, c.complaint_num, CONCAT(br.unit_name,' (', br.branch_code , ')') customer_branch, c.create_date, c.end_date, c.close_date, d.compl_title, d.customer_name, d.cnic, sor.source_name,
+        CONCAT(lodgeby.unit_name,' (', lodgeby.branch_code , ')') lodge_by, d.description, pc.fullname product_category_name, pp.fullname product_name, ct.fullname complaint_type,
+        c.status_id, s.fullname complaint_status, g.group_name group_fullname, CONCAT(brass.unit_name,' (', brass.branch_code , ')') assign_branch"))
+        ->when($dataSession, function ($query, $dataSession) {
+            if($dataSession['user_type'] != 1 && $dataSession['user_type'] != 2)
+            {
+                $unitId=$dataSession['unit_id'];
+                $userId=$dataSession['agent_id'];
+                return $query->whereRaw("AND c.unit_id IN ($unitId) OR c.from_unit_id IN ($unitId) OR c.agent_id = '$userId'");
+            }
+          })
+        ->when($date, function ($query, $date) {
+            if($date['from_date'] != '' && $date['to_date'] != '')
+            {
+                $fromDate=date("Y-m-d",strtotime($date['from_date']));
+                $toDate=date("Y-m-d",strtotime($date['to_date']));
+                return $query->whereRaw("DATE(sms.interim_date) BETWEEN '$fromDate' AND '$toDate'");
+            }
+        })
+        ->when($complaintNum, function ($query, $complaintNum) {
+          return $query->where('c.complaint_num', $complaintNum);
+        })
+        ->when($groupId, function ($query, $groupId) {
+            return $query->groupBy('c.complaint_id');
+          })
+        ->orderBy('c.complaint_id', 'desc')->paginate($paginationEnv);
+        $complaint->appends(['complaint_number' => $complaintNum,'from_date'=>$fromDate,'to_date'=>$toDate]);
+        return $complaint;
+    }
 }
