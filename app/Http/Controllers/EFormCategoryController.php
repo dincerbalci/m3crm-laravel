@@ -56,6 +56,8 @@ class EFormCategoryController extends Controller
             'isactive' => $isactive,
         ]);
         $this->ActivityLogs("Add Product Category tbl_product_category_eform [CategoryId:$data->id, Category Name: $request->product_category]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -101,6 +103,8 @@ class EFormCategoryController extends Controller
         $complaintCategory['isactive']=$isactive;
         $complaintCategory->save();
         $this->ActivityLogs("Update Product Category tbl_product_category_eform [CategoryId:$id, Category Name: $request->product_category]");
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 

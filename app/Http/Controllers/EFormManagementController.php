@@ -237,6 +237,8 @@ class EFormManagementController extends Controller
             $this->SaveEFormStatus($agentId,$data->id,1,0,0,0,"E-Form Initiated By $eformUnitName");
 
         }
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
        return $this->redirect();
     }
   
@@ -428,6 +430,8 @@ class EFormManagementController extends Controller
             }
 
         }
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
     }
@@ -586,13 +590,20 @@ class EFormManagementController extends Controller
         $eFormManagement['unit_id']=$unitId;
         $eFormManagement['is_approved']=1;
         $eFormManagement->save();
-
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
        return $this->redirect();
 
     }
+    public function cnicApi(Request $request)
+    {
+        $request->cnic;
+        return $myJSON = '{"customer_name":"Kashir khan", "mother_maider_name":"Amelia Khan", "card_title":"Kashir khan","account_number":"090078601","customer_mobile":"923412250984","customer_e_mail":"khankashir@gmail.com"}';
+    }   
     private function redirect()
     {
         return redirect()->route('e_form_index');
 
     }
+
 }

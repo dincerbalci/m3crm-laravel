@@ -61,6 +61,8 @@ class ComplaintProductController extends Controller
             'isactive' => $isactive,
         ]);
         $this->ActivityLogs("Add Product tbl_product [ProductId: $data->id, Product Name: $request->product_name]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
         // 'end_date' => GetCurrentDate(),
     }
@@ -111,7 +113,8 @@ class ComplaintProductController extends Controller
         $complaintProduct['isactive']=$isactive;
         $complaintProduct->save();
         $this->ActivityLogs("Edit Product tbl_product [ProductId: $id, Product Name: $request->product_name]");
-
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 

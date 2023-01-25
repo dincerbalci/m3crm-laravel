@@ -180,7 +180,7 @@ class AuthenticatedSessionController extends Controller
                         }
                         $dataArray[$module]=$side;
                     }
-                    // dd($dataArray);
+                    // dd($sidebarMenu);
                     Session::put('sidebar_menu', $dataArray);
                     // foreach($dataArray AS $key => $data)
                     // {

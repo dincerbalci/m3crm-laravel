@@ -1,0 +1,9 @@
+putty
+192.168.216.76
+root
+admin786
+
+Sql 
+192.168.216.76
+ivradmin
+admin786

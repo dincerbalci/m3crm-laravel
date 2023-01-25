@@ -70,6 +70,8 @@ class RoleController extends Controller
             }
         }
         DB::table('tbl_roles_permissions')->insert($data);
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -126,6 +128,8 @@ class RoleController extends Controller
             }
         }
         DB::table('tbl_roles_permissions')->insert($data);
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
     }

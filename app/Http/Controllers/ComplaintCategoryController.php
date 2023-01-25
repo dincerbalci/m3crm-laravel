@@ -55,6 +55,8 @@ class ComplaintCategoryController extends Controller
             'end_date' => GetCurrentDate(),
         ]);
         $this->ActivityLogs("Add Product Category tbl_product_category [CategoryId:$data->id, Category Name: $request->product_category]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -99,6 +101,8 @@ class ComplaintCategoryController extends Controller
         $complaintCategory['isactive']=$isactive;
         $complaintCategory->save();
         $this->ActivityLogs("Update Product Category tbl_product_category [CategoryId:$id, Category Name: $request->product_category]");
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
     }

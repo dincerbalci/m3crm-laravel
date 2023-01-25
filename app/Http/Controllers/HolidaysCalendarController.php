@@ -49,6 +49,8 @@ class HolidaysCalendarController extends Controller
             'is_repeat' => $isRepeat,
             'created_datetime'=> GetCurrentDateTime(),
         ]);
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
 
@@ -98,7 +100,8 @@ class HolidaysCalendarController extends Controller
         $holidaysCalendar['is_repeat']=$isRepeat;
         $holidaysCalendar['updated_datetime']=GetCurrentDateTime();
         $holidaysCalendar->save();
-       
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
 

@@ -438,7 +438,9 @@ class ComplaintManagementController extends Controller
             $toUnits = $toUnits[0]->unit_name;
             $this->ActivityLogs("Forward Complaint [To Group: ($groupName), To Branch: ($toUnits), Approved: 1, Complaint #: $complaintNo]");
             $this->objComplaintManagement->SaveComplaintStatus($loginId,$id,$previousStatusId,2,'',$unitId,0,0,"Complaint Forwarded To $toUnits");
-
+           
+            session()->flash('message', 'Successfully Updated!');
+            session()->flash('alert-type', 'success');
             return $this->redirect();
 
 
@@ -955,10 +957,17 @@ class ComplaintManagementController extends Controller
             $complaint['favor']=$favor;
             $complaint['close_notes']=$closeNotes;
             $complaint->save();
-
+            
+            session()->flash('message', 'Successfully Updated!');
+            session()->flash('alert-type', 'success');
             return redirect()->back();
 
    }
+   public function cnicApi(Request $request)
+   {
+       $request->cnic;
+       return $myJSON = '{"complaint_title":"khan","customer_name":"Kashir khan", "mother_maider_name":"Amelia Khan", "card_number":"090078601","customer_mobile":"923412250984","customer_e_mail":"khankashir@gmail.com"}';
+   }   
    private function redirect()
     {
         return redirect()->route('complaint_index');

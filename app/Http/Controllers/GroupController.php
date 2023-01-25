@@ -54,6 +54,8 @@ class GroupController extends Controller
             'created_on'=> GetCurrentDateTime(),
         ]);
         $this->ActivityLogs("Add Group [GroupId: $data->id, Group Name: $request->group_name]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -100,6 +102,8 @@ class GroupController extends Controller
         $group->save();
        
         $this->ActivityLogs("Update Group [GroupId: $id, Group Name: $request->group_name]");
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 

@@ -61,6 +61,8 @@ class DailyCalendarController extends Controller
             'end_time' => Date("H:i:s",strtotime($request->end_time)),
             'created_on'=> GetCurrentDateTime(),
         ]);
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
 
@@ -109,6 +111,8 @@ class DailyCalendarController extends Controller
         $dailyCalendar['end_time']=Date("H:i:s",strtotime($request->end_time));
         $dailyCalendar['updated_on']=GetCurrentDateTime();
         $dailyCalendar->save();
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
 

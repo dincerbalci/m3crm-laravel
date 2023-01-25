@@ -22,6 +22,10 @@ use App\Http\Controllers\AnnouncementController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\SideBarController;
 use App\Http\Controllers\ReportController;
+use App\Http\Controllers\LeadManagementController;
+use App\Http\Controllers\LeadNoteController;
+use App\Http\Controllers\LeadFileController;
+use App\Http\Controllers\LeadFollowUpController;
 
 /*
 |--------------------------------------------------------------------------
@@ -116,6 +120,7 @@ Route::post('complaint_create', [ComplaintManagementController::class, 'store'])
 Route::get('get_unit_groups', [ComplaintManagementController::class, 'unitGroup'])->name('get_unit_groups');
 Route::post('complaint_edit/{id}', [ComplaintManagementController::class, 'update'])->name('complaint_edit');
 Route::post('update_progress/{id}', [ComplaintManagementController::class, 'updateProgress'])->name('update_progress');
+Route::get('get_cnic_complain_api', [ComplaintManagementController::class, 'cnicApi'])->name('get_cnic_complain_api');
 #endregion Complaint management
 
 #region E Form type
@@ -169,6 +174,7 @@ Route::post('e_form_store', [EFormManagementController::class, 'store'])->name('
 Route::get('get_e_form_type', [EFormManagementController::class, 'eFormType'])->name('get_e_form_type');
 Route::post('e_form_edit/{id}', [EFormManagementController::class, 'update'])->name('e_form_edit');
 Route::post('e_form_update_progress/{id}', [EFormManagementController::class, 'updateProgress'])->name('e_form_update_progress');
+Route::get('get_cnic_api', [EFormManagementController::class, 'cnicApi'])->name('get_cnic_api');
 #endregion E From management
 
 #region Announcement management
@@ -192,27 +198,28 @@ Route::get('report_sms_interim', [ReportController::class, 'smsInterim'])->name(
 Route::get('report_send_emails', [ReportController::class, 'sendEmails'])->name('report_send_emails');
 Route::get('report_eforms', [ReportController::class, 'eForm'])->name('report_eforms');
 Route::get('report_sms_details', [ReportController::class, 'smsDetails'])->name('report_sms_details');
-#region Reports
+#endregion Reports
 
 Route::get('get_product_category_eform', [EFormTypeController::class, 'productCategory'])->name('get_product_category_eform');
+// ->middleware(['permission'])
+Route::resource('lead', LeadManagementController::class);
+Route::get('lead_user', [LeadManagementController::class, 'leadUser'])->name('lead_user');
+Route::get('lead_delete', [LeadManagementController::class, 'leadDelete'])->name('lead_delete');
 
-Route::get('lead_create', function () {
-    return view('admin/lead/lead_create');
-})->name('lead_create');
+Route::resource('lead_note', LeadNoteController::class);
+Route::get('lead_note_delete', [LeadNoteController::class, 'leadNoteDelete'])->name('lead_note_delete');
 
-Route::get('lead_index', function () {
-    return view('admin/lead/lead_index');
-})->name('lead_index');
+Route::resource('lead_file', LeadFileController::class);
+Route::get('lead_file_delete', [LeadFileController::class, 'leadFileDelete'])->name('lead_file_delete');
+
+Route::resource('lead_follow_up', LeadFollowUpController::class);
+Route::get('lead_follow_up_delete', [LeadFollowUpController::class, 'leadFollowUpDelete'])->name('lead_follow_up_delete');
+Route::get('chat', [TemplateController::class, 'chat'])->name('chat');
+
 
 });
 
 
-// Route::get('report_send_emails', function () {
-//     // return view('admin/lead/lead_index');
-// })->name('report_send_emails');
-// Route::get('report_eforms', function () {
-//     // return view('admin/lead/lead_index');
-// })->name('report_eforms');
 Route::get('search', function () {
     // return view('admin/lead/lead_index');
 })->name('search');

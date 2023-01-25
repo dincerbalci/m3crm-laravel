@@ -95,6 +95,8 @@ class EFormTypeController extends Controller
         //         ]
         //     );  
         // }
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -173,7 +175,8 @@ class EFormTypeController extends Controller
         //         'level5' => is_null($request->level5) ? '' : implode(",", $request->level5),
             
         //         ]);
-       
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
 

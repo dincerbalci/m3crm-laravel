@@ -50,6 +50,26 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+    /**
+     * Get the tbl_users first_name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getFirstNameAttribute($value)
+    {
+        return $this->attributes['first_name'] = ucwords($value);
+    }
+    /**
+     * Get the tbl_users last_name.
+     *
+     * @param  string  $value
+     * @return string
+     */
+    public function getLastNameAttribute($value)
+    {
+        return $this->attributes['last_name'] = ucwords($value);
+    }
     public function GetDbUser($userId)
     {
         $checkusr= DB::select(DB::raw("SELECT user_name, user_type, isactive, islogin, login_attempt FROM tbl_users WHERE user_name = '$userId'"));

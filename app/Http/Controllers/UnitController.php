@@ -78,7 +78,8 @@ class UnitController extends Controller
                 ]
             );  
         }
-
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
     // 
@@ -146,6 +147,8 @@ class UnitController extends Controller
                 'level4' => $request->level4,  
             ]
         );  
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
       

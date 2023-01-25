@@ -51,6 +51,8 @@ class WeekendsCalendarController extends Controller
             'week_day' => $request->week_day,
             'created_on'=> GetCurrentDateTime(),
         ]);
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
 
@@ -99,6 +101,8 @@ class WeekendsCalendarController extends Controller
         $weekEnd['week_day']=$request->week_day;
         $weekEnd['updated_on']=GetCurrentDateTime();
         $weekEnd->save();
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
 

@@ -95,6 +95,8 @@ class UserController extends Controller
                 DB::table('tbl_users_role')->insert(['user_id'=> $data->id,'role_id'=>$roleId]);
             }
         }
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
        return $this->redirect();
 
     }
@@ -180,7 +182,8 @@ class UserController extends Controller
                 DB::table('tbl_users_role')->where('user_id',$id)->update(['role_id'=>$roleId]);
             }
         }
-
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
        return $this->redirect();
         
     }

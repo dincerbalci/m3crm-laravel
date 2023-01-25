@@ -62,6 +62,8 @@ class TemplateController extends Controller
             'is_active' => $isActive,
             'create_date'=> GetCurrentDateTime(),
         ]);
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
     }
@@ -117,7 +119,8 @@ class TemplateController extends Controller
         $template['is_active']=$isActive;
         $template['update_date']=GetCurrentDateTime();
         $template->save();
-
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -130,6 +133,11 @@ class TemplateController extends Controller
     public function destroy(Template $template)
     {
         //
+    }
+    public function chat()
+    {
+        return view('admin/chat/chat_view');
+
     }
     private function redirect()
     {

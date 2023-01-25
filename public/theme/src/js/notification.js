@@ -1,10 +1,10 @@
 import Toastify from "toastify-js";
 
-(function () {
+(function() {
     "use strict";
 
     // Basic non sticky notification
-    $("#basic-non-sticky-notification-toggle").on("click", function () {
+    $("#basic-non-sticky-notification-toggle").on("click", function() {
         Toastify({
             node: $("#basic-non-sticky-notification-content")
                 .clone()
@@ -19,7 +19,7 @@ import Toastify from "toastify-js";
     });
 
     // Basic sticky notification
-    $("#basic-sticky-notification-toggle").on("click", function () {
+    $("#basic-sticky-notification-toggle").on("click", function() {
         Toastify({
             node: $("#basic-non-sticky-notification-content")
                 .clone()
@@ -34,7 +34,7 @@ import Toastify from "toastify-js";
     });
 
     // Success notification
-    $("#success-notification-toggle").on("click", function () {
+    $("#success-notification-toggle").on("click", function() {
         Toastify({
             node: $("#success-notification-content")
                 .clone()
@@ -49,7 +49,7 @@ import Toastify from "toastify-js";
     });
 
     // Notification with actions
-    $("#notification-with-actions-toggle").on("click", function () {
+    $("#notification-with-actions-toggle").on("click", function() {
         Toastify({
             node: $("#notification-with-actions-content")
                 .clone()
@@ -64,7 +64,7 @@ import Toastify from "toastify-js";
     });
 
     // Notification with avatar
-    $("#notification-with-avatar-toggle").on("click", function () {
+    $("#notification-with-avatar-toggle").on("click", function() {
         // Init toastify
         let avatarNotification = Toastify({
             node: $("#notification-with-avatar-content")
@@ -81,13 +81,13 @@ import Toastify from "toastify-js";
         // Close notification event
         $(avatarNotification.toastElement)
             .find('[data-dismiss="notification"]')
-            .on("click", function () {
+            .on("click", function() {
                 avatarNotification.hideToast();
             });
     });
 
     // Notification with split buttons
-    $("#notification-with-split-buttons-toggle").on("click", function () {
+    $("#notification-with-split-buttons-toggle").on("click", function() {
         // Init toastify
         let splitButtonsNotification = Toastify({
             node: $("#notification-with-split-buttons-content")
@@ -104,13 +104,13 @@ import Toastify from "toastify-js";
         // Close notification event
         $(splitButtonsNotification.toastElement)
             .find('[data-dismiss="notification"]')
-            .on("click", function () {
+            .on("click", function() {
                 splitButtonsNotification.hideToast();
             });
     });
 
     // Notification with buttons below
-    $("#notification-with-buttons-below-toggle").on("click", function () {
+    $("#notification-with-buttons-below-toggle").on("click", function() {
         // Init toastify
         Toastify({
             node: $("#notification-with-buttons-below-content")

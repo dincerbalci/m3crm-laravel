@@ -27,7 +27,7 @@
                                                     <div class="grid grid-cols-12 gap-2">
                                                         <div >
                                                             <label for="regular-form-1" class="form-label">Card Num</label>
-                                                            <input type="text"  class="form-control col-span-4 " value="2205550001000005" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
+                                                            <input type="text"  class="form-control col-span-4 " value="11111-1111111-1" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
                                                         </div>
                                                         <div >
                                                             <label for="regular-form-1" class="form-label">Embossed Name</label>
@@ -35,15 +35,15 @@
                                                         </div>
                                                         <div >
                                                             <label for="regular-form-1" class="form-label">Withdrawal Limit</label>
-                                                            <input type="text"  class="form-control col-span-4 " value="40000" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
+                                                            <input type="text"  class="form-control col-span-4 " value="{{ number_format('40000')}}" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
                                                         </div>
                                                         <div class="mt-3">
                                                             <label for="regular-form-1" class="form-label">Purchase Limit</label>
-                                                            <input type="text"  class="form-control col-span-4 " value="90000" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
+                                                            <input type="text"  class="form-control col-span-4 " value="{{number_format('90000')}}" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
                                                         </div>
                                                         <div class="mt-3">
                                                             <label for="regular-form-1" class="form-label">Fund Transfer Limit</label>
-                                                            <input type="text"  class="form-control col-span-4 " value="100000" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
+                                                            <input type="text"  class="form-control col-span-4 " value="{{number_format('100000')}}" name="customer_mobile" placeholder="92-xxxxxxxxxx"  aria-label="default input inline 1" disabled>
                                                         </div>
                                                         <div class="mt-3">
                                                             <label for="regular-form-1" class="form-label">Maximum Pin retries</label>

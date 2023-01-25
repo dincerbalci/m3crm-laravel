@@ -79,6 +79,8 @@ class AnnouncementController extends Controller
             'created_at' => GetCurrentDate(),
         ]);
         $this->ActivityLogs("Add Announcement tbl_announcements [AnnouncementId:$data->id, subject: $request->subject]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -142,6 +144,8 @@ class AnnouncementController extends Controller
         $announcement['is_active']=$request->is_active;
         $announcement['updated_at']=GetCurrentDate();
         $announcement->save();
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
 
@@ -156,6 +160,8 @@ class AnnouncementController extends Controller
         $data = Announcement::find($id);
         File::delete($data->path);
         $data->delete();
+        session()->flash('message', 'Successfully Deleted!');
+        session()->flash('alert-type', 'success');
         return redirect()->back();
     }
     public function destroyShow(Request $request)

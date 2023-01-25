@@ -67,6 +67,8 @@ class ComplaintTypeController extends Controller
         ]);
 
         $this->ActivityLogs("Add Complaint Type [Complaint Type Name:$request->complaint_type]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
         
     }
@@ -123,7 +125,8 @@ class ComplaintTypeController extends Controller
         $complaintProduct['isactive']=$isactive;
         $complaintProduct->save();
         $this->ActivityLogs("Edit Complaint Type [Complaint Type Name:$request->complaint_type]");
-
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
     }
    

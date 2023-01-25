@@ -64,6 +64,8 @@ class EscalationGroupController extends Controller
         }
         DB::table('tbl_escalation_group_users')->insert($data);
         $this->ActivityLogs("Add Escalation Group [Escalation Group Id: $groupId, Escalation Group Name: $request->group_name]");
+        session()->flash('message', 'Successfully Saved!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
 
@@ -116,6 +118,8 @@ class EscalationGroupController extends Controller
         }
         DB::table('tbl_escalation_group_users')->insert($data);
         $this->ActivityLogs("Update Escalation Group [Escalation Group Id: $id, Escalation Group Name: $request->group_name]");
+        session()->flash('message', 'Successfully Updated!');
+        session()->flash('alert-type', 'success');
         return $this->redirect();
 
     }
