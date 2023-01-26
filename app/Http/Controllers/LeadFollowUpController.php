@@ -41,7 +41,6 @@ class LeadFollowUpController extends Controller
         $request->validate([
             'next_follow_up' => ['required'],
             'remark' => ['required'],
-            
         ]);
         $data = LeadFollowUp::create([
             'user_id' => $loginId,

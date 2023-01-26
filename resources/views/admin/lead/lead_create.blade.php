@@ -176,7 +176,6 @@
                                             </option>
                                             @for ($i = 0; $i < count($group); $i++)
                                                 <option value="{{ $group[$i]->id }}">{{ $group[$i]->group_name }}
-
                                                 </option>
                                             @endfor
                                         </select>
